@@ -21,13 +21,12 @@ const Navbar = () => {
             <NavMenu>
                 <NavLink 
                   to="/"
-                  activeStyle={{ color:'black' }}
                 >
                     Home
                 </NavLink>
                 <NavLink 
                   to="/test"
-                  activeStyle={{ color: 'black' }}
+
                 >
                     Test
                 </NavLink>
