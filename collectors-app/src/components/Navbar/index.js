@@ -9,7 +9,10 @@ import {
   NavBtnLink,
 } from "./NavbarElements";
 
+
 const Navbar = () => {
+
+
     return (
         <>
            <Nav>
@@ -21,18 +24,16 @@ const Navbar = () => {
             <NavMenu>
                 <NavLink 
                   to="/"
-                >
-                    Home
+                > Home
                 </NavLink>
                 <NavLink 
                   to="/test"
-
-                >
-                    Test
+                > Test
                 </NavLink>
-                
                 <NavBtn>
-                    <NavBtnLink to="/login">Login</NavBtnLink>
+                    <NavBtnLink to="/login">
+                        Login
+                    </NavBtnLink>
                 </NavBtn>
                 
             </NavMenu>
@@ -40,4 +41,7 @@ const Navbar = () => {
         </>
     );
 };
+
+
+
 export default Navbar;

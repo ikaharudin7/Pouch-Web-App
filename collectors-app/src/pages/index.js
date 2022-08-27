@@ -1,11 +1,10 @@
-
 import React from 'react';
   
 const Home = () => {
   return (
     <div
       style={{
-        background: '#2A2A2A',
+        background: '#242424',
         display: 'flex',
         justifyContent: 'Left',
         alignItems: 'Left',
