@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div
       style={{
-        background: '#242424',
+        background: 'white',
         display: 'flex',
         justifyContent: 'Left',
         alignItems: 'Left',

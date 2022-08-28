@@ -14,7 +14,7 @@
 
 
 .loginicon:hover{
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .login-form{
@@ -29,6 +29,7 @@
   margin-top: 7vh;
   opacity:80%;
   justify-content: center;
+  align-items: center;
   background: rgb(0, 0, 0);
   padding-right: 80px;
   padding-left: 80px;
@@ -59,6 +60,7 @@ label {
 .login-box{
   border: 1px solid lightgrey;
   display: flex;
+  background-color: aliceblue;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
@@ -68,7 +70,6 @@ label {
   font-weight: 600;
   margin: 5px;
   font-size: 11pt;
-  background: transparent;
   transition: 10s;
   outline: none;
 }
@@ -78,7 +79,7 @@ label {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  color: rgb(5, 2, 2);
+  color: rgb(0, 0, 0);
   margin-top: 5px;
   border-radius: 20px;
   border: none;

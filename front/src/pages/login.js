@@ -1,6 +1,6 @@
 import React from "react";
 
-const LoginForm = ({ isShowLogin }) => {
+const LoginForm = () => {
   return (
       <div className="login-form">
         <div className="form-box solid">
