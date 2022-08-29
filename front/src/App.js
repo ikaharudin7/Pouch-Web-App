@@ -8,6 +8,7 @@ import Home from './pages';
 import Test from './pages/test';
 import LoginForm from './pages/login'
 import './pages/login.css'
+import SignUpForm from './pages/signup';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path = '/' element={<Home />} />
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />
+        <Route path = '/signup' element={<SignUpForm />} />
       </Routes>
     </Router>
 

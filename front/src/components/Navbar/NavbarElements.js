@@ -33,8 +33,9 @@ cursor: pointer;
 }
 &:focus {
   font-weight: bold;
-  color: red;
+  color: #6BB7FF;
 }
+font-family: 'Overpass', sans-serif;
 `;
 
 export const Bars = styled(FaBars)`
@@ -65,7 +66,7 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 24px;
-
+  font-family: 'Overpass', sans-serif;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -85,6 +86,6 @@ export const NavBtnLink = styled(Link)`
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
-    color: #808080;
+    color: grey;
   }
 `;
