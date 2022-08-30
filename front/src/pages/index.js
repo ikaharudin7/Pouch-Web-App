@@ -2,17 +2,12 @@ import React from 'react';
   
 const Home = () => {
   return (
-    <div
-      style={{
-        background: '#242424',
-        display: 'flex',
-        justifyContent: 'Left',
-        alignItems: 'Left',
-        height: '100vh',
-        margin: '0',
-      }}
-    >
-      <h1>Welcome to Home</h1>
+    <div className="main-container">
+      <div className="top-image-container">
+      </div>
+      <div className="top-text-container">
+        <h1>Hello</h1>
+      </div>
     </div>
   );
 };
