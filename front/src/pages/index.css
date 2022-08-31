@@ -1,5 +1,14 @@
-.main-container {
-    background-color:bisque;
-    height: 200px;
-    width: 50%;
+.hero-body  {
+    background: rgb(255, 255, 255);
+    padding: 40px;
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.container {
+    background: rgb(233, 233, 233);
+    padding: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 75vh;
 }
