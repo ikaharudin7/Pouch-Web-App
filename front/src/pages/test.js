@@ -22,9 +22,9 @@ const Test = () => {
             justifyContent: 'center',
             alignItems: 'bottom',
         }}>
-            <button>
+            
             <img src="https://cdn1.dotesports.com/wp-content/uploads/2022/03/22193248/1999-Pokemon-Base-Set-Shadowless-1st-Edition-Holo-Charizard-605x1024.jpg" alt="First Edition Shadowless Holographic Charizard" width = "20%"/>
-            </button>
+            
             
         </div>,
         <div style= {{
