@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './index.css'
   
-const Home = () => {
-  return (
-    <div className="main-container">
-      <div className="top-image-container">
-      </div>
-      <div className="top-text-container">
-        <h1>Hello</h1>
-      </div>
-    </div>
-  );
-};
+class Home extends Component {
+    render() {
+      return (
+        <div>
+          <section className="hero">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title"></h1>
+                <div className="column">
+                  <h2 className="subheadings">subheading</h2>
+                </div>
+              </div>
+              <a className="button" id="learn"> Learn more</a>
+            </div>
+          </section>
+        </div>
+      );
+    }
+
+}
   
 export default Home;
