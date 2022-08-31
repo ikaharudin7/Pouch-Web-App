@@ -9,6 +9,7 @@ import Test from './pages/test';
 import LoginForm from './pages/login'
 import './pages/login.css'
 import SignUpForm from './pages/signup';
+import Char from './pages/Char';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />
         <Route path = '/signup' element={<SignUpForm />} />
+        <Route path = '/Char' element={<Char />} />
       </Routes>
     </Router>
 

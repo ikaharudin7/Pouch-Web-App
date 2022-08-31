@@ -31,7 +31,7 @@ cursor: pointer;
 &:hover {
   color: grey;
 }
-&:focus {
+&:focus, :active {
   font-weight: bold;
   color: #6BB7FF;
 }

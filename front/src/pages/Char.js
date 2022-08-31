@@ -1,16 +1,16 @@
 import React from 'react';
-import './index.css'
+
   
-const Home = () => {
+const Char = () => {
   return (
     <div className="main-container">
       <div className="top-image-container">
       </div>
       <div className="top-text-container">
-        <h1>Hello</h1>
+        <h1 style = {{color: 'black'}}>Hello</h1>
       </div>
     </div>
   );
 };
   
-export default Home;
+export default Char;
