@@ -8,13 +8,8 @@ const images = [
   {
     // url: 'front/src/static/images/buttons/test_image.jpg',
     src: 'front/src/static/images/buttons/test_image.jpg',
-    title: 'Char', 
-    width: '30%',
-  },
-  {
-    url: '/static/images/buttons/test.jpg',
-    title: 'Pikachu',
-    width: '30%',
+    title: 'Featured Collection Goes Here', 
+    width: '100%',
   },
 
 ];

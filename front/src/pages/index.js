@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Link from '@mui/material/Link';
 import './index.css'
+import ButtonBases from '../components/Button';
+import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
 class Home extends Component {
@@ -10,14 +12,35 @@ class Home extends Component {
           <section className="hero">
             <div className="hero-body">
               <div className="container">
-                <h1 className="title">HOME</h1>
-                <div className="column">
-                  <h2 className="subheadings">subheading</h2>
+                <div class="container-left">
+                  <ButtonBases /> 
+                </div>
+                <div className="container-right">
+                  <h1 className="hero-title">Got a collection you want to feature? </h1>
+                  <p className="hero-text">
+                    NAME is an online community made for collectors of all items to showcase
+                    their extensive collections and prized items.
+                  </p>
+                  <p className="hero-text"> 
+                    Post your collection here and make it stand out to other collectors! 
+                  </p>
+
+                  <NavBtn className="signup-btn">
+                    <Link href = "/signup" underline="hover" color = 'black' >
+                      Get started here today!</Link>
+                  </NavBtn>
                 </div>
               </div>
-                  <Link href = "/about" underline="hover" color = 'black' >
-                    Learn more</Link>
+
+              <div className="featured-body">
+                <h1 className="featured-heading"> Browse Featured Collections</h1>
               </div>
+
+            </div>
+            
+            
+            <Link href = "/about" underline="hover" color = 'black' >
+              Learn more</Link>
           </section>
         </div>
       );

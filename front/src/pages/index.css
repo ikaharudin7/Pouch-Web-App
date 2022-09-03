@@ -5,10 +5,50 @@
     padding-right: 120px;
 }
 
+.hero-title {
+    text-align: left;
+    font-family: 'Overpass', sans-serif;
+    font-size: 30px;
+}
+
+.hero-text {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .container {
     background: rgb(233, 233, 233);
-    padding: 15px;
-    padding-left: 60px;
-    padding-right: 60px;
-    height: 75vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.container-right {
+    padding: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.signup-btn {
+    padding-top: 20px;
+    padding-left: 0px;
+}
+
+.featured-heading {
+    text-align: center;
+    font-family: 'Overpass', sans-serif;
+    font-size: 2;
+}
+
+.featured-body {
+    background: rgb(233, 233, 233);
+    display: grid;
+    grid-gap: 20px;
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
 }
