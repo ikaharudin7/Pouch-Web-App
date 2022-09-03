@@ -35,12 +35,25 @@ class Home extends Component {
               <div className="featured-body">
                 <h1 className="featured-heading"> Browse Featured Collections</h1>
               </div>
+              <div className="panels-section">
+                 <div className="panel">
+                  <ButtonBases className="bottom-panels"/> 
+                 </div>
+                 <div className="bottom-panels">
+                  <ButtonBases /> 
+                 </div>
+                 <div className="bottom-panels">
+                  <ButtonBases /> 
+                 </div>
+
+              </div>
 
             </div>
             
             
-            <Link href = "/about" underline="hover" color = 'black' >
-              Learn more</Link>
+            <Link className="link" href = "/about" underline="hover" color = 'black' >
+              Learn more
+            </Link>
           </section>
         </div>
       );
