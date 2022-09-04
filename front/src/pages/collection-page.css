@@ -19,23 +19,10 @@
 
 .container {
     background: rgb(233, 233, 233);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    display: flex;
     padding: 40px;
     padding-left: 40px;
     padding-right: 40px;
-}
-
-.container-right {
-    padding: 0px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.signup-btn {
-    padding-top: 20px;
-    padding-left: 0px;
 }
 
 .featured-heading {
