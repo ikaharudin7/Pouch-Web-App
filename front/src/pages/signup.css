@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-.login-form{
+.signup-form{
   width: 100%;
   display: flex;
   background-color: (255, 255, 255, 0.2);
@@ -24,7 +24,7 @@
   box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
-.login-text{
+.signup-text{
   width: 100%;
   color: white;
   border-bottom: 2px solid white;
@@ -44,22 +44,22 @@
   color: white;
   width: 100%;
   font-weight: bolder;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  padding-right: 75px;
-  padding-left: 75px;
+  text-align: left;
+  justify-content: left;
+  align-items: left;
+  padding-right: 20px;
+  padding-left: 10px;
   padding-top: 5vh;
   font-family: 'Overpass', sans-serif;
 }
 
-label {
+.label {
   color:rgb(255, 255, 255);
   width: 100%;
   text-align: center;
 }
 
-.login-box{
+.signup-box{
   border: 1px solid lightgrey;
   display: flex;
   background-color: aliceblue;
@@ -76,7 +76,7 @@ label {
   outline: none;
 }
 
-.login-btn{
+.signup-btn{
   position: relative;
   width: 75%;
   justify-content: center;

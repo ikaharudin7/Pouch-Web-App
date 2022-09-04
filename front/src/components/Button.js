@@ -11,8 +11,9 @@ const images = [
     title: 'Featured Collection Goes Here', 
     width: '100%',
   },
-
 ];
+
+
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
