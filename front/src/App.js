@@ -10,6 +10,7 @@ import LoginForm from './pages/login'
 import './pages/login.css'
 import SignUpForm from './pages/signup';
 import Char from './pages/Char';
+import CollectionView from './pages/collection-page';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path = '/' element={<Home />} />
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />
+        <Route path = '/collection-page' element={<CollectionView />} />
         <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
       </Routes>
