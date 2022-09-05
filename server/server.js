@@ -1,12 +1,9 @@
 const express = require("express");
 const app = express();
-const profile = require('./routes/profile');
-  
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
 
-app.use('/profile', profile);
+app.use('/', require("./routes/home"));
+app.use('/', require("./routes/profile"));
+app.use('/', require("./routes/collection"));
 
 const PORT = process.env.PORT || 8080;
   
