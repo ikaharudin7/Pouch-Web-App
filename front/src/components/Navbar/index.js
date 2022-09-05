@@ -34,6 +34,10 @@ const Navbar = () => {
                   to="/collection-page"
                 > Test
                 </NavLink>
+                <NavLink 
+                  to="/my-profile"
+                > My Profile
+                </NavLink>
                 <NavBtn>
                     <NavBtnLink to="/login">
                         Login
