@@ -17,7 +17,7 @@ const addNewUser = async (req, res) =>{
     });
 }
 
-const updateItem = async(req, res)=> {
+const updateUser = async(req, res)=> {
     db.collection('collector').findOneAndUpdateOne(
         {_username : req.body.username}, req.body, {new:true}, function(err, res){
             if(err) throw err;
@@ -26,7 +26,7 @@ const updateItem = async(req, res)=> {
     )
 };
 
-const deleteItem = async(req, res) => {
+const deleteUser = async(req, res) => {
     var User = req.body.User
     db.collection('collector').deleteOne(User, function(err, res) {
         if(err) throw err;
