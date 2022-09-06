@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import Link from '@mui/material/Link';
 import './collection-page.css'
-import ButtonBases from '../components/Button';
-import { NavBtn } from '../components/Navbar/NavbarElements';
-import MediaCard from '../components/Media';
 import CollectionGrid from '../components/Grid';
   
 class CollectionView extends Component {
@@ -12,15 +8,10 @@ class CollectionView extends Component {
         <div>
           <section className="hero">
             <div className="hero-body">
-                <div className="container">
+                <div className="box">
                     <CollectionGrid />
-
                 </div>
-              
-
             </div>
-
-
           </section>
         </div>
       );
