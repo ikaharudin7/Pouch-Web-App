@@ -1,42 +1,58 @@
+import React, { Component } from 'react';
+import './my-profile.css'
 import ButtonBases from '../components/Button';
+import { Button } from '@mui/material';
 
-const Profile = () => {
-  return (
-    <div>
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'top',
-            color: 'white',
-   
-            //   height: '100vh',      
-        }}>
-
-            <h1>This is a test page</h1>
-          
-        </div>,
-
-        <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'bottom',
-        }}>
-            
-            <img src="https://cdn1.dotesports.com/wp-content/uploads/2022/03/22193248/1999-Pokemon-Base-Set-Shadowless-1st-Edition-Holo-Charizard-605x1024.jpg" alt="First Edition Shadowless Holographic Charizard" width = "20%"/>
-            
-            
-        </div>,
-        <div style= {{
-            display: 'flex',
-            justifyContent: 'center'
-        }}>
-                <h3>First Edition Shadowless Holographic Charizard</h3>
-        </div>,
+  
+class Profile extends Component {
+    render() {
+      return (
         <div>
-            <ButtonBases />
+          <section className="hero">
+            <div className="hero-body">
+            <Button className="edit-button">EDIT PAGE</Button>
+              <div className="main">
+                <div className="container-right">
+                  <h1 className="hero-title">About Me </h1>
+
+                  
+                  <p className="hero-text">
+                    DESCRIPTION FOR USER GOES HERE (WHEN EDIT MODE FALSE)
+                  </p>
+                  <br></br>
+
+                  <label type="text" className="input-text">Enter Bio Here 
+                    (Should only appear when EDIT MODE TRUE)
+                  </label>
+                  <br></br>
+                  <textarea className='bio-box'></textarea> 
+                </div>
+              </div>
+
+              <div className="featured-body">
+                <h1 className="featured-heading"> My Collections</h1>
+              </div>
+              <div className="panels-section">
+                 <div className="panel">
+                  <ButtonBases className="bottom-panels"/> 
+                 </div>
+                 <div className="bottom-panels">
+                  <ButtonBases /> 
+                 </div>
+                 <div className="bottom-panels">
+                  <ButtonBases /> 
+                 </div>
+
+              </div>
+
+            </div>
+            
+        
+          </section>
         </div>
-    </div>
-  );
-};
+      );
+    }
+
+}
 
 export default Profile;
