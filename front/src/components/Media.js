@@ -5,29 +5,36 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { CardActionArea, cardActionAreaClasses } from '@mui/material';
 
-export default function MediaCard() {
+const cardheight = 300;
+const imageheight = 180;
+
+export default function MediaCard({prop}) {
   return (
-    <Card sx={{ maxWidth: 250, maxHeight: 300 }}>
+    <Card sx={{ width: 200, height: cardheight }}>
+    <CardActionArea sx = {{height: cardheight}}>
       <CardMedia
         component="img"
-        height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
+        image = {prop.image}
+        alt={prop.alt}
+        sx = {{height: imageheight, position: 'absolute', top: 0, objectFit: 'fill' }}
+        
       />
-      <CardContent>
+      <CardContent sx = {{position: 'absolute', top: imageheight}}>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {prop.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {prop.description}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      </CardActionArea>
+      {/* <CardActions>
+        <Button size="small" color="primary">
+          Share
+        </Button>
+      </CardActions> */}
     </Card>
   );
 }

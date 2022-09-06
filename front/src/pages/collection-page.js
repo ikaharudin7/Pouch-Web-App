@@ -4,7 +4,7 @@ import './collection-page.css'
 import ButtonBases from '../components/Button';
 import { NavBtn } from '../components/Navbar/NavbarElements';
 import MediaCard from '../components/Media';
-
+import CollectionGrid from '../components/Grid';
   
 class CollectionView extends Component {
     render() {
@@ -13,7 +13,7 @@ class CollectionView extends Component {
           <section className="hero">
             <div className="hero-body">
                 <div className="container">
-                    <MediaCard></MediaCard>
+                    <CollectionGrid />
 
                 </div>
               
