@@ -25,6 +25,22 @@
     padding-right: 40px;
 }
 
+
+.flex-box {
+    background: rgb(233, 233, 233);
+    display: flex;
+    justify-content: right;
+}
+
+.text-box {
+    background: rgb(233, 233, 233);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .featured-heading {
     text-align: center;
     font-family: 'Overpass', sans-serif;

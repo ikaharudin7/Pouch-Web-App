@@ -12,6 +12,7 @@ import SignUpForm from './pages/signup';
 import Char from './pages/Char';
 import CollectionView from './pages/collection-page';
 import Profile from './pages/my-profile';
+import ListView from './pages/collection-list';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path = '/collection-page' element={<CollectionView />} />
         <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
+        <Route path = '/list' element={<ListView />} />
       </Routes>
     </Router>
 
