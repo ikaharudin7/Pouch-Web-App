@@ -2,12 +2,13 @@ const express = require('express');
 const router = express.Router();
 const pController = require('../controllers/profileController');
 
-router.get('/profile', function (req, res) {
-    res.send('This is the profile page');
+router.get('/', function (req, res) {
+    res.json({ message: "Hello from Express!" });
 })
 
-router.get('/profile', function (req, res) {
-    res.send(pController.test);
+router.post('/', async(req, res)=>{
+    res.render("backend post req success")
 })
+
 
 module.exports = router;

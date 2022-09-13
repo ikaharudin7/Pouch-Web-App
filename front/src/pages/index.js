@@ -6,6 +6,7 @@ import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
 class Home extends Component {
+
     render() {
       return (
         <div>

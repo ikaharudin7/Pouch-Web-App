@@ -1,58 +1,66 @@
-import React, { Component } from 'react';
 import './my-profile.css'
 import ButtonBases from '../components/Button';
 import { Button } from '@mui/material';
+import { useState, useEffect } from 'react';
 
   
-class Profile extends Component {
-    render() {
-      return (
-        <div>
-          <section className="hero">
-            <div className="hero-body">
-            <Button className="edit-button">EDIT PAGE</Button>
-              <div className="main">
-                <div className="container-right">
-                  <h1 className="hero-title">About Me </h1>
+const Profile = () => {
+  const [state, setState] = useState(false);
 
-                  
-                  <p className="hero-text">
-                    DESCRIPTION FOR USER GOES HERE (WHEN EDIT MODE FALSE)
-                  </p>
-                  <br></br>
+  useEffect(() => {
+    console.log('State is now: ', state);
+  }, [state]);
 
-                  <label type="text" className="input-text">Enter Bio Here 
-                    (Should only appear when EDIT MODE TRUE)
-                  </label>
-                  <br></br>
-                  <textarea className='bio-box'></textarea> 
-                </div>
-              </div>
+  const editOn = event => {
+    setState(true);
+  };
 
-              <div className="featured-body">
-                <h1 className="featured-heading"> My Collections</h1>
-              </div>
-              <div className="panels-section">
-                 <div className="panel">
-                  <ButtonBases className="bottom-panels"/> 
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases /> 
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases /> 
-                 </div>
+  const editOff = event => {
+    setState(false);
+  };
 
-              </div>
+  return (
+    <div>
+      <section className="hero">
+        <div className="hero-body">
+          { !state ? <Button className="edit-button" onClick={editOn}>EDIT PAGE</Button> : null}
+          <div className="main">
+            <div className="container-right">
+              <h1 className="hero-title">About Me </h1>
+              { !state ? <p className="hero-text">
+                BIO FOR USER GOES HERE
+              </p> : null}
+              <br></br>
+
+              <form className="bio" action="/profile" method="POST">
+                { state ? <label type="text" className="input-text">Your bio here:</label> : null}
+                { state ? <br></br> : null}
+                { state ? <textarea className='bio-box' name="bio-section" type="text"> </textarea> : null}
+                <br></br>
+                { <Button className="edit-button" type="submit" onClick={editOff}>SAVE</Button> }
+              </form>
 
             </div>
-            
-        
-          </section>
-        </div>
-      );
-    }
+          </div>
 
+            <div className="featured-body">
+              <h1 className="featured-heading"> My Collections</h1>
+            </div>
+            <div className="panels-section">
+                <div className="panel">
+                <ButtonBases className="bottom-panels"/> 
+                </div>
+                <div className="bottom-panels">
+                <ButtonBases /> 
+                </div>
+                <div className="bottom-panels">
+                <ButtonBases /> 
+                </div>
+            </div>
+          </div>    
+      </section>
+    </div>
+  );
 }
 
 export default Profile;

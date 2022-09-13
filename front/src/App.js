@@ -1,5 +1,5 @@
 // import { Router } from 'express';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -14,21 +14,36 @@ import CollectionView from './pages/collection-page';
 import Profile from './pages/my-profile';
 
 function App() {
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path = '/' element={<Home />} />
-        <Route path = '/test' element={<Test />} />
-        <Route path = '/login' element={<LoginForm />} />
-        <Route path = '/my-profile' element={<Profile />} />
-        <Route path = '/collection-page' element={<CollectionView />} />
-        <Route path = '/signup' element={<SignUpForm />} />
-        <Route path = '/Char' element={<Char />} />
-      </Routes>
-    </Router>
-
-  );
+  
+    /*const [data, setData] = React.useState(null);
+    React.useEffect(() => {
+        fetch("/profile")
+        .then((res) => res.json())
+        .then((data) => setData(data.message));
+    }, []);*/
+    /*return (
+        <div className="App">
+        <header className="App-header">
+            <p>{data}</p>
+        </header>
+        </div>
+    );*/
+    return (
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path = '/' element={<Home />} />
+            <Route path = '/test' element={<Test />} />
+            <Route path = '/login' element={<LoginForm />} />
+            <Route path = '/profile' element={<Profile />} />
+            <Route path = '/collection-page' element={<CollectionView />} />
+            <Route path = '/signup' element={<SignUpForm />} />
+            <Route path = '/Char' element={<Char />} />
+          </Routes>
+        </Router>
+    
+      );
+    
 }
 
 export default App;
