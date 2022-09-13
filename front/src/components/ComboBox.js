@@ -9,7 +9,7 @@ export default function ComboBox() {
       id="combo-box-demo"
       options={pokemonCards}
       sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Card" />}
+      renderInput={(params) => <TextField {...params} required label="Card" sx = {{marginTop: 1}}/>}
     />
   );
 }

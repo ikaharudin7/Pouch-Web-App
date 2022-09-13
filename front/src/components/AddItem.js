@@ -13,6 +13,8 @@ import Select from '@mui/material/Select';
 import ComboBox from './ComboBox';
 import TextField from '@mui/material/TextField';
 import Date from './Date';
+import UploadButton from './UploadButton';
+import { stepClasses } from '@mui/material';
 
 
 export default function DialogSelect() {
@@ -28,9 +30,10 @@ export default function DialogSelect() {
   };
 
   const handleClose = (event, reason) => {
-    if (reason !== 'backdropClick') {
+    // if (reason !== 'backdropClick') {
       setOpen(false);
-    }
+    
+    
   };
 
   return (
@@ -46,8 +49,20 @@ export default function DialogSelect() {
         <DialogContent>
           <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}}>
             
-              
-            <ComboBox />
+            <div>
+              <div style = {{display: 'inline', float: 'left'}}>
+                <ComboBox />
+
+                <Date />
+                
+              </div>
+              <div style = {{display: 'flex', float: 'right'}}><UploadButton /></div>
+            </div>
+            
+
+            {/* get so can't press ok if name is empty */}
+            
+
             <TextField
                 multiline
                 autoFocus
@@ -57,7 +72,6 @@ export default function DialogSelect() {
                 margin='normal'
             />
 
-            <Date />
           </Box>
         </DialogContent>
         <DialogActions>

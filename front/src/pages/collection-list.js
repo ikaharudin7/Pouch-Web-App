@@ -17,10 +17,6 @@ class ListView extends Component {
               <div className="box">
                 <PrimarySearchAppBar />
               </div>
-              
-              
-              
-              
               <div className="box">
                 <EnhancedTable />
               </div>

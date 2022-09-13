@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,6 +17,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import View from './Menus/View';
 import SortBy from './Menus/SortBy';
 import AddItem from './AddItem';
+import CollectionGrid from './Grid';
 
 
 
@@ -57,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({details}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const open = Boolean(anchorEl);
@@ -72,7 +74,34 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
   };
 
+  const [searchField, setSearchField] = useState("");
+
+  const filteredCards = details.filter(
+    cards => {
+      return (
+        cards
+        .title
+        .toLowerCase()
+        .includes(searchField.toLowerCase())
+      );
+    }
+  );
+
+
+  const handleChange = e => {
+    setSearchField(e.target.value);
+  };
+
+  function searchList() {
+    return (
+      
+        <CollectionGrid filteredCards={filteredCards}/>
+      
+    );
+  }
+
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx ={{backgroundColor: 'black', borderRadius: 2}}>
         <Toolbar>
@@ -83,6 +112,7 @@ export default function PrimarySearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange = {handleChange}
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
@@ -94,5 +124,7 @@ export default function PrimarySearchAppBar() {
       </AppBar>
 
     </Box>
+    {searchList()}
+    </>
   );
 }
