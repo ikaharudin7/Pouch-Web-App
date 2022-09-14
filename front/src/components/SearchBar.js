@@ -21,7 +21,6 @@ import CollectionGrid from './Grid';
 
 
 
-
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -32,10 +31,6 @@ const Search = styled('div')(({ theme }) => ({
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    // marginLeft: theme.spacing(0),
-    width: 'auto',
-  },
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -50,12 +45,12 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
+  width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
-    width: '100%',
   },
 }));
 
@@ -102,7 +97,7 @@ export default function PrimarySearchAppBar({details}) {
 
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, paddingLeft: '40px', paddingRight: '40px'}}>
       <AppBar position="static" sx ={{backgroundColor: 'black', borderRadius: 2}}>
         <Toolbar>
           <Search>
@@ -123,8 +118,20 @@ export default function PrimarySearchAppBar({details}) {
         </Toolbar>
       </AppBar>
 
+      {/* Make this dynamic or replace with progress bar? */}
+      <div className = 'text-box'><Typography>showing 1 - 8</Typography>
+              
+        <div className='flex-box'>
+          <View />
+          <SortBy />
+        </div>
+      </div>
+
+
+      {searchList()}
+
     </Box>
-    {searchList()}
+    
     </>
   );
 }

@@ -38,7 +38,7 @@ export default function DialogSelect() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>+ Add New Item</Button>
+      <Button onClick={handleClickOpen} sx = {{width: 'max-content'}}>+ Add New Item</Button>
       <Dialog 
         disableEscapeKeyDown 
         open={open} 
