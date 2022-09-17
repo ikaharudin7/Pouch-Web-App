@@ -1,20 +1,10 @@
-<<<<<<< Updated upstream
-const express = require("express");
-const mongoose = require("mongoose");
-const app = express();
-=======
 //const flash = require('express-flash')
 //const session = require('express-session')
 const cors = require('cors');
->>>>>>> Stashed changes
-
+const express = require('express');
+const mongoose = require('mongoose');
 const PORT = process.env.PORT || 8080;
 
-<<<<<<< Updated upstream
-app.use('/', require("./routes/home"));
-app.use('/', require("./routes/profile"));
-app.use('/', require("./routes/collection"));
-=======
 // Set your app up as an express app
 const app = express()
 
@@ -64,7 +54,6 @@ app.use(express.urlencoded({ extended: false })) // only needed for URL-encoded 
     
   
   app.use('/profile', require("./routes/profile"));
->>>>>>> Stashed changes
   
 // Connect to the database
 mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
