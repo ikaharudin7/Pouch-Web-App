@@ -6,6 +6,7 @@ import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
 class Home extends Component {
+  
     render() {
       return (
         <div>
@@ -31,7 +32,7 @@ class Home extends Component {
                   </NavBtn>
                 </div>
               </div>
-
+              
               <div className="featured-body">
                 <h1 className="featured-heading"> Browse Featured Collections</h1>
               </div>

@@ -5,8 +5,9 @@
     "mongoose": "^6.5.4"
   },
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "start": "nodemon server.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "abc": "nodemon server.js"
   },
   "name": "server",
   "version": "1.0.0",
