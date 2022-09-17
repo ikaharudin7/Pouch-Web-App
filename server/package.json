@@ -6,8 +6,7 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "abc": "nodemon server.js"
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "name": "server",
   "version": "1.0.0",
