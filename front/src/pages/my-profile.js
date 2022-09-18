@@ -76,7 +76,6 @@ class Profile extends Component {
           </div>    
       </section>
     </div>
-
     );
   }
 }
