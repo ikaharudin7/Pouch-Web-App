@@ -10,6 +10,7 @@ class Profile extends Component {
   state = {
     "HEllo" : "IAN",
   };
+  
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -17,15 +18,19 @@ class Profile extends Component {
  
   handleSubmit = (event) => {
     event.preventDefault();
+    const data = this.state;
     
     fetch('http://localhost:8080/profile', {
         method: "POST",
-        body: JSON.stringify({"HEY": "IAN"})
-      }).then(()=> {
-        console.log(this.state);
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      .then((res)=> res.json())
+      .then(()=> {
+        console.log(data);
+        console.log(JSON.stringify(data));
         console.log("POST sent");
       })
- 
   }; 
 
 

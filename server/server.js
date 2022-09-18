@@ -9,10 +9,9 @@ const bodyParser = require("body-parser");
 // USE commands
 app.use(cors());
 app.use(express.json()) // needed if POST data is in JSON format
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
   
 app.use('/profile', require("./routes/profile"));
 

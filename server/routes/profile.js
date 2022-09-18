@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const pController = require('../controllers/profileController');
+var bodyParser = require('body-parser')
+
+// For printing the json out
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
 
 router.get('/', function (req, res) {
     res.send('This is the profile page');
