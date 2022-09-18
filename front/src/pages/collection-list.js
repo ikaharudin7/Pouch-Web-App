@@ -6,19 +6,19 @@ import View from '../components/Menus/View';
 import SortBy from '../components/Menus/SortBy';
 import { Box } from '@mui/material';
 import { alignProperty } from '@mui/material/styles/cssUtils';
-import Typography from '@mui/material/Typography';
-import cards from '../test/items.js'
-
+import EnhancedTable from '../components/List';
   
-class CollectionView extends Component {
+class ListView extends Component {
     render() {
       return (
         <div>
-          
           <section className="hero">
             <div className="hero-body">
               <div className="box">
-                <PrimarySearchAppBar details = {cards}/>
+                <PrimarySearchAppBar />
+              </div>
+              <div className="box">
+                <EnhancedTable />
               </div>
             </div>
           </section>
@@ -28,4 +28,4 @@ class CollectionView extends Component {
 
 }
   
-export default CollectionView;
+export default ListView;

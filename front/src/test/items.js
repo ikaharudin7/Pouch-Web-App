@@ -63,6 +63,14 @@ const cards = [
         image: "test.jpg",
   
     },
+    {
+        id: 9,
+        title: 'Bulbs',
+        description: "Test",
+        alt: "test",
+        image: "test.jpg",
+  
+    },
   ]
 
 export default cards
