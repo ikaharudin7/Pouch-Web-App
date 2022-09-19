@@ -14,26 +14,27 @@ const isAuthenticated = (req, res, next) => {
 
 // Main page which requires login to access
 // Note use of authentication middleware here
-router.get('/', isAuthenticated, (req, res) => {
+router.get('/profile', isAuthenticated, (req, res) => {
     // link with react
     // instead of get /, maybe it is get home
-    res.render('home', {req.user.toJSON()})
+    res.send({user: req.user.toJSON()});
 });
 
 
 // Login page (with failure message displayed upon login failure)
 router.get('/login', (req, res) => {
     // link with react
-    res.render('login')
+    res.send("login load")
 })
 
 // Handle login
-router.post('/login',
+router.post('/login', (req, res) => {
     passport.authenticate('local', {
-        successRedirect: '/:userid',
+        successRedirect: '/profile',
         failureRedirect: '/login',
         failureFlash: true
-    })
+    }) 
+    console.log("loose")}
 );
 
 // Handle logout
