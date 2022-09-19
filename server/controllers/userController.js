@@ -14,6 +14,7 @@ exports.addNewUser = async (req, res) =>{
     db.collection('collectors').insertOne(User, function(err, res) {
         if(err) throw err;
         console.log("One User added");
+        console.log(User);
     });
 }
 
