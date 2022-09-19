@@ -1,8 +1,8 @@
 const mongoose= require('mongoose')
-const {db} = require('./models/index')
-const User = require('./models/user')
+const {db} = require('../models/index')
+const User = require('../models/user')
 
-const addNewUser = async (req, res) =>{
+exports.addNewUser = async (req, res) =>{
     var User = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -11,7 +11,7 @@ const addNewUser = async (req, res) =>{
         password:req.body.password
     }
 
-    db.collection('collector').insertOne(User, function(err, res) {
+    db.collection('collectors').insertOne(User, function(err, res) {
         if(err) throw err;
         console.log("One User added");
     });

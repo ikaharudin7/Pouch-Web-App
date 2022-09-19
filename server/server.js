@@ -15,6 +15,8 @@ app.use(bodyParser.json());
   
 app.use('/profile', require("./routes/profile"));
 
+app.use('/signup', require("./routes/signup"));
+
 // Connect to the database
 mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
   {
