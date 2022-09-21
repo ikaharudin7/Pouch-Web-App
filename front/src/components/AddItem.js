@@ -5,16 +5,16 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+// import InputLabel from '@mui/material/InputLabel';
+// import OutlinedInput from '@mui/material/OutlinedInput';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
 import ComboBox from './ComboBox';
 import TextField from '@mui/material/TextField';
 import Date from './Date';
 import UploadButton from './UploadButton';
-import { stepClasses } from '@mui/material';
+// import { stepClasses } from '@mui/material';
 
 
 export default function DialogSelect() {
@@ -47,6 +47,7 @@ export default function DialogSelect() {
       >
         <DialogTitle>New Item</DialogTitle>
         <DialogContent>
+          
           <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}}>
             
             <div>
