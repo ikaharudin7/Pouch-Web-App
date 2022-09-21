@@ -28,12 +28,13 @@ class LoginForm extends Component {
       })
   }; 
 
+  
 
   render() {
     return (
         <div className="login-form">
           <div className="form-box solid">
-            <form onSubmit={this.handleSubmit}>
+            <form action='/profile' onSubmit={this.handleSubmit}>
               <h1 className="login-text">Login</h1>
               <label type="text" className="label-text">Username</label>
               <br></br>
