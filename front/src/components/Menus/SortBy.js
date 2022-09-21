@@ -55,7 +55,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function SortBy() {
+export default function SortBy({cards, setFilteredCards}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -64,6 +64,36 @@ export default function SortBy() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const filteredCardsString = JSON.stringify(cards);
+
+  const handleZA = () => {
+    this.filteredCardsString = cards.sort((a, b) => {
+      return (a.title.toUpperCase() > b.title.toUpperCase()) ? -1 : 1;
+    })
+    console.log(JSON.parse(filteredCardsString))
+  }
+
+  const handleAZ = () => {
+    this.filteredCardsString = cards.sort((a, b) => {
+      return (a.title.toUpperCase() > b.title.toUpperCase()) ? 1 : -1;
+    })
+    console.log(JSON.parse(filteredCardsString))
+    
+    
+  }
+  
+
+  React.useEffect(() => {
+      
+    setFilteredCards(JSON.parse(filteredCardsString))
+    
+  }, [filteredCardsString, setFilteredCards])
+
+//   React.useEffect = (()=> {
+//     setFilteredCards(filteredCards);
+//   },[JSON.stringify(filteredCards)])
+// // setFilteredCards(filteredCards);
 
   return (
     <div style={{display: 'inline'}}>
@@ -90,11 +120,11 @@ export default function SortBy() {
         onClose={handleClose}
       >
 
-        <MenuItem onClick={handleClose} disableRipple>
-          Ascending
+        <MenuItem onClick={() => {handleClose(); handleAZ();}} disableRipple>
+          A-Z
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          Descending
+        <MenuItem onClick={() => {handleClose(); handleZA();}} disableRipple>
+          Z-A
         </MenuItem>
       </StyledMenu>
     </div>

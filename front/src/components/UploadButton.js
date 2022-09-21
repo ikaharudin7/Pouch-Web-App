@@ -1,8 +1,6 @@
 import { useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
 import { ButtonBase, Stack, Typography } from '@mui/material';
-import Box from '@mui/material/Box';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 
