@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid'
 import MediaCard from './Media.js'
-import SortBy from './Menus/SortBy.js';
+// import SortBy from './Menus/SortBy.js';
 
 
 export default function CollectionGrid({filteredCards}) {
