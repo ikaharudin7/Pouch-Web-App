@@ -28,8 +28,6 @@ class LoginForm extends Component {
       })
   }; 
 
-  
-
   render() {
     return (
         <div className="login-form">

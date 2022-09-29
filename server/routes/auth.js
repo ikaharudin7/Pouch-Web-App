@@ -6,7 +6,7 @@ const router = express.Router()
 const isAuthenticated = (req, res, next) => {
     // If user is not authenticated via passport, redirect to login page
     if (!req.isAuthenticated()) {
-        return res.redirect('/login')
+        return res.redirect('http://localhost:3000/login')
     }
     // Otherwise, proceed to next middleware function
     return next()
@@ -30,8 +30,8 @@ router.get('/', (req, res) => {
 // Handle login
 router.post('/', (req, res) => {
     passport.authenticate('local', {
-        successRedirect: '/profile',
-        failureRedirect: '/login',
+        successRedirect: 'http://localhost:3000/profile',
+        failureRedirect: 'http://localhost:3000/login',
         failureFlash: true
     }) 
     console.log("loose")}
@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
 // Handle logout
 router.post('/logout', (req, res) => {
     req.logout()
-    res.redirect('/')
+    res.redirect('http://localhost:3000/')
 });
 
 module.exports = router

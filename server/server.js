@@ -15,7 +15,12 @@ app.use(cors());
 app.use(express.json()) // needed if POST data is in JSON format
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+)
   
 app.use('/profile', require("./routes/profile"));
 

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Routes, Route, useNavigate} from "react-router-dom";
+import { NavBtn, NavBtnLink } from "../components/Navbar/NavbarElements";
 import './signup.css';
 
 class SignupForm extends Component {
@@ -25,13 +27,14 @@ class SignupForm extends Component {
         console.log(JSON.stringify(data));
         console.log("POST sent");
       })
+      window.location.href = "http://localhost:3000/login"
   }; 
 
   render() {
     return (
         <div className="signup-form">
           <div className="form-box solid">
-            <form onSubmit={this.handleSubmit}>
+            <form id="signup" onSubmit={this.handleSubmit}>
               <h1 className="signup-text">Sign Up</h1>
               <label type="text" className="label-text">First Name</label>
               <br></br>
@@ -53,9 +56,7 @@ class SignupForm extends Component {
               <br></br>
               <input id="password" type="password" name="password" value={this.state.value} onChange={this.handleChange} className="signup-box" />
               <br></br>
-              
-              <input type="submit" value="SIGN UP" className="signup-btn" href='http://localhost:3000/login' >
-              </input>
+              <input type="submit" form="signup" value="SIGN UP" className="signup-btn" ></input>
             </form>
           </div>
         </div>
