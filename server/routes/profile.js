@@ -8,10 +8,9 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 
-router.get('/', function (req, res) {
-    res.send('This is the profile page');
-})
-
+router.get("/", (req, res) => {
+    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+  });
 
 router.post('/', async(req, res)=>{
     res.json({message: "backend post req success"})

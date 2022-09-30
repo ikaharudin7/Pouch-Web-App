@@ -48,11 +48,15 @@ require("./passportConfig")(passport);
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user) { 
+      res.send("No User Exists");
+      window.location.href = "http://localhost:3000/profile"
+    } 
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
         res.send("Successfully Authenticated");
+        window.location.href = "http://localhost:3000/login"
         console.log(req.user);
       });
     }
@@ -74,9 +78,8 @@ app.post("/register", (req, res) => {
     }
   });
 });
-app.get("/profile", (req, res) => {
-  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-});
+
+app.use('/profile', require("./routes/profile"));
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
 app.listen(8080, () => {

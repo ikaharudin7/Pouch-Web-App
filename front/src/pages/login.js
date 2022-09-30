@@ -30,6 +30,7 @@ function LoginForm() {
       withCredentials: true,
       url: "http://localhost:8080/login",
     }).then((res) => console.log(res));
+
   };
 
   return (
