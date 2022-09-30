@@ -1,55 +1,70 @@
-import React, { Component } from "react";
+import React, { useState }  from "react";
+import Axios from "axios";
 import "./login.css";
 
-class LoginForm extends Component {
+function LoginForm() {
 
-  state = {
-
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [data, setData] = useState(null);
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: registerUsername,
+        password: registerPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:8080/register",
+    }).then((res) => console.log(res));
+  };
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:8080/login",
+    }).then((res) => console.log(res));
   };
 
-  handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value});
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const data = this.state;
+  return (
     
-    fetch('http://localhost:8080/login', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      .then((res)=> res.json())
-      .then(()=> {
-        console.log(data);
-        console.log(JSON.stringify(data));
-        console.log("POST sent");
-      })
-  }; 
+    <div className="App">
+      <div>
+        <h1>Register</h1>
+        <input
+          placeholder="username"
+          onChange={(e) => setRegisterUsername(e.target.value)}
+        />
+        <input
+          placeholder="password"
+          onChange={(e) => setRegisterPassword(e.target.value)}
+        />
+        <button onClick={register}>Submit</button>
+      </div>
 
-  
+      <div>
+        <h1>Login</h1>
+        <input
+          placeholder="username"
+          onChange={(e) => setLoginUsername(e.target.value)}
+        />
+        <input
+          placeholder="password"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+        <button onClick={login}>Submit</button>
+      </div>
 
-  render() {
-    return (
-        <div className="login-form">
-          <div className="form-box solid">
-            <form action='/profile' onSubmit={this.handleSubmit}>
-              <h1 className="login-text">Login</h1>
-              <label type="text" className="label-text">Username</label>
-              <br></br>
-              <input id="username" type="text" name="username" className="login-box" value={this.state.value} onChange={this.handleChange}/>
-              <br></br>
-              <label type="text" className="label-text">Password</label>
-              <br></br>
-              <input id="password" type="password" name="password" className="login-box" value={this.state.value} onChange={this.handleChange}/>
-              <br></br>
-              <input type="submit" value="LOGIN" className="login-btn" />
-            </form>
-          </div>
-        </div>
-    );
-  }
+    </div> 
+    
+  );
+
 };
 
 export default LoginForm;
