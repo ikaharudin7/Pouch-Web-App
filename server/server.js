@@ -18,8 +18,17 @@ app.use(cors());
 app.use(express.json()) // needed if POST data is in JSON format
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+<<<<<<< HEAD
 app.set("view engine", "ejs");
 
+=======
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+)
+>>>>>>> 4442c5bde205fd980bfdcb77f243b6680c6907d5
   
 app.use('/profile', require("./routes/profile"));
 
