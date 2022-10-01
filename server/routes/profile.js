@@ -9,12 +9,11 @@ router.use(bodyParser.json());
 
 
 router.get("/", (req, res) => {
-    res.json(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   });
 
 router.post('/', async(req, res)=>{
-    res.json({message: "backend post req success"})
-    console.log("Post WORKS");
+
     console.log(req.body);
 })
 

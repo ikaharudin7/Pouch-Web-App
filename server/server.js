@@ -56,13 +56,13 @@ app.post("/login", (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
-        res.send("Successfully Authenticated");
-        //window.location.href = "http://localhost:3000/login"
+        res.send(req.user);
         console.log(req.user);
       });
     }
   })(req, res, next);
 });
+
 app.post("/signup", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
@@ -71,6 +71,9 @@ app.post("/signup", (req, res) => {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
       const newUser = new User({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
         username: req.body.username,
         password: hashedPassword,
       });

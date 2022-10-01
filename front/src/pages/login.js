@@ -4,6 +4,9 @@ import "./login.css";
 
 function LoginForm() {
 
+  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerLastName, setRegisterLastName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
@@ -13,13 +16,19 @@ function LoginForm() {
     Axios({
       method: "POST",
       data: {
+        firstname: registerFirstName,
+        lastname: registerLastName,
+        email: registerEmail,
         username: registerUsername,
         password: registerPassword,
       },
       withCredentials: true,
       url: "http://localhost:8080/signup",
     }).then((res) => console.log(res));
+
+
   };
+
   const login = () => {
     Axios({
       method: "POST",
@@ -29,7 +38,7 @@ function LoginForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/login",
-    }).then((res) => console.log(res));
+    }).then((res) => console.log(res.data));
     
   };
 
@@ -38,6 +47,18 @@ function LoginForm() {
     <div className="App">
       <div>
         <h1>Register</h1>
+        <input
+          placeholder="firstname"
+          onChange={(e) => setRegisterFirstName(e.target.value)}
+        />
+        <input
+          placeholder="lastname"
+          onChange={(e) => setRegisterLastName(e.target.value)}
+        />
+        <input
+          placeholder="email"
+          onChange={(e) => setRegisterEmail(e.target.value)}
+        />
         <input
           placeholder="username"
           onChange={(e) => setRegisterUsername(e.target.value)}
