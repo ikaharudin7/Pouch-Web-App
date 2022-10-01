@@ -1,45 +1,61 @@
-import './my-profile.css'
+import React, { Component } from 'react';
+// import logo from './logo.svg';
+import '../App.css'; 
+import './my-profile.css';
 import ButtonBases from '../components/Button';
 import { Button } from '@mui/material';
-import { useState, useEffect } from 'react';
 
+
+class Profile extends Component {
+  state = {
+    "HEllo" : "IAN",
+  };
   
-const Profile = () => {
-  const [state, setState] = useState(false);
 
-  useEffect(() => {
-    console.log('State is now: ', state);
-  }, [state]);
-
-  const editOn = event => {
-    setState(true);
+  handleChange = (event) => {
+    this.setState({[event.target.name]: event.target.value});
   };
+ 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const data = this.state;
+    
+    fetch('http://localhost:8080/profile', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      .then((res)=> res.json())
+      .then(()=> {
+        console.log(data);
+        console.log(JSON.stringify(data));
+        console.log("POST sent");
+      })
+  }; 
 
-  const editOff = event => {
-    setState(false);
-  };
 
-  return (
-    <div>
+  render() {
+    return (
+      <div>
       <section className="hero">
         <div className="hero-body">
-          { !state ? <Button className="edit-button" onClick={editOn}>EDIT PAGE</Button> : null}
+          <Button className="edit-button">EDIT PAGE</Button>
           <div className="main">
             <div className="container-right">
               <h1 className="hero-title">About Me </h1>
-              { !state ? <p className="hero-text">
+              <p className="hero-text">
                 BIO FOR USER GOES HERE
-              </p> : null}
+              </p>
               <br></br>
 
-              <form className="bio" action="/user/profile" method="post">
-                { state ? <label type="text" className="input-text">Your bio here:</label> : null}
-                { state ? <br></br> : null}
-                { state ? <textarea className='bio-box' name="bio-section" type="text"> </textarea> : null}
+              <form onSubmit={this.handleSubmit}>
+                <label>
+                    Enter your bio here: <br></br>
+                    <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
+                </label>
                 <br></br>
-                { state ? <Button className="edit-button" type="submit" onClick={editOff}>SAVE</Button> : null}
+                <input type="submit" value="Submit" />
               </form>
-
             </div>
           </div>
 
@@ -60,7 +76,8 @@ const Profile = () => {
           </div>    
       </section>
     </div>
-  );
+    );
+  }
 }
 
 export default Profile;

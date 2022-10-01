@@ -1,8 +1,8 @@
 const mongoose= require('mongoose')
-const {db} = require('./models/index')
-const User = require('./models/user')
+const {db} = require('../models/index')
+const User = require('../models/user')
 
-const addNewUser = async (req, res) =>{
+exports.addNewUser = async (req, res) =>{
     var User = {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -11,14 +11,15 @@ const addNewUser = async (req, res) =>{
         password:req.body.password
     }
 
-    db.collection('collector').insertOne(User, function(err, res) {
+    db.collection('collectors').insertOne(User, function(err, res) {
         if(err) throw err;
         console.log("One User added");
+        console.log(User);
     });
 }
 
 const updateUser = async(req, res)=> {
-    db.collection('collector').findOneAndUpdateOne(
+    db.collection('collectors').findOneAndUpdateOne(
         {_username : req.body.username}, req.body, {new:true}, function(err, res){
             if(err) throw err;
             console.log("One User updated");
@@ -28,7 +29,7 @@ const updateUser = async(req, res)=> {
 
 const deleteUser = async(req, res) => {
     var User = req.body.User
-    db.collection('collector').deleteOne(User, function(err, res) {
+    db.collection('collectors').deleteOne(User, function(err, res) {
         if(err) throw err;
         console.log("One User deleted");
     });

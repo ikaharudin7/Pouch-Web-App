@@ -11,21 +11,21 @@ const addNewItem = async (req, res) =>{
         description: req.body.description
     }
 
-    db.collection('collector').insertOne(Item, function(err, res) {
+    db.collection('collectors').insertOne(Item, function(err, res) {
         if(err) throw err;
         console.log("One Item added");
     });
 }
 
 const updateItem = async(req, res)=> {
-    db.collection('collector').findOneAndUpdateOne(
+    db.collection('collectors').findOneAndUpdateOne(
         {_name : req.body.name}, req.body, {new:true}
     )
 };
 
 const deleteItem = async(req, res) => {
     var Item = req.body.Item
-    db.collection('collector').deleteOne(Item, function(err, res) {
+    db.collection('collectors').deleteOne(Item, function(err, res) {
         if(err) throw err;
         console.log("One Item deleted");
     });

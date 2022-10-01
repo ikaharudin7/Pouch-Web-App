@@ -1,25 +1,92 @@
-import React from "react";
+import React, { useState }  from "react";
+import Axios from "axios";
 import "./login.css";
 
-const LoginForm = () => {
+function LoginForm() {
+
+  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerLastName, setRegisterLastName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [data, setData] = useState(null);
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        firstname: registerFirstName,
+        lastname: registerLastName,
+        email: registerEmail,
+        username: registerUsername,
+        password: registerPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:8080/signup",
+    }).then((res) => console.log(res));
+
+
+  };
+
+  const login = () => {
+    Axios({
+      method: "POST",
+      data: {
+        username: loginUsername,
+        password: loginPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:8080/login",
+    }).then((res) => console.log(res.data));
+    
+  };
+
   return (
-      <div className="login-form">
-        <div className="form-box solid">
-          <form>
-            <h1 className="login-text">Login</h1>
-            <label type="text" className="label-text">Username</label>
-            <br></br>
-            <input type="text" name="username" className="login-box" />
-            <br></br>
-            <label type="text" className="label-text">Password</label>
-            <br></br>
-            <input type="password" name="password" className="login-box" />
-            <br></br>
-            <input type="submit" value="LOGIN" className="login-btn" />
-          </form>
-        </div>
+    
+    <div className="App">
+      <div>
+        <h1>Register</h1>
+        <input
+          placeholder="firstname"
+          onChange={(e) => setRegisterFirstName(e.target.value)}
+        />
+        <input
+          placeholder="lastname"
+          onChange={(e) => setRegisterLastName(e.target.value)}
+        />
+        <input
+          placeholder="email"
+          onChange={(e) => setRegisterEmail(e.target.value)}
+        />
+        <input
+          placeholder="username"
+          onChange={(e) => setRegisterUsername(e.target.value)}
+        />
+        <input
+          placeholder="password"
+          onChange={(e) => setRegisterPassword(e.target.value)}
+        />
+        <button onClick={register}>Submit</button>
       </div>
+
+      <div>
+        <h1>Login</h1>
+        <input
+          placeholder="username"
+          onChange={(e) => setLoginUsername(e.target.value)}
+        />
+        <input
+          placeholder="password"
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+        <button onClick={login}>Submit</button>
+      </div>
+
+    </div> 
+    
   );
+
 };
 
 export default LoginForm;

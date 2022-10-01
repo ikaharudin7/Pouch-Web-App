@@ -14,7 +14,6 @@ class CollectionView extends Component {
     render() {
       return (
         <div>
-          
           <section className="hero">
             <div className="hero-body">
               <div className="box">

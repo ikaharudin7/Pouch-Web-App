@@ -35,7 +35,7 @@ const Navbar = () => {
                 > Test
                 </NavLink>
                 <NavLink 
-                  to="/my-profile"
+                  to="/profile"
                 > My Profile
                 </NavLink>
                 <NavBtn>

@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const pController = require('../controllers/profileController');
+var bodyParser = require('body-parser')
 
-router.get('/profile', function (req, res) {
-    res.send('This is the profile page');
-})
+// For printing the json out
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
-router.get('/profile', function (req, res) {
-    res.send(pController.test);
+
+router.get("/", (req, res) => {
+    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+  });
+
+router.post('/', async(req, res)=>{
+
+    console.log(req.body);
 })
 
 module.exports = router;

@@ -13,16 +13,18 @@ import Char from './pages/Char';
 import CollectionView from './pages/collection-page';
 import Profile from './pages/my-profile';
 import ListView from './pages/collection-list';
+import Card from './pages/img-render';
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        <Route path = '/imgtest' element={<Card /> } />
         <Route path = '/' element={<Home />} />
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />
-        <Route path = '/my-profile' element={<Profile />} />
+        <Route path = '/profile' element={<Profile />} />
         <Route path = '/collection-page' element={<CollectionView />} />
         <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
@@ -31,6 +33,7 @@ function App() {
     </Router>
 
   );
+  
 }
 
 export default App;
