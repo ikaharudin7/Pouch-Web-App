@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
+const imgModel = require('./models/image');
+var fs = require('fs');
+var path = require ('path');
 
 
 require('./models');
@@ -15,6 +18,7 @@ app.use(cors());
 app.use(express.json()) // needed if POST data is in JSON format
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.set("view engine", "ejs");
 
   
 app.use('/profile', require("./routes/profile"));
@@ -64,5 +68,44 @@ db.on("error", console.error.bind(console, "connection error: "));
 db.once("open", function () {
   console.log("Connected successfully");
 });
+
+// Set up middleware for image storage
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({ storage: storage });
+
+app.get('/view_image', async(req, res) => {
+  var myDocument = await db.collection('imagess').findOne({});
+  res.end(myDocument.img.data, "binary");
+});
+
+app.get('/image_test', upload.single('image'), (req, res) => {
+
+ // var newimg = fs.readFileSync(path.join(__dirname + '/img.png'));
+  //var encimg = newimg.toString('base64');
+
+  var obj = {
+      name: "test_image",
+      desc: "testing",
+      img: {
+          data: fs.readFileSync(path.join(__dirname + '/img.png')),
+          contentType: 'image/png',
+      }
+  }
+  db.collection('imagess').insertOne(obj, function(err, res) {
+    if(err) throw err;
+    console.log("Test image added");
+    console.log(obj);
+});
+});
+
+
 
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

@@ -19,7 +19,7 @@ exports.addNewUser = async (req, res) =>{
 }
 
 const updateUser = async(req, res)=> {
-    db.collection('collector').findOneAndUpdateOne(
+    db.collection('collectors').findOneAndUpdateOne(
         {_username : req.body.username}, req.body, {new:true}, function(err, res){
             if(err) throw err;
             console.log("One User updated");
@@ -29,7 +29,7 @@ const updateUser = async(req, res)=> {
 
 const deleteUser = async(req, res) => {
     var User = req.body.User
-    db.collection('collector').deleteOne(User, function(err, res) {
+    db.collection('collectors').deleteOne(User, function(err, res) {
         if(err) throw err;
         console.log("One User deleted");
     });

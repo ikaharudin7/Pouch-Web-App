@@ -19,13 +19,6 @@ passport.deserializeUser((userId, done) => {
   })  
 })
 
-User.find({}, (err, users) => {
-  User.create({ username: 'abc', password: 'def', firstname: "Chris", lastname: "rock", email: "yikes"}, (err) => {
-  if (err) { console.log(err); return; }
-  console.log('Dummy user inserted')
-  })
-  console.log("here are the users", users)
-})
 
 
 // Set up "local" strategy, i.e. authentication based on username/password. There are other types of strategy too.
