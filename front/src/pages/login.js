@@ -17,7 +17,7 @@ function LoginForm() {
         password: registerPassword,
       },
       withCredentials: true,
-      url: "http://localhost:8080/register",
+      url: "http://localhost:8080/signup",
     }).then((res) => console.log(res));
   };
   const login = () => {
@@ -30,7 +30,7 @@ function LoginForm() {
       withCredentials: true,
       url: "http://localhost:8080/login",
     }).then((res) => console.log(res));
-
+    
   };
 
   return (

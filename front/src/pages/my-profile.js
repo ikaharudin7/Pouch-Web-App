@@ -8,9 +8,8 @@ import { Button } from '@mui/material';
 
 class Profile extends Component {
   state = {
-    "HEllo" : "IAN",
   };
-  
+ 
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});

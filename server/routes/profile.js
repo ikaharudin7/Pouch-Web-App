@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 
 
 router.get("/", (req, res) => {
-    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+    res.json(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   });
 
 router.post('/', async(req, res)=>{

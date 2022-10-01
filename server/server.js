@@ -9,6 +9,7 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const app = express();
 const User = require("./models/user");
+const { json } = require("body-parser");
 //----------------------------------------- END OF IMPORTS---------------------------------------------------
 mongoose.connect(
   "mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority",
@@ -50,19 +51,19 @@ app.post("/login", (req, res, next) => {
     if (err) throw err;
     if (!user) { 
       res.send("No User Exists");
-      window.location.href = "http://localhost:3000/profile"
+      //window.location.href = "http://localhost:3000/profile"
     } 
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
         res.send("Successfully Authenticated");
-        window.location.href = "http://localhost:3000/login"
+        //window.location.href = "http://localhost:3000/login"
         console.log(req.user);
       });
     }
   })(req, res, next);
 });
-app.post("/register", (req, res) => {
+app.post("/signup", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;
     if (doc) res.send("User Already Exists");
