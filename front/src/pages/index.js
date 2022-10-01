@@ -6,6 +6,7 @@ import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
 class Home extends Component {
+
   
     render() {
       return (
@@ -45,6 +46,9 @@ class Home extends Component {
                  </div>
                  <div className="bottom-panels">
                   <ButtonBases /> 
+                 </div>
+                 <div>
+
                  </div>
 
               </div>

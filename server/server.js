@@ -13,16 +13,21 @@ const { json } = require("body-parser");
 var fs = require('fs');
 app.set("view engine", "ejs");
 //----------------------------------------- END OF IMPORTS---------------------------------------------------
-mongoose.connect(
-  "mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority",
+// Connect to the database
+mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => {
-    console.log("Mongoose Is Connected");
+    useUnifiedTopology: true
   }
 );
+  
+// Test if the connection was made
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
+
 
 // Middleware
 app.use(bodyParser.json());
@@ -47,6 +52,7 @@ require("./passportConfig")(passport);
 
 // Set up middleware for image storage
 var multer = require('multer');
+//const { db } = require("./models/user");
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -58,7 +64,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/view_image', async(req, res) => {
-  var myImg = await db.collection('imagess').findOne({});
+  var myImg = await db.collection('collectors').findOne({});
   res.send(myImg);
   console.log(myImg);
 });       
