@@ -19,13 +19,16 @@ import SortBy from './Menus/SortBy';
 import AddItem from './AddItem';
 import CollectionGrid from './Grid';
 import SearchAppBar from './SearchBar2';
-import cards from '../test/items';
+import { common } from '@mui/material/colors';
+// import cards from '../test/items';
 
 
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({cards}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  
+console.log("test")
+  
   const open = Boolean(anchorEl);
 // 
 
@@ -50,7 +53,7 @@ export default function PrimarySearchAppBar() {
     <>
     <Box sx={{ flexGrow: 1, paddingLeft: '40px', paddingRight: '40px'}}>
       
-      <SearchAppBar detail = {cards} setFilteredCards = {setFilteredCards} />
+      <SearchAppBar cards = {cards} setFilteredCards = {setFilteredCards} />
 
       {/* /* Make this dynamic or replace with progress bar? */}
       <div className = 'text-box'><Typography>showing 1 - 8</Typography>

@@ -18,7 +18,7 @@ import View from './Menus/View';
 import SortBy from './Menus/SortBy';
 import AddItem from './AddItem';
 import CollectionGrid from './Grid';
-import cards from '../test/items';
+
 
 
 
@@ -58,11 +58,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export default function SearchAppBar({setFilteredCards}) {
+export default function SearchAppBar({cards, setFilteredCards}) {
 
 
   const [searchField, setSearchField] = useState("");
-
+  
   const filteredCards = cards.filter(
     cards => {
         return (
@@ -75,21 +75,21 @@ export default function SearchAppBar({setFilteredCards}) {
     );
 
   const filteredCardsString = JSON.stringify(filteredCards);
+
   const handleChange = e => {
     setSearchField(e.target.value);
   };
 
   
-    React.useEffect(() => {
+  React.useEffect(() => {
       
-      setFilteredCards(JSON.parse(filteredCardsString))
+    setFilteredCards(JSON.parse(filteredCardsString))
       
-    }, [filteredCardsString, setFilteredCards])
+  }, [filteredCardsString, setFilteredCards])
     
   
 
     return (
-      
         <>
             <AppBar position="static" sx ={{backgroundColor: 'black', borderRadius: 2}}>
                 <Toolbar>
