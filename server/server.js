@@ -100,7 +100,7 @@ app.post("/login", (req, res, next) => {
     if (err) throw err;
     if (!user) { 
       res.send("No User Exists");
-      //window.location.href = "http://localhost:3000/profile"
+      
     } 
     else {
       req.logIn(user, (err) => {
@@ -132,7 +132,10 @@ app.post("/signup", (req, res) => {
   });
 });
 
+app.use('/signup', require("./routes/signup"));
 app.use('/profile', require("./routes/profile"));
+app.use('/home', require("./routes/home"));
+app.use('/collections', require("./routes/collection"));
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
 app.listen(8080, () => {

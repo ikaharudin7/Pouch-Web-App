@@ -24,7 +24,7 @@ function LoginForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/signup",
-    }).then((res) => console.log(res));
+    }).then((res) => console.log(res.data));
 
 
   };
@@ -38,8 +38,15 @@ function LoginForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/login",
-    }).then((res) => console.log(res.data));
-    
+    }).then((res) => {
+      console.log(res.data);
+      let data = res.data;
+      if (data.username) {
+        window.location.href = "/profile";
+      } else {
+        window.location.href = "/login";
+      }
+    });
   };
 
   return (
