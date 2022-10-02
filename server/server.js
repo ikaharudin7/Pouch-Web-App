@@ -19,7 +19,8 @@ require('./models');
 mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    dbName: "demo"
   }
 );
   
@@ -140,76 +141,8 @@ app.listen(8080, () => {
 });
 
 
-app.get("/view_collection", (req, res) => {
-  res.send([{
-      id: 1,
-      title: 'Charizard',
-      description: "First Edition Shadowless Holographic Charizard",
-      alt: "test",
-      image: "test_image.jpg",
-
-  },
-  {
-      id: 2,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 3,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 4,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 5,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 6,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 7,
-      title: 'Pikachui',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },
-  {
-      id: 9,
-      title: 'Bulbs',
-      description: "Test",
-      alt: "test",
-      image: "test.jpg",
-
-  },])
-});
-
-
-app.get('/view_collection_test', async(req, res) => {
-  var myItem = await db.collection('items').find({}).toArray();
+app.get('/view_collection', async(req, res) => {
+  var myItem = await db.collection('item+image').find({}).toArray();
   res.send(myItem);
   console.log(myItem);
 }); 
