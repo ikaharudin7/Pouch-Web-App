@@ -8,6 +8,7 @@ router.use(bodyParser.json());
 
 router.get('/', function (req, res) {
     res.send('This is the profile page');
+    res.send(req.user);
 })
 
 router.post('/', userController.addNewUser);
