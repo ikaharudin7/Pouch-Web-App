@@ -14,14 +14,14 @@ export default function MediaCard({prop}) {
     <CardActionArea sx = {{height: cardheight}}>
       <CardMedia
         component="img"
-        image = {prop.image}
+        image = {`data:image/png;base64,${prop.img.data}`}
         alt={prop.alt}
         sx = {{height: imageheight, position: 'absolute', top: 0, objectFit: 'fill' }}
         
       />
       <CardContent sx = {{position: 'absolute', top: imageheight}}>
         <Typography gutterBottom variant="h5" component="div">
-          {prop.title}
+          {prop.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {prop.description}

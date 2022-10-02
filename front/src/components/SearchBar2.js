@@ -67,7 +67,7 @@ export default function SearchAppBar({cards, setFilteredCards}) {
     cards => {
         return (
         cards
-        .title
+        .name
         .toLowerCase()
         .includes(searchField.toLowerCase())
         );

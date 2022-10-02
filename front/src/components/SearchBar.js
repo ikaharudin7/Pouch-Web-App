@@ -27,10 +27,9 @@ import { common } from '@mui/material/colors';
 export default function PrimarySearchAppBar({cards}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   
-console.log("test")
   
   const open = Boolean(anchorEl);
-// 
+
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);

@@ -9,10 +9,8 @@ import DialogSelect from '../components/AddItem';
 // import { alignProperty } from '@mui/material/styles/cssUtils';
 // import Typography from '@mui/material/Typography';
 
-
   
 function CollectionView() {
-
 
     const [cards, setCards] = React.useState({});
 
@@ -22,14 +20,15 @@ function CollectionView() {
         .then((cards) => setCards(cards));
     }, []);
 
-    {
+    console.log(cards)
+    
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
               <div className="box">
                 {/* NEED TO FORMAT THJIS */}
-                {Object.keys(cards).length == 0 
+                {Object.keys(cards).length === 0 
                   ?  (<>You have not added any items to your Collection <DialogSelect /></>)
                   :  <PrimarySearchAppBar cards = {cards}/>}
               </div>
@@ -37,7 +36,7 @@ function CollectionView() {
           </section>
         </div>
       );
-    }
+    
 
 }
   
