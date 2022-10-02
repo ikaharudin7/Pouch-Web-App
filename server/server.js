@@ -18,17 +18,17 @@ app.use(cors());
 app.use(express.json()) // needed if POST data is in JSON format
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-<<<<<<< HEAD
+
 app.set("view engine", "ejs");
 
-=======
+
 app.use(
   cors({
     origin: "http://localhost:3000",
     credentials: true,
   })
 )
->>>>>>> 4442c5bde205fd980bfdcb77f243b6680c6907d5
+
   
 app.use('/profile', require("./routes/profile"));
 
@@ -91,8 +91,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/view_image', async(req, res) => {
-  var myDocument = await db.collection('imagess').findOne({});
-  res.end(myDocument.img.data, "binary");
+  var myDocument = await db.collection('imagess').find({name: "test_image1"}).toArray();
+  res.type("image/png").send(myDocument);
+  console.log(myDocument);
 });
 
 app.get('/image_test', upload.single('image'), (req, res) => {
@@ -101,10 +102,10 @@ app.get('/image_test', upload.single('image'), (req, res) => {
   //var encimg = newimg.toString('base64');
 
   var obj = {
-      name: "test_image",
+      name: "test_image1",
       desc: "testing",
       img: {
-          data: fs.readFileSync(path.join(__dirname + '/img.png')),
+          data: fs.readFileSync(path.join(__dirname + '/test_image.png')),
           contentType: 'image/png',
       }
   }
