@@ -13,7 +13,7 @@ import Char from './pages/Char';
 import CollectionView from './pages/collection-page';
 import Profile from './pages/my-profile';
 import ListView from './pages/collection-list';
-import Card from './pages/img-render';
+import Card from './pages/image';
 
 function App() {
   return (
