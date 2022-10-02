@@ -11,7 +11,9 @@ const app = express();
 const User = require("./models/user");
 const { json } = require("body-parser");
 var fs = require('fs');
+var path = require('path');
 app.set("view engine", "ejs");
+require('./models');
 //----------------------------------------- END OF IMPORTS---------------------------------------------------
 // Connect to the database
 mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
@@ -50,9 +52,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
+// Middleware for Getting and displaying images from database
 // Set up middleware for image storage
 var multer = require('multer');
-//const { db } = require("./models/user");
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads')
@@ -64,18 +66,21 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/view_image', async(req, res) => {
-  var myImg = await db.collection('collectors').findOne({});
-  res.send(myImg);
-  console.log(myImg);
-});       
+  var myDocument = await db.collection('imagess').find({name: "test_image1"}).toArray();
+  res.type("image/png").send(myDocument);
+  //console.log(myDocument);
+});
 
 app.get('/image_test', upload.single('image'), (req, res) => {
 
+ // var newimg = fs.readFileSync(path.join(__dirname + '/img.png'));
+  //var encimg = newimg.toString('base64');
+
   var obj = {
-      name: "test_image",
+      name: "test_image1",
       desc: "testing",
       img: {
-          data: fs.readFileSync(path.join(__dirname + '/img.png')),
+          data: fs.readFileSync(path.join(__dirname + '/test_image.png')),
           contentType: 'image/png',
       }
   }
