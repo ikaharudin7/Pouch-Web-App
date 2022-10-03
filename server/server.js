@@ -32,6 +32,7 @@ db.once("open", function () {
 });
 
 
+
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -149,3 +150,5 @@ app.get('/view_collection', async(req, res) => {
   res.send(myItem);
   console.log(myItem);
 }); 
+
+

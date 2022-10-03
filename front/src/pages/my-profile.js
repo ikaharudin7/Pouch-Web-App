@@ -8,7 +8,7 @@ import { Button } from '@mui/material';
 
 class Profile extends Component {
   state = {
-    "HEllo" : "IAN",
+    "username" : "josh",
   };
   
 
