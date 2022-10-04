@@ -68,25 +68,21 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 app.get('/view_image', async(req, res) => {
-  var myDocument = await db.collection('imagess').find({name: "test_image1"}).toArray();
-  res.type("image/png").send(myDocument);
-  //console.log(myDocument);
+  var myDocument = await db.collection('item+image').find({ownerID: "user_abc"}).toArray();
+  res.send(myDocument);
 });
 
 app.get('/image_test', upload.single('image'), (req, res) => {
-
- // var newimg = fs.readFileSync(path.join(__dirname + '/img.png'));
-  //var encimg = newimg.toString('base64');
-
   var obj = {
-      name: "test_image1",
+      ownerID: "user_abc",
+      name: "projection",
       desc: "testing",
       img: {
-          data: fs.readFileSync(path.join(__dirname + '/test_image.png')),
+          data: fs.readFileSync(path.join(__dirname + '/img.png')),
           contentType: 'image/png',
       }
   }
-  db.collection('imagess').insertOne(obj, function(err, res) {
+  db.collection('item+image').insertOne(obj, function(err, res) {
     if(err) throw err;
     console.log("Test image added");
     console.log(obj);
