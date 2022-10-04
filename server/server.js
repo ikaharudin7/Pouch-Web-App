@@ -9,11 +9,11 @@ const session = require("express-session");
 const bodyParser = require("body-parser");
 const app = express();
 const User = require("./models/user");
+const Item = require("./models/item");
 const { json } = require("body-parser");
 var fs = require('fs');
 var path = require('path');
 app.set("view engine", "ejs");
-require('./models');
 //----------------------------------------- END OF IMPORTS---------------------------------------------------
 // Connect to the database
 mongoose.connect('mongodb+srv://josh:test123@cluster0.jvj0nic.mongodb.net/?retryWrites=true&w=majority',
@@ -54,39 +54,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passportConfig")(passport);
 
-// Middleware for Getting and displaying images from database
-// Set up middleware for image storage
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-var upload = multer({ storage: storage });
 
 app.get('/view_image', async(req, res) => {
-  var myDocument = await db.collection('item+image').find({ownerID: "user_abc"}).toArray();
+  var myDocument = await db.collection('item+image').find({ownerID: "user"}).toArray();
   res.send(myDocument);
-});
-
-app.get('/image_test', upload.single('image'), (req, res) => {
-  var obj = {
-      ownerID: "user_abc",
-      name: "projection",
-      desc: "testing",
-      img: {
-          data: fs.readFileSync(path.join(__dirname + '/img.png')),
-          contentType: 'image/png',
-      }
-  }
-  db.collection('item+image').insertOne(obj, function(err, res) {
-    if(err) throw err;
-    console.log("Test image added");
-    console.log(obj);
-});
 });
 
 

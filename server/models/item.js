@@ -8,7 +8,6 @@ const itemSchema = new mongoose.Schema({
     {
         data: Buffer,
         contentType: String,
-        required: true
     }
 })
 
