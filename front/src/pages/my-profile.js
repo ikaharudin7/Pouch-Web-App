@@ -8,9 +8,15 @@ import { Button } from '@mui/material';
 
 class Profile extends Component {
   state = {
-    "username" : "josh",
   };
   
+  
+  getData=(event)=> {
+    event.preventDefault();
+    fetch('http://localhost:8080/profile')
+    .then(response => {console.log(response)});
+
+  }
 
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -48,7 +54,7 @@ class Profile extends Component {
               </p>
               <br></br>
 
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.getData}>
                 <label>
                     Enter your bio here: <br></br>
                     <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />

@@ -13,12 +13,21 @@ router.use(bodyParser.json());
 
 
 router.get("/", (req, res) => {
-    //res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-    console.log(req.user);
+
+    //res.send('This is the profile page');
+    //res.send(req.user);
+
+  // const data = req.user;
+  //   console.log("INFO");
+  //   console.log(typeof(req.username));
+     console.log(req.user);
+  //   console.log("---");
+  //   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+    
   });
+
+
 router.post('/', async(req, res)=>{
-
-
 
     const myquery = { username : req.body.username };
     const newvalues = { $set: {email: req.body.bio}};

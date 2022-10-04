@@ -3,16 +3,15 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import CardData from "../pages/view_image";
 
 const images = [
   {
-    // url: 'front/src/static/images/buttons/test_image.jpg',
-    src: 'front/src/static/images/buttons/test_image.jpg',
+    url: 'front/src/static/images/buttons/test_image.jpg',
     title: 'Featured Collection Goes Here', 
     width: '100%',
   },
 ];
-
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -80,6 +79,13 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 export default function ButtonBases() {
+
+  const cards = CardData();
+
+  const allCards = cards.map(function (data) {return data.img.data});
+
+  
+
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
       {images.map((image) => (
@@ -91,7 +97,7 @@ export default function ButtonBases() {
           }}
           href = {`/${image.title}`} 
         >
-          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+          <img style={{ backgroundImage: `data:image/png;base64,${allCards}` }} />
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
