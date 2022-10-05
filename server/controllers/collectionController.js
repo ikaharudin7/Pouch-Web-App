@@ -6,12 +6,12 @@ var path = require('path');
 
 exports.addNewItem = async (req, res) =>{
     var obj = {
-        ownerID: "user",
-        name: "666",
-        desc: "testing",
+        ownerID: req.body.ownerID,
+        name: req.body.name,
+        desc: req.body.desc,
         img: {
-            data: fs.readFileSync(path.join(__dirname + '/eye.png')),
-            contentType: 'image/png',
+            data: req.body.data,
+            contentType: req.body.contentType,
         }
     }
     db.collection('item+image').insertOne(obj, function(err, res) {
