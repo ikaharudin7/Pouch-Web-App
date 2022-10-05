@@ -113,7 +113,7 @@ app.listen(8080, () => {
 
 
 app.get('/view_collection', async(req, res) => {
-  var myItem = await db.collection('item+image').find({}).toArray();
+  var myItem = await db.collection('test image').find({}).toArray();
   res.send(myItem);
   console.log(myItem);
 }); 

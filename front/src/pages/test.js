@@ -20,9 +20,9 @@ const Test = () => {
 
   return (
     <div>
-      <form>
+      
       <UploadButton />
-      </form>
+      
       
     </div>
   );
