@@ -1,25 +1,29 @@
 
 import React from 'react'
+import UploadButton from '../components/UploadButton';
+import FileBase64 from 'react-file-base64'
 
 
 const Test = () => {
 
-  const [data, setData] = React.useState(null);
+  // const [data, setData] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch('http://localhost:8080/view_collection')
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, []);
+  // React.useEffect(() => {
+  //   fetch('http://localhost:8080/view_collection')
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  // }, []);
   
-  console.log(data)
+  // console.log(data)
 
 
 
   return (
     <div>
-      test
-      {/* {cards} */}
+      <form>
+      <UploadButton />
+      </form>
+      
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import { ButtonBase, Stack, Typography } from '@mui/material';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import axios from 'axios'
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -34,21 +35,70 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
 export default function UploadButton() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  // const [test, setTest] = useState(null);
 
-  useEffect(() => {
-    if (selectedImage) {
-      setImageUrl(URL.createObjectURL(selectedImage));
+  // useEffect(() => {
+  //   if (selectedImage) {
+  //     setImageUrl(URL.createObjectURL(selectedImage));
+      
+  //   }
+  // }, [selectedImage]);
+
+  const url = "http://localhost:8080/collections/collcetion_test";
+  const createImage = (newImage) => axios.post(url, newImage);
+
+  const createPost = async (post) => {
+    try {
+      await createImage(post);
+    } catch (error) {
+      console.log(error.message);
     }
-  }, [selectedImage]);
+  };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createPost(selectedImage);
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setSelectedImage({ ...selectedImage, myFile: base64 });
+
+    // if (selectedImage) {
+    //   setImageUrl(URL.createObjectURL(selectedImage));
+      
+    // }
+  };
+  console.log(selectedImage)
+
+
+
+
+ 
+//     console.log(imageUrl.toString('base64'))
+//   }
   return (
-    <>
+    
+    <form onSubmit={handleSubmit}>
       <input
         accept="image/*"
         type="file"
         id="select-image"
         style={{ display: 'none' }}
-        onChange={e => setSelectedImage(e.target.files[0])}
+        onChange={e => {handleFileUpload(e)}}
       />
       <label htmlFor="select-image">
         <ImageButton variant="contained" color="primary" component="span">
@@ -60,6 +110,7 @@ export default function UploadButton() {
             
         </ImageButton>
       </label>
-    </>
+      </form>
+    
   );
 };
