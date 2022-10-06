@@ -10,30 +10,23 @@ const User = require('../models/user')
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
+global.usern = { username : "" };
 
+router.get("/", async(req, res) => {
 
-router.get("/", (req, res) => {
+    global.usern = req.user;
+    res.send(usern);
+    console.log(usern);
 
-    //res.send('This is the profile page');
-    res.send(req.user);
-
-  // const data = req.user;
-  //   console.log("INFO");
-  //   console.log(typeof(req.username));
-     console.log(req.user);
-  //   console.log("---");
-  //   res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-    
   });
 
 
 router.post('/', async(req, res)=>{
-
-    const myquery = { username : req.body.username };
-    const newvalues = { $set: {email: req.body.bio}};
-
+    const myquery = { username : usern.username };
+    const newvalues = { $set: { email : req.body.bio}};
+    console.log(usern);
     console.log(req.body.bio);
-    console.log(req.body.username);
+    console.log(usern.username);
     db.collection('users').updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
       console.log("1 document updated");

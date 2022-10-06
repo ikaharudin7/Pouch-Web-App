@@ -42,12 +42,24 @@ function LoginForm() {
       console.log(res.data);
       let data = res.data;
       if (data.username) {
-        window.location.href = "/profile";
+        loadServer(data.username);
+        const newWindow = window.open("http://localhost:3000/profile", '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+        window.location.href = "http://localhost:8080/profile";
+
       } else {
-        window.location.href = "/login";
+        window.location.href = "http://localhost:3000/login";
       }
     });
   };
+
+  const loadServer = (data) => {
+    fetch('http//localhost:8080/profile', {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+  }
 
   return (
     

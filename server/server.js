@@ -101,6 +101,8 @@ app.post("/signup", (req, res) => {
   });
 });
 
+
+
 app.use('/signup', require("./routes/signup"));
 app.use('/profile', require("./routes/profile"));
 app.use('/home', require("./routes/home"));

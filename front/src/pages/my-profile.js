@@ -8,16 +8,16 @@ import { Button } from '@mui/material';
 
 class Profile extends Component {
   state = {
+    email: [],
   };
   
+  componentDidMount() {
+    fetch("https://localhost:8080/profile")
+        .then((res) => console.log(res.json()))
+
+        
+}
   
-  getData=(event)=> {
-    event.preventDefault();
-    fetch('http://localhost:8080/profile')
-    .then(response => {console.log(response)});
-
-  }
-
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
   };
@@ -31,12 +31,9 @@ class Profile extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-      .then((res)=> res.json())
-      .then(()=> {
-        console.log(data);
-        console.log(JSON.stringify(data));
-        console.log("POST sent");
-      })
+      .then((res)=> console.log(res.json()))
+
+    //this.getData(event);
   }; 
 
 
@@ -54,7 +51,7 @@ class Profile extends Component {
               </p>
               <br></br>
 
-              <form onSubmit={this.getData}>
+              <form onSubmit={this.handleSubmit}>
                 <label>
                     Enter your bio here: <br></br>
                     <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
