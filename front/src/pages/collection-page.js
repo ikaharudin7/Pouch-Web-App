@@ -3,6 +3,7 @@ import './collection-page.css'
 // import CollectionGrid from '../components/Grid';
 import PrimarySearchAppBar from '../components/SearchBar';
 import DialogSelect from '../components/AddItem';
+import { Typography } from '@mui/material';
 // import View from '../components/Menus/View';
 // import SortBy from '../components/Menus/SortBy';
 // import { Box } from '@mui/material';
@@ -31,8 +32,12 @@ function CollectionView() {
                 {Object.keys(cards).length === 0 
                   ? (
                       <>
-                        You have not added any items to your Collection 
-                        <DialogSelect />
+                        <div>
+                          <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
+                        </div>
+                        <div style={{textAlign: "center"}}>
+                          <DialogSelect/>
+                        </div>
                       </>
                     )
                   : <PrimarySearchAppBar cards = {cards}/>}

@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function ComboBox() {
+export default function ComboBox({item, setItem}) {
   return (
     <Autocomplete
       autoFocus
@@ -10,20 +10,21 @@ export default function ComboBox() {
       options={pokemonCards}
       sx={{ width: 300 }}
       renderInput={(params) => <TextField {...params} required label="Card" sx = {{marginTop: 1}}/>}
+      onChange = {e => setItem({...item, name: e.target.textContent})}
     />
   );
 }
 
 
 const pokemonCards = [
-  { label: 'Charizard', year: 1994 },
-  { label: 'Pikachu', year: 1972 },
-  { label: 'Bulbasaur', year: 1974 },
-  { label: 'Ivysaur', year: 2008 },
-  { label: 'Venasaur', year: 1957 },
-  { label: "Charmander", year: 1993 },
-  { label: 'Charmeleon', year: 1994 },
-  { label: 'Squirtle', year: 1994 },
-  { label: 'Wartortle', year: 1994 },
-  { label: 'Blastoise', year: 1994 },
+  { label: 'Charizard'},
+  { label: 'Pikachu'},
+  { label: 'Bulbasaur'},
+  { label: 'Ivysaur'},
+  { label: 'Venasaur'},
+  { label: "Charmander"},
+  { label: 'Charmeleon'},
+  { label: 'Squirtle'},
+  { label: 'Wartortle'},
+  { label: 'Blastoise'},
 ];

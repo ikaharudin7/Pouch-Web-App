@@ -27,7 +27,7 @@ export default function CollectionGrid({filteredCards}) {
         {/* <SortBy prop={setAsc}/> */}
         <Grid container spacing = {4} sx = {{justifyContent: 'center'}}>
             {filteredCards.map((card) => (
-                <Grid item key={card.id} >
+                <Grid item key={card.date} >
                     <MediaCard prop = {card} />
                 </Grid>
             ))}

@@ -9,7 +9,8 @@ exports.addNewItem = async (req, res) =>{
         ownerID: req.body.ownerID,
         name: req.body.name,
         desc: req.body.desc,
-        img: req.body.img
+        img: req.body.img,
+        date: req.body.date,
     }
     db.collection('test image').insertOne(obj, function(err, res) {
       if(err) throw err;

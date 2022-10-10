@@ -98,16 +98,15 @@ export default function SearchAppBar({cards, setFilteredCards}) {
                     <SearchIcon />
                     </SearchIconWrapper>
                     <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                    onChange = {handleChange}
+                      placeholder="Search…"
+                      inputProps={{ 'aria-label': 'search' }}
+                      onChange = {handleChange}
                     />
                 </Search>
                 <Box sx={{ flexGrow: 1 }} />
-                    
-                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                    <AddItem />
-                </Box>
+                  <Box /*sx={{ display: { xs: 'none', md: 'flex' } }}*/>
+                      <AddItem />
+                  </Box>
                 </Toolbar>
             </AppBar>
 

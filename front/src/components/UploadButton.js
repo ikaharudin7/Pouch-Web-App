@@ -7,15 +7,12 @@ import axios from 'axios'
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: 'relative',
-    height: 120,
+    height: 200,
+    width: 200,
     border: 2,
     borderRadius: 4,
     color: 'white',
     backgroundColor: 'grey',
-    // [theme.breakpoints.down('sm')]: {
-    //   width: '100% !important', // Overrides inline-style
-    //   height: 100,
-    // },
     '&:hover, &.Mui-focusVisible': {
       zIndex: 1,
       '& .MuiImageBackdrop-root': {
@@ -24,44 +21,15 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
       '& .MuiImageMarked-root': {
         opacity: 0,
       },
-    //   '& .MuiTypography-root': {
-    //     border: '4px solid currentColor',
-    //   },
+
     },
   }));
 
 
 // Code Based on https://javascript.plainenglish.io/how-to-add-a-file-input-button-and-display-a-preview-image-with-react-2568d9d849f5
-export default function UploadButton() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
-  // const [test, setTest] = useState(null);
+export default function UploadButton({item, setItem}) {
+  const [image, setImage] = useState(item);
 
-  // useEffect(() => {
-  //   if (selectedImage) {
-  //     setImageUrl(URL.createObjectURL(selectedImage));
-      
-  //   }
-  // }, [selectedImage]);
-
-  // const url = "http://localhost:8080/collections/collection_test";
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("test")
-    
-    fetch("http://localhost:8080/collections/collection_test", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(selectedImage),
-      })
-      .then((res)=> res.json())
-      .then(()=> {
-        console.log(selectedImage);
-        console.log(JSON.stringify(selectedImage));
-        console.log("POST sent");
-      })
-  }; 
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -78,16 +46,21 @@ export default function UploadButton() {
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    console.log(file)
-    setSelectedImage({...selectedImage, name: "test", img: base64});
-    setImageUrl(URL.createObjectURL(file));
+    if (file.size > 2e6) {
+      
+      window.alert("Please upload a file smaller than 2 MB");
+    } else {
+      const base64 = await convertToBase64(file);
+      setImage(base64);
+      setItem({...item, img: base64});
+    }
+    
   };
-  console.log(selectedImage)
+  // console.log(image)
 
   return (
-    
-    <form id = "imageUp" onSubmit={handleSubmit}>
+    <>
+    {/* <form id = "imageUp" onSubmit={handleSubmit}> */}
       <input
         accept="image/*"
         type="file"
@@ -96,18 +69,18 @@ export default function UploadButton() {
         onChange={e => {handleFileUpload(e)}}
 
       />
-      <input type="submit" form="imageUp" value="Up" className="btn" ></input>
+      {/* <input type="submit" form="imageUp" value="Up" className="btn" ></input> */}
       <label htmlFor="select-image">
         <ImageButton variant="contained" color="primary" component="span">
-            {imageUrl && selectedImage &&(<img src={imageUrl} alt={selectedImage.name} height="100px" />)}
+            {image &&(<img src={item.img} height="200px" />)}
             <Stack sx={{alignItems: 'center'}}>
-                {!imageUrl && !selectedImage && (<AddAPhotoIcon sx = {{m: 1}}/>)}
-                {!imageUrl && !selectedImage && (<Typography sx = {{m: 1}}>Upload Image</Typography>)}
+                {!image && (<AddAPhotoIcon sx = {{m: 1}}/>)}
+                {!image && (<Typography sx = {{m: 1}}>Upload Image</Typography>)}
             </Stack>
             
         </ImageButton>
       </label>
-    </form>
-    
+    {/* // </form> */}
+    </>
   );
 };

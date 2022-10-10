@@ -34,8 +34,8 @@ db.once("open", function () {
 
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({limit: '2mb'}));
+app.use(bodyParser.urlencoded({limit: '2mb', extended: true }));
 app.use(
   cors({
     origin: "http://localhost:3000", // <-- location of the react app were connecting to
@@ -60,6 +60,7 @@ app.get('/view_image', async(req, res) => {
   res.send(myDocument);
 });
 
+app.use(express.json({limit: '50mb'}));
 
 //----------------------------------------- END OF MIDDLEWARE---------------------------------------------------
 

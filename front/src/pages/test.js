@@ -1,7 +1,7 @@
 
 import React from 'react'
 import UploadButton from '../components/UploadButton';
-import FileBase64 from 'react-file-base64'
+
 
 
 const Test = () => {

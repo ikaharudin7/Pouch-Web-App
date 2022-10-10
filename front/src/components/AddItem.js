@@ -14,16 +14,16 @@ import ComboBox from './ComboBox';
 import TextField from '@mui/material/TextField';
 import Date from './Date';
 import UploadButton from './UploadButton';
+import dayjs from 'dayjs';
+import AddIcon from '@mui/icons-material/Add';
+import { Typography } from '@mui/material';
 // import { stepClasses } from '@mui/material';
 
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
-  const [age, setAge] = React.useState('');
+  const [item, setItem] = React.useState({img: null});
 
-  const handleChange = (event) => {
-    setAge(Number(event.target.value) || '');
-  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,13 +32,39 @@ export default function DialogSelect() {
   const handleClose = (event, reason) => {
     // if (reason !== 'backdropClick') {
       setOpen(false);
-    
-    
   };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleClose();
+    console.log("test")
+    console.log(item)
+    
+    fetch("http://localhost:8080/collections/collection_test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      })
+      .then((res)=> res.json())
+      .then(()=> {
+        console.log(item);
+        console.log(JSON.stringify(item));
+        console.log("POST sent");
+      })
+  }; 
 
   return (
     <div>
-      <Button onClick={handleClickOpen} sx = {{width: 'max-content'}}>+ Add New Item</Button>
+      <Button onClick={handleClickOpen} sx = {{width: 'max-content', display: {xs: "none", sm: "inline-flex"}}}>
+        <AddIcon/>
+        <Typography sx = {{fontWeight: 'bold'}}>
+          Add New Item
+        </Typography>
+      </Button>
+      <Button onClick={handleClickOpen} sx = {{width: 'max-content', display: {xs: "inline-flex", sm: "none"}}}>
+        <AddIcon/>
+      </Button>
       <Dialog 
         disableEscapeKeyDown 
         open={open} 
@@ -48,36 +74,54 @@ export default function DialogSelect() {
         <DialogTitle>New Item</DialogTitle>
         <DialogContent>
           
-          <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}}>
+          <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "addItem" onSubmit={handleSubmit}>
             
-            <div>
-              <div style = {{display: 'inline', float: 'left'}}>
-                <ComboBox />
 
-                <Date />
-                
+            <div>
+              <div style = {{textAlign: 'center'}}>
+                  <UploadButton item = {item} setItem = {setItem}/>
               </div>
-              <div style = {{display: 'flex', float: 'right'}}><UploadButton /></div>
+              <div>
+                {/* <ComboBox item = {item} setItem = {setItem}/> */}
+                <TextField
+                  autoFocus
+                  fullWidth
+                  required
+                  id="name"
+                  label="Name"
+                  margin='normal'
+                  onChange = {e => setItem({...item, name: e.target.value})}
+                />
+                <TextField
+                  multiline
+                  autoFocus
+                  fullWidth
+                  id="desc"
+                  label="Description"
+                  margin='normal'
+                  onChange = {e => setItem({...item, desc: e.target.value})}
+                />
+              </div>
+              
             </div>
             
 
             {/* get so can't press ok if name is empty */}
             
-
-            <TextField
-                multiline
-                autoFocus
-                fullWidth
-                id="name"
-                label="Description"
-                margin='normal'
-            />
-
+            
           </Box>
         </DialogContent>
+
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
+          <Button onClick={() => {handleClose(); setItem({img: null})}}>Cancel
+            
+          </Button>
+
+          <Button onClick={() => {setItem({...item, date: dayjs().format()})}} type = "submit" form = "addItem" >
+            Ok
+            {/* <input hidden type="submit" form="addItem" value="item" className="btn" /> */}
+            
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

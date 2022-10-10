@@ -4,14 +4,42 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import ViewItem from './ViewItem';
+import EditItem from './EditItem';
+import Dialog from '@mui/material/Dialog';
 
 const cardheight = 300;
 const imageheight = 180;
 
 export default function MediaCard({prop}) {
+
+  const [open, setOpen] = React.useState(false);
+  const [edit, setEdit] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    // if (reason !== 'backdropClick') {
+      setOpen(false);
+      setEdit(false);
+      
+  };
+
+  const handleEditOpen = () => {
+    setEdit(true);
+  }
+
+  const handleEditClose = () => {
+    
+  }
+
+
+
   return (
     <Card sx={{ width: 200, height: cardheight }}>
-    <CardActionArea sx = {{height: cardheight}}>
+    <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
       <CardMedia
         component="img"
         image = {prop.img}
@@ -24,15 +52,31 @@ export default function MediaCard({prop}) {
           {prop.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {prop.description}
+          {prop.desc}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          {prop.date}
         </Typography>
       </CardContent>
-      </CardActionArea>
-      {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-      </CardActions> */}
+    </CardActionArea>
+
+    <Dialog 
+      disableEscapeKeyDown 
+      open={open} 
+      onClose={handleClose} 
+      fullWidth 
+    >
+      {console.log(edit)}
+      {edit
+        ? <EditItem card = {prop} handleClose = {handleClose} handleEditClose = {handleEditClose} />
+        : <ViewItem card = {prop} handleClose = {handleClose} handleEditOpen = {handleEditOpen} />
+      }
+      
+      
+    
+    </Dialog>
+    
+
     </Card>
   );
 }
