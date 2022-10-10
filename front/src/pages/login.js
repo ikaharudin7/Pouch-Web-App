@@ -24,7 +24,7 @@ function LoginForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/signup",
-    }).then((res) => console.log(res));
+    }).then((res) => console.log(res.data));
 
 
   };
@@ -38,9 +38,28 @@ function LoginForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/login",
-    }).then((res) => console.log(res.data));
-    
+    }).then((res) => {
+      console.log(res.data);
+      let data = res.data;
+      if (data.username) {
+        loadServer(data.username);
+        const newWindow = window.open("http://localhost:3000/profile", '_blank', 'noopener,noreferrer')
+        if (newWindow) newWindow.opener = null
+        window.location.href = "http://localhost:8080/profile";
+
+      } else {
+        window.location.href = "http://localhost:3000/login";
+      }
+    });
   };
+
+  const loadServer = (data) => {
+    fetch('http//localhost:8080/profile', {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+  }
 
   return (
     

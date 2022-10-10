@@ -1,19 +1,20 @@
 const mongoose= require('mongoose')
-const Item = require('../models/item')
-const {db} = require('./models/index')
-const {Item} = require('./models/item')
+const {db} = require('../models/index')
+const {Item} = require('../models/item')
+var fs = require('fs');
+var path = require('path');
 
-const addNewItem = async (req, res) =>{
-    var Item = {
+exports.addNewItem = async (req, res) =>{
+    var obj = {
         ownerID: req.body.ownerID,
         name: req.body.name,
-        cost: req.body.cost,
-        description: req.body.description
+        desc: req.body.desc,
+        img: req.body.img
     }
-
-    db.collection('collectors').insertOne(Item, function(err, res) {
-        if(err) throw err;
-        console.log("One Item added");
+    db.collection('test image').insertOne(obj, function(err, res) {
+      if(err) throw err;
+      console.log("Test image added");
+      console.log(obj);
     });
 }
 

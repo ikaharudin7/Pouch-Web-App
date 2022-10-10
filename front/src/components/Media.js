@@ -14,7 +14,7 @@ export default function MediaCard({prop}) {
     <CardActionArea sx = {{height: cardheight}}>
       <CardMedia
         component="img"
-        image = {`data:image/png;base64,${prop.img.data}`}
+        image = {prop.img}
         alt={prop.alt}
         sx = {{height: imageheight, position: 'absolute', top: 0, objectFit: 'fill' }}
         

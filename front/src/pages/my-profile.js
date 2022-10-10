@@ -8,10 +8,16 @@ import { Button } from '@mui/material';
 
 class Profile extends Component {
   state = {
-    "HEllo" : "IAN",
+    email: [],
   };
   
+  componentDidMount() {
+    fetch("https://localhost:8080/profile")
+        .then((res) => console.log(res.json()))
 
+        
+}
+  
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
   };
@@ -25,12 +31,9 @@ class Profile extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-      .then((res)=> res.json())
-      .then(()=> {
-        console.log(data);
-        console.log(JSON.stringify(data));
-        console.log("POST sent");
-      })
+      .then((res)=> console.log(res.json()))
+
+    //this.getData(event);
   }; 
 
 

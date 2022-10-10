@@ -29,8 +29,13 @@ function CollectionView() {
               <div className="box">
                 {/* NEED TO FORMAT THJIS */}
                 {Object.keys(cards).length === 0 
-                  ?  (<>You have not added any items to your Collection <DialogSelect /></>)
-                  :  <PrimarySearchAppBar cards = {cards}/>}
+                  ? (
+                      <>
+                        You have not added any items to your Collection 
+                        <DialogSelect />
+                      </>
+                    )
+                  : <PrimarySearchAppBar cards = {cards}/>}
               </div>
             </div>
           </section>
