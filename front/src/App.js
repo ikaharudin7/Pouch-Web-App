@@ -25,8 +25,8 @@ function App() {
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />
         <Route path = '/profile' element={<Profile />} />
-        <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/collection-page' element={<CollectionView />} />
+        <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
         <Route path = '/list' element={<ListView />} />
       </Routes>
