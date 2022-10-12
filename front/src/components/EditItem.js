@@ -34,12 +34,33 @@ export default function EditItem({card, handleClose, handleEditClose}) {
       })
   }; 
 
+  const handleDelete = (event) => {
+    // event.preventDefault();
+    console.log(card)
+
+    fetch("http://localhost:8080/collections/collection_delete", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" },
+        body: JSON.stringify(card),
+      })
+      .then((res)=> res.json())
+      .then(()=> {
+        console.log(card);
+        console.log(JSON.stringify(card));
+        console.log("DELETE sent");
+        
+      })
+      handleClose();
+      window.location.href="http://localhost:3000/collection-page";
+
+  }
+
   return (
     <>
       <DialogTitle>Edit Item</DialogTitle>
       <DialogContent>
           
-        <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "editItem" onSubmit={handleSubmit}>
+        <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "editItem" >
           <div>
             <div style = {{textAlign: 'center'}}>
               <UploadButton item = {item} setItem = {setItem}/>
@@ -77,7 +98,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
 
         <DialogActions sx = {{textAlignLast: "right", display: "block"}}>
           {/* deleteOne */}
-          <Button onClick={() => {handleClose(); setItem({img: null})}} sx = {{float: 'left'}}>
+          <Button onClick={() => {handleDelete();}} sx = {{float: 'left'}}>
             Delete
           </Button>
           <Button onClick={() => {handleClose(); setItem({img: null})}}>

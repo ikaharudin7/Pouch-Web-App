@@ -16,12 +16,39 @@ function CollectionView() {
     const [cards, setCards] = React.useState({});
 
     React.useEffect(() => {
-      fetch('http://localhost:8080/view_collection')
+      fetch('http://localhost:8080/view_collection', {
+        method: "GET",
+        headers: {"Access-Control-Allow-Origin": "*"}
+      })
         .then((res) => res.json())
         .then((cards) => setCards(cards));
     }, []);
 
+
     console.log(cards)
+
+    if (Object.keys(cards).length === 0) {
+      return (
+        <div>
+          <section className="hero">
+            <div className="hero-body">
+              <div className="box">
+                
+                        <div>
+                          <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
+                        </div>
+                        <div style={{textAlign: "center"}}>
+                          <DialogSelect/>
+                        </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      );
+    }
+
+
     
       return (
         <div>

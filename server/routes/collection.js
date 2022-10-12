@@ -26,6 +26,8 @@ router.get("/view_collection", function (req, res) {
     console.log(req);
 });
 
-router.post("/collection_test", upload.single('image'), collectionController.addNewItem);
+router.post("/collection_test", upload.single('file'), collectionController.addNewItem);
+
+router.delete("/collection_delete", upload.single('file'), collectionController.deleteItem)
 
 module.exports = router;

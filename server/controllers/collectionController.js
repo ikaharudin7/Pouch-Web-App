@@ -1,4 +1,5 @@
 const mongoose= require('mongoose')
+var ObjectId = require('mongodb').ObjectId; 
 const {db} = require('../models/index')
 const {Item} = require('../models/item')
 var fs = require('fs');
@@ -25,10 +26,14 @@ const updateItem = async(req, res)=> {
     )
 };
 
-const deleteItem = async(req, res) => {
-    var Item = req.body.Item
-    db.collection('collectors').deleteOne(Item, function(err, res) {
+exports.deleteItem = async(req, res) => {
+    var id = req.body._id
+    var o_id = new ObjectId(id)
+    db.collection('test image').deleteOne({_id: o_id}, function(err, res) {
         if(err) throw err;
         console.log("One Item deleted");
+        console.log(id)
+        
+        // console.log(db.collection('test image').find({_id: ID}))
     });
 }
