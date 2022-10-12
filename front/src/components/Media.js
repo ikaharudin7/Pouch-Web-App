@@ -11,7 +11,7 @@ import Dialog from '@mui/material/Dialog';
 const cardheight = 300;
 const imageheight = 180;
 
-export default function MediaCard({prop}) {
+export default function MediaCard({card}) {
 
   const [open, setOpen] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
@@ -32,7 +32,7 @@ export default function MediaCard({prop}) {
   }
 
   const handleEditClose = () => {
-    
+    setEdit(false);
   }
 
 
@@ -42,20 +42,20 @@ export default function MediaCard({prop}) {
     <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
       <CardMedia
         component="img"
-        image = {prop.img}
-        alt={prop.alt}
+        image = {card.img}
+        alt={card.alt}
         sx = {{height: imageheight, position: 'absolute', top: 0, objectFit: 'fill' }}
         
       />
       <CardContent sx = {{position: 'absolute', top: imageheight}}>
         <Typography gutterBottom variant="h5" component="div">
-          {prop.name}
+          {card.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {prop.desc}
+          {card.desc}
         </Typography>
         <Typography variant="caption" color="text.secondary">
-          {prop.date}
+          {card.date}
         </Typography>
       </CardContent>
     </CardActionArea>
@@ -68,8 +68,8 @@ export default function MediaCard({prop}) {
     >
       {console.log(edit)}
       {edit
-        ? <EditItem card = {prop} handleClose = {handleClose} handleEditClose = {handleEditClose} />
-        : <ViewItem card = {prop} handleClose = {handleClose} handleEditOpen = {handleEditOpen} />
+        ? <EditItem card = {card} handleClose = {handleClose} handleEditClose = {handleEditClose} />
+        : <ViewItem card = {card} handleClose = {handleClose} handleEditOpen = {handleEditOpen} />
       }
       
       

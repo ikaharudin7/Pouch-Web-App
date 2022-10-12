@@ -20,10 +20,15 @@ exports.addNewItem = async (req, res) =>{
     });
 }
 
-const updateItem = async(req, res)=> {
-    db.collection('collectors').findOneAndUpdateOne(
-        {_name : req.body.name}, req.body, {new:true}
-    )
+exports.updateItem = async(req, res)=> {
+    var id = req.body._id
+    var Item = req.body
+    var o_id = new ObjectId(id)
+    db.collection('test image').updateOne({_id: o_id}, { $set: {name: req.body.name, desc: req.body.desc, img: req.body.img}}, {upsert: true}, function(err, res) {
+        if(err) throw err;
+        console.log("One Item Updated");
+        console.log(id)
+    });
 };
 
 exports.deleteItem = async(req, res) => {

@@ -28,6 +28,8 @@ router.get("/view_collection", function (req, res) {
 
 router.post("/collection_test", upload.single('file'), collectionController.addNewItem);
 
+router.patch("/collection_update", upload.single('file'), collectionController.updateItem);
+
 router.delete("/collection_delete", upload.single('file'), collectionController.deleteItem)
 
 module.exports = router;

@@ -5,16 +5,30 @@ import ButtonBases from '../components/Button';
 import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
-class Home extends Component {
+function Home() {
 
+    // Fetch collection you want to display from here
+
+    // const [collections, setCollections] = React.useState({});
+
+    // React.useEffect(() => {
+    //   fetch('http://localhost:8080/view_collection', {
+    //     method: "GET",
+    //     headers: {"Access-Control-Allow-Origin": "*"}
+    //   })
+    //     .then((res) => res.json())
+    //     .then((collections) => setCollections(collections));
+    // }, []);
   
-    render() {
+
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
               <div className="container">
                 <div class="container-left">
+                  {/* set which collection you want to display */}
+                  {/* <ButtonBases collection = {collections[0]}/>  */}
                   <ButtonBases /> 
                 </div>
                 <div className="container-right">
@@ -40,12 +54,15 @@ class Home extends Component {
               <div className="panels-section">
                  <div className="panel">
                   <ButtonBases className="bottom-panels"/> 
+                  {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div className="bottom-panels">
                   <ButtonBases /> 
+                  {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div className="bottom-panels">
                   <ButtonBases /> 
+                  {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div>
 
@@ -64,6 +81,6 @@ class Home extends Component {
       );
     }
 
-}
+
   
 export default Home;

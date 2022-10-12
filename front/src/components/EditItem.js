@@ -13,7 +13,7 @@ import { Typography } from '@mui/material';
 
 export default function EditItem({card, handleClose, handleEditClose}) {
 
-  const [item, setItem] = React.useState({img: card.img, date: card.date});
+  const [item, setItem] = React.useState(card);
 
 
   const handleSubmit = (event) => {
@@ -21,8 +21,8 @@ export default function EditItem({card, handleClose, handleEditClose}) {
     console.log("test")
     console.log(item)
     
-    fetch("http://localhost:8080/collections/collection_test", {
-        method: "POST",
+    fetch("http://localhost:8080/collections/collection_update", {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(item),
       })
@@ -32,6 +32,8 @@ export default function EditItem({card, handleClose, handleEditClose}) {
         console.log(JSON.stringify(item));
         console.log("POST sent");
       })
+    handleEditClose();
+
   }; 
 
   const handleDelete = (event) => {
@@ -60,7 +62,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
       <DialogTitle>Edit Item</DialogTitle>
       <DialogContent>
           
-        <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "editItem" >
+        <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "editItem" onSubmit={handleSubmit}>
           <div>
             <div style = {{textAlign: 'center'}}>
               <UploadButton item = {item} setItem = {setItem}/>
@@ -86,7 +88,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
                 fullWidth
                 id="desc"
                 label="Description"
-                defaultValue={card.name}
+                defaultValue={card.desc}
                 margin='normal'
                 onChange = {e => setItem({...item, desc: e.target.value})}
               />
@@ -106,7 +108,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
           </Button>
 
           {/* updateOne */}
-          <Button onClick={handleEditClose} type = "submit" form = "editItem" >
+          <Button type = "submit" form = "editItem" >
             Ok
           </Button>
         </DialogActions>

@@ -60,7 +60,6 @@ app.get('/view_image', async(req, res) => {
   res.send(myDocument);
 });
 
-app.use(express.json({limit: '50mb'}));
 
 //----------------------------------------- END OF MIDDLEWARE---------------------------------------------------
 

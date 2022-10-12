@@ -5,18 +5,23 @@ import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import CardData from "../pages/view_image";
 
-const images = [
+// Currently works with the file placed in the public folder
+// Comment out later
+const collection = 
   {
-    url: 'front/src/static/images/buttons/test_image.jpg',
-    title: 'Featured Collection Goes Here', 
+    img: 'test_image.jpg',
+    name: 'Featured Collection Goes Here', 
     width: '100%',
-  },
-];
+  }
+;
+
+// Sets height of button and image
+const imageHeight = 400;
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
-  height: 400,
+  height: imageHeight,
   [theme.breakpoints.down('sm')]: {
     width: '100% !important', // Overrides inline-style
     height: 100,
@@ -34,16 +39,6 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
     },
   },
 }));
-
-const ImageSrc = styled('span')({
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center 40%',
-});
 
 const Image = styled('span')(({ theme }) => ({
   position: 'absolute',
@@ -78,26 +73,33 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 
+
+// Switch to
+// export default function ButtonBases({collection}) {
+
 export default function ButtonBases() {
 
-  const cards = CardData();
 
-  const allCards = cards.map(function (data) {return data.img.data});
-
-  
+  if (Object.keys(collection).length === 0) {
+    return (
+      <div>
+        Loading...
+      </div>
+    );}
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
-      {images.map((image) => (
+
         <ImageButton
           focusRipple
-          key={image.title}
+          key={collection.name}
           style={{
-            width: image.width,
+            width: '100%',
           }}
-          href = {`/${image.title}`} 
+          href = {`/${collection.name}`} 
         >
-          <img style={{ backgroundImage: `data:image/png;base64,${allCards}` }} />
+
+          <img src = {collection.img} height = {imageHeight}/>
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography
@@ -111,12 +113,11 @@ export default function ButtonBases() {
                 pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
               }}
             >
-              {image.title}
+              {collection.name}
               <ImageMarked className="MuiImageMarked-root" />
             </Typography>
           </Image>
         </ImageButton>
-      ))}
     </Box>
   );
 }

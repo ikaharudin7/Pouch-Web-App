@@ -2,7 +2,6 @@ import { useState, useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import { ButtonBase, Stack, Typography } from '@mui/material';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
-import axios from 'axios'
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
@@ -56,11 +55,10 @@ export default function UploadButton({item, setItem}) {
     }
     
   };
-  // console.log(image)
+
 
   return (
     <>
-    {/* <form id = "imageUp" onSubmit={handleSubmit}> */}
       <input
         accept="image/*"
         type="file"
@@ -69,7 +67,7 @@ export default function UploadButton({item, setItem}) {
         onChange={e => {handleFileUpload(e)}}
 
       />
-      {/* <input type="submit" form="imageUp" value="Up" className="btn" ></input> */}
+
       <label htmlFor="select-image">
         <ImageButton variant="contained" color="primary" component="span">
             {image &&(<img src={item.img} height="200px" />)}
@@ -80,7 +78,6 @@ export default function UploadButton({item, setItem}) {
             
         </ImageButton>
       </label>
-    {/* // </form> */}
     </>
   );
 };
