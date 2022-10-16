@@ -25,16 +25,18 @@ class Profile extends Component {
   
 
   componentDidMount() {
-    axios.get("http://localhost:8080/login", { withCredentials: true}).then((response) => {
-      console.log(response.data.user.username);
-      this.setState({username: response.data.user.username})
-      this.setState({bio: response.data.user.bio})
-      console.log(this.state)
+    axios.get("http://localhost:8080/profile", { withCredentials: true}).then((response) => {
+      console.log(response.data.username);
+      this.setState({username: response.data.username});
+      this.setState({bio: response.data.bio});
+      console.log(this.state);
     })
   }
+
   
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
+    
   };
  
   handleSubmit = (event) => {
@@ -49,6 +51,7 @@ class Profile extends Component {
       .then((res)=> console.log(res))
 
     //this.getData(event);
+    window.location.href = "http://localhost:3000/profile"
   }; 
 
 
@@ -62,7 +65,7 @@ class Profile extends Component {
             <div className="container-right">
               <h1 className="hero-title">About Me </h1>
               <p className="hero-text">
-                BIO FOR USER GOES HERE
+                {this.state.bio}
               </p>
               <br></br>
 

@@ -13,19 +13,18 @@ router.use(bodyParser.json());
 global.usern = { username : "" };
 
 router.get("/", async(req, res) => {
+  const user = { username : req.session.userid.username };
   
-  session=req.session;  
-  if(session.userid){
-    res.send(session);
-    console.log(session);}
+  //db.collection('users').find({});
 
-    //   //res.send(session);
-  //   //console.log(session.userid.username);
-  // }else
-  // res.sendFile('views/index.html',{root:__dirname})
-    // global.usern = req.user;
-    // res.send(usern);
-    // console.log(usern);
+  db.collection('users').find(user).toArray(function(err, result){
+    if (err) throw err;
+    console.log(result);
+
+    res.send({username: user.username, bio: result[0].bio});
+
+  });
+
 
   });
 
