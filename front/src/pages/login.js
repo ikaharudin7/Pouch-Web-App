@@ -26,7 +26,6 @@ function LoginForm() {
       url: "http://localhost:8080/signup",
     }).then((res) => console.log(res.data));
 
-
   };
 
   const login = () => {
@@ -63,46 +62,46 @@ function LoginForm() {
   }
 
   return (
-    
     <div className="App">
-      <div>
-        <h1>Register</h1>
-        <input
-          placeholder="firstname"
-          onChange={(e) => setRegisterFirstName(e.target.value)}
-        />
-        <input
-          placeholder="lastname"
-          onChange={(e) => setRegisterLastName(e.target.value)}
-        />
-        <input
-          placeholder="email"
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <input
-          placeholder="username"
-          onChange={(e) => setRegisterUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <button onClick={register}>Submit</button>
-      </div>
+      <div className="login-form">
+        <div className="form-box">
+          <h1 className="login-text">Sign Up</h1>
+          <input className="login-box"
+            placeholder="Given Name"
+            onChange={(e) => setRegisterFirstName(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Last Name"
+            onChange={(e) => setRegisterLastName(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Email"
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Username"
+            onChange={(e) => setRegisterUsername(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Password"
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
+          <button className="login-btn" onClick={register}>Submit</button>
+        </div>
 
-      <div>
-        <h1>Login</h1>
-        <input
-          placeholder="username"
-          onChange={(e) => setLoginUsername(e.target.value)}
-        />
-        <input
-          placeholder="password"
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-        <button onClick={login}>Submit</button>
+        <div className="form-box">
+          <h1 className="login-text">Login</h1>
+          <input className="login-box"
+            placeholder="Username"
+            onChange={(e) => setLoginUsername(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Password"
+            onChange={(e) => setLoginPassword(e.target.value)}
+          />
+          <button className="login-btn" onClick={login}>Submit</button>
+        </div>
       </div>
-
     </div> 
     
   );
