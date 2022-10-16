@@ -5,12 +5,12 @@ const passport = require("passport");
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
-const session = require("express-session");
+const sessions = require("express-session");
 const bodyParser = require("body-parser");
-const app = express();
 const User = require("./models/user");
 const Item = require("./models/item");
 const { json } = require("body-parser");
+const app = express();
 var fs = require('fs');
 var path = require('path');
 app.set("view engine", "ejs");
@@ -33,7 +33,17 @@ db.once("open", function () {
 
 
 
-// Middleware
+// Middleware FOR COOKIES/SESSION TIME
+var session;
+const oneDay = 1000 * 60 * 60 * 24;
+app.use(sessions({
+    secret: "secretkey",
+    saveUninitialized:true,
+    cookie: { maxAge: oneDay },
+    resave: false 
+}));
+
+// General Middleware
 app.use(bodyParser.json({limit: '2mb'}));
 app.use(bodyParser.urlencoded({limit: '2mb', extended: true }));
 app.use(
@@ -43,7 +53,7 @@ app.use(
   })
 );
 app.use(
-  session({
+  sessions({
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
@@ -64,6 +74,17 @@ app.get('/view_image', async(req, res) => {
 //----------------------------------------- END OF MIDDLEWARE---------------------------------------------------
 
 // Routes
+
+app.get('/login',(req,res) => {
+  if (req.session.userid) {
+    res.send({loggedIn: true, user: req.session.userid})
+  } else {
+    //console.log(req.session)
+    res.send({loggedIn: false});
+  }
+});
+
+
 app.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
@@ -74,12 +95,16 @@ app.post("/login", (req, res, next) => {
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
+        session = req.session;
+        session.userid = req.user;
+        console.log(req.session)
         res.send(req.user);
-        console.log(req.user);
+        //console.log(req.user);
       });
     }
   })(req, res, next);
 });
+
 
 app.post("/signup", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
@@ -104,6 +129,7 @@ app.post("/signup", (req, res) => {
 
 
 app.use('/signup', require("./routes/signup"));
+//app.use('/login', require("./routes/login"));
 app.use('/profile', require("./routes/profile"));
 app.use('/home', require("./routes/home"));
 app.use('/collections', require("./routes/collection"));

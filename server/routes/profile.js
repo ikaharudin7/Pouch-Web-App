@@ -13,20 +13,27 @@ router.use(bodyParser.json());
 global.usern = { username : "" };
 
 router.get("/", async(req, res) => {
+  
+  session=req.session;  
+  if(session.userid){
+    res.send(session);
+    console.log(session);}
 
-    global.usern = req.user;
-    res.send(usern);
-    console.log(usern);
+    //   //res.send(session);
+  //   //console.log(session.userid.username);
+  // }else
+  // res.sendFile('views/index.html',{root:__dirname})
+    // global.usern = req.user;
+    // res.send(usern);
+    // console.log(usern);
 
   });
 
 
 router.post('/', async(req, res)=>{
-    const myquery = { username : usern.username };
-    const newvalues = { $set: { email : req.body.bio}};
-    console.log(usern);
-    console.log(req.body.bio);
-    console.log(usern.username);
+    const myquery = { username : req.body.username };
+    const newvalues = { $set: { bio : req.body.bio}};
+
     db.collection('users').updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;
       console.log("1 document updated");

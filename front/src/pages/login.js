@@ -49,6 +49,7 @@ function LoginForm() {
 
       } else {
         window.location.href = "http://localhost:3000/login";
+        alert("Wrong username or password");
       }
     });
   };

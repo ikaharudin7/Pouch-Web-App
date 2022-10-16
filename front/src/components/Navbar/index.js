@@ -32,7 +32,7 @@ const Navbar = () => {
                 </NavLink>
                 <NavLink 
                   to="/collection-page"
-                > Test
+                > My Collection
                 </NavLink>
                 <NavLink 
                   to="/profile"

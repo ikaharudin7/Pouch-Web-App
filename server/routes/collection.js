@@ -24,6 +24,7 @@ var upload = multer({ storage: storage });
 router.get("/view_collection", function (req, res) {
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
     console.log(req);
+    console.log("test");
 });
 
 router.post("/collection_test", upload.single('file'), collectionController.addNewItem);

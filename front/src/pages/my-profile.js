@@ -4,19 +4,34 @@ import '../App.css';
 import './my-profile.css';
 import ButtonBases from '../components/Button';
 import { Button } from '@mui/material';
-
+import axios from 'axios';
 
 class Profile extends Component {
   state = {
-    email: [],
+    bio: [],
+    username: [],
   };
   
-  componentDidMount() {
-    fetch("https://localhost:8080/profile")
-        .then((res) => console.log(res.json()))
+  handleTest = (event) => {
+    event.preventDefault();
 
-        
-}
+    fetch('http://localhost:8080/login', {
+        method: "GET",
+        headers: {'Content-Type': 'application/json'},
+      })
+      .then((res)=> console.log(res))
+
+  }
+  
+
+  componentDidMount() {
+    axios.get("http://localhost:8080/login", { withCredentials: true}).then((response) => {
+      console.log(response.data.user.username);
+      this.setState({username: response.data.user.username})
+      this.setState({bio: response.data.user.bio})
+      console.log(this.state)
+    })
+  }
   
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
@@ -31,7 +46,7 @@ class Profile extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-      .then((res)=> console.log(res.json()))
+      .then((res)=> console.log(res))
 
     //this.getData(event);
   }; 
