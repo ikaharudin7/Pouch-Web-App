@@ -16,6 +16,8 @@ import ListView from './pages/collection-list';
 import Card from './pages/image';
 import CollectionOne from './pages/collection_one';
 import CollectionSoccer from './pages/collection_soccer';
+import CollectionFooty from './pages/collection_footy';
+import CollectionBasketball from './pages/collection_basketball';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Route path = '/imgtest' element={<Card /> } />
         <Route path = '/collection_1' element= {<CollectionOne/>} />
         <Route path = '/collection_2' element= {<CollectionSoccer/>} />
+        <Route path = '/collection_3' element= {<CollectionFooty/>} />
+        <Route path = '/collection_4' element= {<CollectionBasketball/>} />
         <Route path = '/' element={<Home />} />
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />

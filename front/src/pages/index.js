@@ -4,6 +4,8 @@ import './index.css'
 import ButtonBases from '../components/Button';
 import ButtonBases2 from '../components/Button2';
 import { NavBtn } from '../components/Navbar/NavbarElements';
+import ButtonBases3 from '../components/Button3';
+import ButtonBases4 from '../components/Button4';
 
   
 function Home() {
@@ -58,11 +60,11 @@ function Home() {
                   {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div className="bottom-panels">
-                  <ButtonBases /> 
+                  <ButtonBases3 /> 
                   {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div className="bottom-panels">
-                  <ButtonBases /> 
+                  <ButtonBases4 /> 
                   {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div>
