@@ -153,3 +153,21 @@ app.get('/browse_collection', async(req, res) => {
   res.send(items);
 });
 
+app.get('/browse_soccer', async(req, res) => {
+  //var username = req.session.userid.username;
+  var items = await db.collection('browse_soccer').find({}).toArray();
+  res.send(items);
+});
+
+app.get('/browse_footy', async(req, res) => {
+  //var username = req.session.userid.username;
+  var items = await db.collection('browse_footy').find({}).toArray();
+  res.send(items);
+});
+
+app.get('/browse_basketball', async(req, res) => {
+  //var username = req.session.userid.username;
+  var items = await db.collection('browse_basketball').find({}).toArray();
+  res.send(items);
+});
+

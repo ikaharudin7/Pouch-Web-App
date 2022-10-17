@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from '@mui/material/Link';
 import './index.css'
 import ButtonBases from '../components/Button';
+import ButtonBases2 from '../components/Button2';
 import { NavBtn } from '../components/Navbar/NavbarElements';
 
   
@@ -53,7 +54,7 @@ function Home() {
               </div>
               <div className="panels-section">
                  <div className="panel">
-                  <ButtonBases className="bottom-panels"/> 
+                  <ButtonBases2 className="bottom-panels"/> 
                   {/* <ButtonBases collection = {collections[0]}/>  */}
                  </div>
                  <div className="bottom-panels">

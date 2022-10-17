@@ -6,7 +6,8 @@ const collectionController = require('../controllers/collectionController')
 
 
 router.get('/', function (req, res) {
-    this.usern.username = req.session.userid.username
+    //NEED USERNAME HERE
+    //this.usern.username = req.session.userid.username
     res.send("req.session.userid.username");
 })
 

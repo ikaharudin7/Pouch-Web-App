@@ -13,7 +13,7 @@ exports.addNewItem = async (req, res) =>{
         img: req.body.img,
         date: req.body.date,
     }
-    db.collection('test image').insertOne(obj, function(err, res) {
+    db.collection('browse_soccer').insertOne(obj, function(err, res) {
       if(err) throw err;
       console.log("Test image added");
       console.log(obj);

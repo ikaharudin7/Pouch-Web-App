@@ -15,6 +15,7 @@ import Profile from './pages/my-profile';
 import ListView from './pages/collection-list';
 import Card from './pages/image';
 import CollectionOne from './pages/collection_one';
+import CollectionSoccer from './pages/collection_soccer';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path = '/imgtest' element={<Card /> } />
         <Route path = '/collection_1' element= {<CollectionOne/>} />
+        <Route path = '/collection_2' element= {<CollectionSoccer/>} />
         <Route path = '/' element={<Home />} />
         <Route path = '/test' element={<Test />} />
         <Route path = '/login' element={<LoginForm />} />

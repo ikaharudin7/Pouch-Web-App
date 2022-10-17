@@ -9,8 +9,8 @@ import CardData from "../pages/view_image";
 // Comment out later
 const collection = 
   {
-    img: 'test_image.jpg',
-    name: 'Pokemon', 
+    img: 'ronaldo.png.png',
+    name: 'Soccer Legends', 
     width: '100%',
   }
 ;
@@ -77,7 +77,7 @@ const ImageMarked = styled('span')(({ theme }) => ({
 // Switch to
 // export default function ButtonBases({collection}) {
 
-export default function ButtonBases() {
+export default function ButtonBases2() {
 
 
   if (Object.keys(collection).length === 0) {
@@ -96,7 +96,7 @@ export default function ButtonBases() {
           style={{
             width: '100%',
           }}
-          href = "/collection_1" 
+          href = "/collection_2" 
         >
 
           <img src = {collection.img} height = {imageHeight}/>
