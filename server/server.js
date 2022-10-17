@@ -141,9 +141,15 @@ app.listen(8080, () => {
 
 
 app.get('/view_collection', async(req, res) => {
+  //var username = req.session.userid.username;
   var myItem = await db.collection('test image').find({}).toArray();
   res.send(myItem);
-  console.log(myItem);
+  console.log(req);
 }); 
 
+app.get('/browse_collection', async(req, res) => {
+  //var username = req.session.userid.username;
+  var items = await db.collection('browse').find({}).toArray();
+  res.send(items);
+});
 

@@ -4,8 +4,10 @@ const { db} = require('../models/index');
 
 const collectionController = require('../controllers/collectionController')
 
+
 router.get('/', function (req, res) {
-    res.send('This is the collection page');
+    this.usern.username = req.session.userid.username
+    res.send("req.session.userid.username");
 })
 
 // Middleware for Getting and displaying images from database
@@ -22,15 +24,16 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get("/view_collection", function (req, res) {
-    res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-    console.log(req);
-    console.log("test");
+    res.send(this.usern);
 });
 
 router.post("/collection_test", upload.single('file'), collectionController.addNewItem);
 
 router.patch("/collection_update", upload.single('file'), collectionController.updateItem);
 
-router.delete("/collection_delete", upload.single('file'), collectionController.deleteItem)
+router.delete("/collection_delete", upload.single('file'), collectionController.deleteItem);
+
+router.delete("/browse_test", upload.single('file'), collectionController.addBrowse);
+
 
 module.exports = router;

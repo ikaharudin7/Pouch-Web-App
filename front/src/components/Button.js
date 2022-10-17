@@ -96,7 +96,7 @@ export default function ButtonBases() {
           style={{
             width: '100%',
           }}
-          href = {`/${collection.name}`} 
+          href = "/collection_1" 
         >
 
           <img src = {collection.img} height = {imageHeight}/>

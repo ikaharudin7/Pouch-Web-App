@@ -42,3 +42,18 @@ exports.deleteItem = async(req, res) => {
         // console.log(db.collection('test image').find({_id: ID}))
     });
 }
+
+exports.addBrowse = async (req, res) =>{
+    var obj = {
+        ownerID: req.body.ownerID,
+        name: req.body.name,
+        desc: req.body.desc,
+        img: req.body.img,
+        date: req.body.date,
+    }
+    db.collection('browse').insertOne(obj, function(err, res) {
+      if(err) throw err;
+      console.log("Test image added");
+      console.log(obj);
+    });
+}
