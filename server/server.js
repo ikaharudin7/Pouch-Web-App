@@ -90,7 +90,6 @@ app.post("/login", (req, res, next) => {
     if (err) throw err;
     if (!user) { 
       res.send("No User Exists");
-      
     } 
     else {
       req.logIn(user, (err) => {

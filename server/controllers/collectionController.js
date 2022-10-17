@@ -7,13 +7,13 @@ var path = require('path');
 
 exports.addNewItem = async (req, res) =>{
     var obj = {
-        ownerID: req.body.ownerID,
+        ownerID: req.headers.id,
         name: req.body.name,
         desc: req.body.desc,
         img: req.body.img,
         date: req.body.date,
     }
-    db.collection('browse_basketball').insertOne(obj, function(err, res) {
+    db.collection('test image').insertOne(obj, function(err, res) {
       if(err) throw err;
       console.log("Test image added");
       console.log(obj);

@@ -4,11 +4,13 @@ const { db} = require('../models/index');
 
 const collectionController = require('../controllers/collectionController')
 
+global.usern = "";
 
 router.get('/', function (req, res) {
     //NEED USERNAME HERE
-    //this.usern.username = req.session.userid.username
-    res.send("req.session.userid.username");
+    this.usern = req.session.userid.username
+    res.send(req.session.userid.username);
+    
 })
 
 // Middleware for Getting and displaying images from database
@@ -24,9 +26,11 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-router.get("/view_collection", function (req, res) {
-    res.send(this.usern);
-});
+router.get('/view_collection', async(req, res) => {
+    //var username = req.session.userid.username;
+    var myItem = await db.collection('test image').find({}).toArray();
+    res.send(myItem);
+  }); 
 
 router.post("/collection_test", upload.single('file'), collectionController.addNewItem);
 

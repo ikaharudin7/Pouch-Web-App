@@ -17,13 +17,15 @@ import UploadButton from './UploadButton';
 import dayjs from 'dayjs';
 import AddIcon from '@mui/icons-material/Add';
 import { Typography } from '@mui/material';
+import axios from 'axios';
 // import { stepClasses } from '@mui/material';
 
+global.userid = "";
 
 export default function DialogSelect() {
   const [open, setOpen] = React.useState(false);
   const [item, setItem] = React.useState({img: null});
-
+  const [userid, setUserid] = React.useState();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,6 +37,15 @@ export default function DialogSelect() {
   };
 
 
+  React.useEffect(() => {
+    axios.get("http://localhost:8080/login", { withCredentials: true})
+    .then((response) => {       
+      setUserid(response.data.user._id)
+      console.log(userid)
+  })    
+  }, [userid]);
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handleClose();
@@ -43,7 +54,7 @@ export default function DialogSelect() {
     
     fetch("http://localhost:8080/collections/collection_test", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "id": userid },
         body: JSON.stringify(item),
       })
       .then((res)=> res.json())

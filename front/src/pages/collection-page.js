@@ -15,8 +15,10 @@ function CollectionView() {
 
     const [cards, setCards] = React.useState({});
 
+
+
     React.useEffect(() => {
-      fetch('http://localhost:8080/view_collection', {
+      fetch('http://localhost:8080/collections/view_collection', {
         method: "GET",
         headers: {"Access-Control-Allow-Origin": "*"}
       })
