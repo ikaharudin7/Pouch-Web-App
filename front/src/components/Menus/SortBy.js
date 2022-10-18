@@ -69,14 +69,14 @@ export default function SortBy({cards, setFilteredCards}) {
 
   const handleZA = () => {
     this.filteredCardsString = cards.sort((a, b) => {
-      return (a.title.toUpperCase() > b.title.toUpperCase()) ? -1 : 1;
+      return (a.name.toUpperCase() > b.name.toUpperCase()) ? -1 : 1;
     })
     console.log(JSON.parse(filteredCardsString))
   }
 
   const handleAZ = () => {
     this.filteredCardsString = cards.sort((a, b) => {
-      return (a.title.toUpperCase() > b.title.toUpperCase()) ? 1 : -1;
+      return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1;
     })
     console.log(JSON.parse(filteredCardsString))
     
@@ -90,10 +90,6 @@ export default function SortBy({cards, setFilteredCards}) {
     
   }, [filteredCardsString, setFilteredCards])
 
-//   React.useEffect = (()=> {
-//     setFilteredCards(filteredCards);
-//   },[JSON.stringify(filteredCards)])
-// // setFilteredCards(filteredCards);
 
   return (
     <div style={{display: 'inline'}}>

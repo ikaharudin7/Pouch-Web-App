@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './collection-page.css'
-// import CollectionGrid from '../components/Grid';
-import PrimarySearchAppBar from '../components/SearchBar';
 import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
-// import View from '../components/Menus/View';
-// import SortBy from '../components/Menus/SortBy';
-// import { Box } from '@mui/material';
-// import { alignProperty } from '@mui/material/styles/cssUtils';
-// import Typography from '@mui/material/Typography';
+import Collection2 from '../components/Collection2';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import { textAlign } from '@mui/system';
 
   
 function CollectionOne() {
 
     const [cards, setCards] = React.useState({});
+    const [load, setLoad] = React.useState(false);
 
     React.useEffect(() => {
       fetch('http://localhost:8080/browse_collection', {
@@ -21,26 +19,23 @@ function CollectionOne() {
         headers: {"Access-Control-Allow-Origin": "*"}
       })
         .then((res) => res.json())
-        .then((cards) => setCards(cards));
+        .then((cards) => setCards(cards))
+        .then((load) => setLoad(true));
+
     }, []);
 
 
-    console.log(cards)
-
-    if (Object.keys(cards).length === 0) {
+    if (load == false) {
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
               <div className="box">
                 
-                        <div>
-                          <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
-                        </div>
-                        <div style={{textAlign: "center"}}>
-                          <DialogSelect/>
-                        </div>
-
+                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                  <CircularProgress />
+                  {/* <Typography style={{textAlign: "center"}}>Loading... </Typography> */}
+                </Box>
               </div>
             </div>
           </section>
@@ -55,7 +50,6 @@ function CollectionOne() {
           <section className="hero">
             <div className="hero-body">
               <div className="box">
-                {/* NEED TO FORMAT THJIS */}
                 {Object.keys(cards).length === 0 
                   ? (
                       <>
@@ -67,7 +61,7 @@ function CollectionOne() {
                         </div>
                       </>
                     )
-                  : <PrimarySearchAppBar cards = {cards}/>}
+                  : <Collection2 cards = {cards}/>}
               </div>
             </div>
           </section>

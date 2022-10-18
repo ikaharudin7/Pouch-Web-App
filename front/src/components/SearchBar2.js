@@ -2,25 +2,9 @@ import * as React from 'react';
 import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import Button from '@mui/material/Button';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import View from './Menus/View';
-import SortBy from './Menus/SortBy';
-import AddItem from './AddItem';
-import CollectionGrid from './Grid';
-
-
-
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,7 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export default function SearchAppBar({cards, setFilteredCards}) {
+export default function SearchBar2({cards, setFilteredCards}) {
 
 
   const [searchField, setSearchField] = useState("");
@@ -93,20 +77,16 @@ export default function SearchAppBar({cards, setFilteredCards}) {
         <>
             <AppBar position="static" sx ={{backgroundColor: 'black', borderRadius: 2}}>
                 <Toolbar>
-                <Search>
-                    <SearchIconWrapper>
-                    <SearchIcon />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="Search…"
-                      inputProps={{ 'aria-label': 'search' }}
-                      onChange = {handleChange}
-                    />
-                </Search>
-                <Box sx={{ flexGrow: 1 }} />
-                  <Box /*sx={{ display: { xs: 'none', md: 'flex' } }}*/>
-                      <AddItem />
-                  </Box>
+                  <Search>
+                      <SearchIconWrapper>
+                      <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ 'aria-label': 'search' }}
+                        onChange = {handleChange}
+                      />
+                  </Search>
                 </Toolbar>
             </AppBar>
 
