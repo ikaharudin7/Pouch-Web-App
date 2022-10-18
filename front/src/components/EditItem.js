@@ -33,6 +33,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
         console.log("POST sent");
       })
     handleEditClose();
+    window.location.href="http://localhost:3000/collection-page";
 
   }; 
 
@@ -60,7 +61,7 @@ export default function EditItem({card, handleClose, handleEditClose}) {
   return (
     <>
       <DialogTitle>Edit Item</DialogTitle>
-      <DialogContent>
+      <DialogContent sx ={{paddingBottom: 0}}>
           
         <Box component="form" sx={{ display: 'block', flexWrap: 'wrap', m: 1}} id = "editItem" onSubmit={handleSubmit}>
           <div>

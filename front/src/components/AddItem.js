@@ -5,20 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-// import InputLabel from '@mui/material/InputLabel';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-import ComboBox from './ComboBox';
 import TextField from '@mui/material/TextField';
-import Date from './Date';
 import UploadButton from './UploadButton';
 import dayjs from 'dayjs';
 import AddIcon from '@mui/icons-material/Add';
 import { Typography } from '@mui/material';
 import axios from 'axios';
-// import { stepClasses } from '@mui/material';
 
 global.userid = "";
 
@@ -49,8 +41,6 @@ export default function DialogSelect() {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleClose();
-    console.log("test")
-    console.log(item)
     
     fetch("http://localhost:8080/collections/collection_test", {
         method: "POST",
@@ -63,6 +53,8 @@ export default function DialogSelect() {
         console.log(JSON.stringify(item));
         console.log("POST sent");
       })
+
+    window.location.href="http://localhost:3000/collection-page";
   }; 
 
   return (

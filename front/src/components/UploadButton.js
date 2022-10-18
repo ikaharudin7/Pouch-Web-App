@@ -6,6 +6,7 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: 'relative',
+    borderStyle: 'outset',
     height: 200,
     width: 200,
     border: 2,
@@ -27,7 +28,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
 
 // Code Based on https://javascript.plainenglish.io/how-to-add-a-file-input-button-and-display-a-preview-image-with-react-2568d9d849f5
 export default function UploadButton({item, setItem}) {
-  const [image, setImage] = useState(item);
+  const [image, setImage] = useState(item.img);
 
 
   const convertToBase64 = (file) => {
@@ -58,7 +59,9 @@ export default function UploadButton({item, setItem}) {
 
 
   return (
+    
     <>
+    
       <input
         accept="image/*"
         type="file"
@@ -69,8 +72,8 @@ export default function UploadButton({item, setItem}) {
       />
 
       <label htmlFor="select-image">
-        <ImageButton variant="contained" color="primary" component="span">
-            {image &&(<img src={item.img} height="200px" />)}
+        <ImageButton variant="contained" color="primary" component="span" >
+            {image && (<img src={item.img} height="200px" style= {{borderStyle: "outset"}}/>)}
             <Stack sx={{alignItems: 'center'}}>
                 {!image && (<AddAPhotoIcon sx = {{m: 1}}/>)}
                 {!image && (<Typography sx = {{m: 1}}>Upload Image</Typography>)}

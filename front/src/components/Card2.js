@@ -39,9 +39,6 @@ export default function MediaCard2({card}) {
         <Typography variant="body2" color="text.secondary">
           {card.desc}
         </Typography>
-        <Typography variant="caption" color="text.secondary">
-          {card.date}
-        </Typography>
       </CardContent>
     </CardActionArea>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../../static/images/Logo.svg"
 import {
   Nav,
   NavLogo,
@@ -16,9 +17,10 @@ const Navbar = () => {
     return (
         <>
            <Nav>
-            <NavLogo to="/">
-                Logo
+            <NavLogo to="/"> 
+                <img src = {Logo} alt= "logo" style = {{maxHeight:"50%"}} />
             </NavLogo>
+            
             <Bars />
 
             <NavMenu>

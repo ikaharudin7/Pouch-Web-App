@@ -1,35 +1,36 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Typography } from '@mui/material';
+import dayjs from 'dayjs';
 
 
 export default function ViewItem({card, handleClose, handleEditOpen}) {
 
+
   return (
     <>
         <DialogTitle>{card.name}</DialogTitle>
-        <DialogContent>
+        <DialogContent sx ={{paddingBottom: 0}}>
           
           <Box component="div" sx={{ display: 'block', flexWrap: 'wrap', m: 1}}>
             
 
             <div>
               <div style = {{textAlign: 'center'}}>
-                  <img src={card.img} height="200px" />
+                  <img src={card.img} height="200px" style={{borderStyle: "outset",}}/>
               </div>
               <div>
-                <Typography>
+                <Typography sx = {{paddingTop: "10px", paddingBottom: "10px"}}>
                     Description: {card.desc}
                 </Typography>
               </div>
               <div>
                 <Typography>
-                    Date added: {card.date}
+                    Date added: {dayjs(card.date).toDate().toLocaleString()}
                 </Typography>
               </div>
               

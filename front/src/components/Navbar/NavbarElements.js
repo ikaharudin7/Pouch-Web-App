@@ -18,6 +18,7 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   align-items: left;
   font-family: Rajdhani, serif;
+  display: contents;
 `;
 
 export const NavLink = styled(Link)`

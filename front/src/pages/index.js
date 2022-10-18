@@ -37,7 +37,7 @@ function Home() {
                 <div className="container-right">
                   <h1 className="hero-title">Got a collection you want to feature? </h1>
                   <p className="hero-text">
-                    NAME is an online community made for collectors of all items to showcase
+                    POUCH is an online community made for collectors of all items to showcase
                     their extensive collections and prized items.
                   </p>
                   <p className="hero-text"> 
