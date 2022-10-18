@@ -25,7 +25,6 @@ export default function ListCard({card}) {
   };
 
   const handleClose = (event, reason) => {
-    // if (reason !== 'backdropClick') {
       setOpen(false);
       setEdit(false);
       
@@ -45,27 +44,26 @@ export default function ListCard({card}) {
     <Card sx={{ width: "100%", height: cardheight, borderRadius: 2}}>
       <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
         <CardContent sx = {{top: imageheight}}>
-          <Box sx={{ flexGrow: 1 }}>
             <Grid container columns={16.1} sx ={{alignItems: "center", paddingLeft: "10px"}}>
-              <Grid item xs={4} sx = {{paddingTop: "0"}}>
+              <Grid item xs={4} style = {{padding: "10px"}}>
                 <Typography variant="h5" style={{ wordWrap: "break-word" }}>
                   {card.name}
                 </Typography>
               </Grid>
               <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4}>
+              <Grid item xs={4} style = {{padding: "10px"}}>
                 <Typography variant="body1" style={{ wordWrap: "break-word" }}>
                   {card.desc}
                 </Typography>
               </Grid>
               <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4}>
+              <Grid item xs={4} style = {{padding: "10px"}}>
                 <Typography variant="body1" style={{ wordWrap: "break-word" }}>
                   {dayjs(card.date).toDate().toLocaleString()}
                 </Typography>
               </Grid>
               <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4}>
+              <Grid item xs={4} style = {{padding: "10px"}}>
                 <CardMedia
                   component="img"
                   image = {card.img}
@@ -75,7 +73,6 @@ export default function ListCard({card}) {
               </Grid>
                 
             </Grid>
-          </Box>
         </CardContent>
       </CardActionArea>
     <Dialog 

@@ -30,9 +30,9 @@ export default function ListCard2({card}) {
   return (
     <Card sx={{ width: "100%", height: cardheight, borderRadius: 2, }}>
       <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
-        <CardContent sx = {{flex: '1 0 auto', top: imageheight}}>
+        <CardContent sx = {{top: imageheight}}>
  
-            <Grid container wrap="wrap" spacing={2} columns={16.1} sx ={{alignItems: "center", paddingLeft: "10px"}}>
+            <Grid container columns={16.1} sx ={{alignItems: "center", paddingLeft: "10px"}}>
               <Grid item xs={4} style = {{padding: "10px"}}>
                 <Typography variant="h5" style={{ wordWrap: "break-word" }}>
                   {card.name}
