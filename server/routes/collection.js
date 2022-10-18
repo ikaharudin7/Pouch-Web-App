@@ -27,10 +27,9 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/view_collection', async(req, res) => {
-    //var username = req.session.userid.username;
-    var myItem = await db.collection('test image').find({}).toArray();
+    var myItem = await db.collection('test image').find({"ownerID":req.headers.id}).toArray();
     res.send(myItem);
-  }); 
+}); 
 
 router.post("/collection_test", upload.single('file'), collectionController.addNewItem);
 

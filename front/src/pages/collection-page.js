@@ -9,22 +9,30 @@ import { Typography } from '@mui/material';
 // import { Box } from '@mui/material';
 // import { alignProperty } from '@mui/material/styles/cssUtils';
 // import Typography from '@mui/material/Typography';
-
+import Axios from "axios"
   
 function CollectionView() {
 
     const [cards, setCards] = React.useState({});
 
+    const [userid, setUserid] = React.useState();
 
+    React.useEffect(() => {
+      Axios.get("http://localhost:8080/login", { withCredentials: true})
+      .then((response) => {       
+        setUserid(response.data.user._id)
+        console.log(userid)
+    })    
+    }, [userid]);
 
     React.useEffect(() => {
       fetch('http://localhost:8080/collections/view_collection', {
         method: "GET",
-        headers: {"Access-Control-Allow-Origin": "*"}
+        headers: {"Access-Control-Allow-Origin": "*", "id":userid}
       })
         .then((res) => res.json())
         .then((cards) => setCards(cards));
-    }, []);
+    }, [userid]);
 
 
     console.log(cards)

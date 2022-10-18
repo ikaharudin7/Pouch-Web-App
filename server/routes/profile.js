@@ -10,8 +10,6 @@ const User = require('../models/user')
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-global.usern = { username : "" };
-
 router.get("/", async(req, res) => {
   const user = { username : req.session.userid.username };
   
