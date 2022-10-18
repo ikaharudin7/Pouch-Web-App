@@ -94,7 +94,7 @@ export default function ButtonBases() {
           focusRipple
           key={collection.name}
           style={{
-            width: '66%',
+            width: '100%',
           }}
           href = "/collection_1" 
         >

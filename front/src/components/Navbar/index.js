@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import Logo from "../../static/images/Logo.svg"
 import {
@@ -12,7 +13,15 @@ import {
 
 
 const Navbar = () => {
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
+  React.useEffect(() => {
+    axios.get("http://localhost:8080/login", { withCredentials: true})
+    .then((response) => {       
+      setLoggedIn(response.data.loggedIn)
+      console.log(response.data.loggedIn)
+  })    
+  }, []);
 
     return (
         <>
@@ -32,24 +41,30 @@ const Navbar = () => {
                   to="/about"
                 > About
                 </NavLink>
+                {loggedIn ?
                 <NavLink 
                   to="/collection-page"
                 > My Collection
-                </NavLink>
+                </NavLink> : <></>
+                }
+                { loggedIn ? 
                 <NavLink 
                   to="/profile"
                 > My Profile
-                </NavLink>
+                </NavLink> : <></>
+                }
+                { !loggedIn ? 
                 <NavBtn>
                     <NavBtnLink to="/login">
                         Login
                     </NavBtnLink>
-                </NavBtn>
+                </NavBtn> : 
                 <NavBtn>
-                    <NavBtnLink to="/signup">
-                        Sign Up
-                    </NavBtnLink>
-                </NavBtn>
+                <NavBtnLink to="/login">
+                    Logout
+                </NavBtnLink>
+                </NavBtn> 
+                }
                 
             </NavMenu>
            </Nav> 

@@ -83,6 +83,7 @@ function LoginForm() {
             onChange={(e) => setRegisterUsername(e.target.value)}
           />
           <input className="login-box"
+            type="password"
             placeholder="Password"
             onChange={(e) => setRegisterPassword(e.target.value)}
           />
