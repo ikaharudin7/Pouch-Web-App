@@ -5,11 +5,13 @@ import View from './Menus/View';
 import SortBy from './Menus/SortBy';
 import SearchBar2 from './SearchBar2';
 import CollectionGrid2 from './Grid2';
+import CollectionList2 from './List2';
 
 
 export default function Collection2({cards}) {
 
   const [filteredCards, setFilteredCards] = React.useState(cards);
+  const [view, setView] = React.useState(false);
   
 
   return (
@@ -20,14 +22,15 @@ export default function Collection2({cards}) {
 
       <div className = 'text-box'><Typography>showing {cards.length} cards</Typography>
               
-        <div className='flex-box'>
-          <View />
+      <div className='flex-box'>
+          <View setView = {setView} />
           <SortBy cards = {filteredCards} setFilteredCards = {setFilteredCards}/>
         </div>
       </div>
 
 
-      <CollectionGrid2 filteredCards={filteredCards}/>
+      {!view && <CollectionGrid2 filteredCards={filteredCards}/>}
+      {view && <CollectionList2 filteredCards={filteredCards}/>}
 
     </Box>
     

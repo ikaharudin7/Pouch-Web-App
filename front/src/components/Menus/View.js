@@ -55,7 +55,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function SortBy() {
+export default function SortBy({setView}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -90,10 +90,10 @@ export default function SortBy() {
         onClose={handleClose}
       >
 
-        <MenuItem href='/collection-page' component = 'a' onClick={handleClose} disableRipple >
+        <MenuItem component = 'a' onClick={() => {handleClose(); setView(false);}} disableRipple >
           Grid
         </MenuItem>
-        <MenuItem href='/list' component = 'a' onClick={handleClose} disableRipple >
+        <MenuItem component = 'a' onClick={() => {handleClose(); setView(true);}} disableRipple >
           List
         </MenuItem>
         

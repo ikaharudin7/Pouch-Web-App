@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import dayjs from 'dayjs';
 
 
 const customTheme = createTheme({
@@ -67,19 +68,34 @@ export default function SortBy({cards, setFilteredCards}) {
 
   const filteredCardsString = JSON.stringify(cards);
 
+
   const handleZA = () => {
-    this.filteredCardsString = cards.sort((a, b) => {
+    cards.sort((a, b) => {
       return (a.name.toUpperCase() > b.name.toUpperCase()) ? -1 : 1;
     })
-    console.log(JSON.parse(filteredCardsString))
+
   }
 
   const handleAZ = () => {
-    this.filteredCardsString = cards.sort((a, b) => {
+    cards.sort((a, b) => {
       return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1;
     })
-    console.log(JSON.parse(filteredCardsString))
+  
     
+  }
+
+  const handleOld = () => {
+    cards.sort((a, b) => {
+      return (dayjs(a.date).diff(dayjs(b.date)) > 0) ? 1 : -1;
+    })
+
+  }
+
+  const handleNew = () => {
+    cards.sort((a, b) => {
+      return (dayjs(a.date).diff(dayjs(b.date)) < 0) ? 1 : -1;
+    })
+
     
   }
   
@@ -121,6 +137,12 @@ export default function SortBy({cards, setFilteredCards}) {
         </MenuItem>
         <MenuItem onClick={() => {handleClose(); handleZA();}} disableRipple>
           Z-A
+        </MenuItem>
+        <MenuItem onClick={() => {handleClose(); handleOld();}} disableRipple>
+          Oldest
+        </MenuItem>
+        <MenuItem onClick={() => {handleClose(); handleNew();}} disableRipple>
+          Newest
         </MenuItem>
       </StyledMenu>
     </div>

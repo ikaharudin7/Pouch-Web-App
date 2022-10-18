@@ -12,7 +12,7 @@ const imageheight = 180;
 
 export default function MediaCard2({card}) {
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(null);
 
   const handleClickOpen = () => {
     setOpen(true);
