@@ -30,7 +30,7 @@ export default function ListCard2({card}) {
   return (
     <Card sx={{ width: "100%", height: cardheight, borderRadius: 2, }}>
       <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
-        <CardContent sx = {{top: imageheight}}>
+        <CardContent sx = {{top: imageheight, padding: 0}}>
  
             <Grid container columns={16.1} sx ={{alignItems: "center", paddingLeft: "10px"}}>
               <Grid item xs={4} style = {{padding: "10px"}}>

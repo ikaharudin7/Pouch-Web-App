@@ -37,10 +37,10 @@ const Navbar = () => {
                   to="/"
                 > Home
                 </NavLink>
-                <NavLink 
+                { false ? <NavLink 
                   to="/about"
                 > About
-                </NavLink>
+                </NavLink> : null }
                 {loggedIn ?
                 <NavLink 
                   to="/collection-page"

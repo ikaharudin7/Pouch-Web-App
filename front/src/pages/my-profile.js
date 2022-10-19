@@ -10,6 +10,7 @@ class Profile extends Component {
   state = {
     bio: [],
     username: [],
+    edit: [false],
   };
   
   handleTest = (event) => {
@@ -42,6 +43,7 @@ class Profile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const data = this.state;
+    this.setState({edit: true})
     
     fetch('http://localhost:8080/profile', {
         method: "POST",
@@ -54,36 +56,47 @@ class Profile extends Component {
     window.location.href = "http://localhost:3000/profile"
   }; 
 
+  editOn = (event) => {
+    this.setState({edit: false})
+  }
+
+  editOff = (click) => {
+    this.setState({edit: true})
+  }
 
   render() {
     return (
       <div>
       <section className="hero">
         <div className="hero-body">
-          <Button className="edit-button">EDIT PAGE</Button>
+          { this.state.edit ? <Button onClick={this.editOn} className="edit-button">EDIT PAGE</Button> : <></>}
           <div className="main">
             <div className="container-right">
               <h1 className="hero-title">About Me </h1>
-              <p className="hero-text">
+              { this.state.edit ? <p className="hero-text">
                 {this.state.bio}
-              </p>
+              </p> : null }
               <br></br>
-
+              { !this.state.edit ?
               <form onSubmit={this.handleSubmit}>
-                <label>
+                <label className='featured-heading'>
                     Enter your bio here: <br></br>
                     <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
                 </label>
                 <br></br>
-                <input type="submit" value="Submit" />
+                <input className='featured-heading' type="submit" value="Submit" />
               </form>
+              : null }
             </div>
           </div>
 
             <div className="featured-body">
-              <h1 className="featured-heading"> My Collections</h1>
+              <h1 className="featured-heading">
+                <a href="/collection-page">View My Collection Here!</a>
+                      </h1>
+              
             </div>
-            <div className="panels-section">
+            { false ? <div className="panels-section">
                 <div className="panel">
                 <ButtonBases className="bottom-panels"/> 
                 </div>
@@ -93,8 +106,8 @@ class Profile extends Component {
                 <div className="bottom-panels">
                 <ButtonBases /> 
                 </div>
-            </div>
-          </div>    
+            </div> : null }
+          </div>
       </section>
     </div>
     );

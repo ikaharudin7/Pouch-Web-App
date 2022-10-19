@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material';
 import ViewItem2 from './ViewItem2';
 import Dialog from '@mui/material/Dialog';
 
-const cardheight = 300;
+const cardheight = 320;
 const imageheight = 180;
 
 export default function MediaCard2({card}) {
