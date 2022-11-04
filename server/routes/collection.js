@@ -4,8 +4,6 @@ const { db} = require('../models/index');
 
 const collectionController = require('../controllers/collectionController')
 
-global.usern = "";
-
 router.get('/', function (req, res) {
     //NEED USERNAME HERE
     this.usern = req.session.userid.username

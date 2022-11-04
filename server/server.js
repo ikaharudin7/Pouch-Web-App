@@ -132,6 +132,7 @@ app.use('/signup', require("./routes/signup"));
 app.use('/profile', require("./routes/profile"));
 app.use('/home', require("./routes/home"));
 app.use('/collections', require("./routes/collection"));
+app.use('browse-users', require("./routes/browse-users"))
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
 app.listen(8080, () => {
