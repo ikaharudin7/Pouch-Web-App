@@ -18,6 +18,7 @@ import CollectionOne from './pages/collection_one';
 import CollectionSoccer from './pages/collection_soccer';
 import CollectionFooty from './pages/collection_footy';
 import CollectionBasketball from './pages/collection_basketball';
+import Browse from './pages/browse-users';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path = '/imgtest' element={<Card /> } />
+        <Route path = '/browse-users' element = {<Browse />} />
         <Route path = '/collection_1' element= {<CollectionOne/>} />
         <Route path = '/collection_2' element= {<CollectionSoccer/>} />
         <Route path = '/collection_3' element= {<CollectionFooty/>} />

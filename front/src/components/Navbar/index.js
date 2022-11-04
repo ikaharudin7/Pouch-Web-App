@@ -37,6 +37,10 @@ const Navbar = () => {
                   to="/"
                 > Home
                 </NavLink>
+                <NavLink 
+                  to="/browse-users"
+                > Browse Users
+                </NavLink>
                 { false ? <NavLink 
                   to="/about"
                 > About
