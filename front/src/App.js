@@ -19,6 +19,7 @@ import CollectionSoccer from './pages/collection_soccer';
 import CollectionFooty from './pages/collection_footy';
 import CollectionBasketball from './pages/collection_basketball';
 import Browse from './pages/browse-users';
+import UserCollection from './pages/user-collection';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path = '/collection-page' element={<CollectionView />} />
         <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
+        <Route path = '/user-collection' element={<UserCollection/>} />
         <Route path = '/list' element={<ListView />} />
       </Routes>
     </Router>

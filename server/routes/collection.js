@@ -11,6 +11,14 @@ router.get('/', function (req, res) {
     
 })
 
+router.get('/view_collection/:username', async(req, res) => {
+    
+    var id = await db.collection('users').find({"username":req.params.username});
+    var myItem = await db.collection('test image').find({"ownerID":id._id}).toArray();
+    console.log(req.params.username);
+    res.send(myItem);
+}); 
+
 // Middleware for Getting and displaying images from database
 // Set up middleware for image storage
 var multer = require('multer');
