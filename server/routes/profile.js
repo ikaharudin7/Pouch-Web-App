@@ -19,7 +19,7 @@ router.get("/", async(req, res) => {
     if (err) throw err;
     console.log(result);
 
-    res.send({username: user.username, bio: result[0].bio});
+    res.send({username: user.username, bio: result[0].bio, img: result[0].img});
 
   });
 
@@ -29,7 +29,7 @@ router.get("/", async(req, res) => {
 
 router.post('/', async(req, res)=>{
     const myquery = { username : req.body.username };
-    const newvalues = { $set: { bio : req.body.bio}};
+    const newvalues = { $set: { bio : req.body.bio, img: req.body.img}};
 
     db.collection('users').updateOne(myquery, newvalues, function(err, res) {
       if (err) throw err;

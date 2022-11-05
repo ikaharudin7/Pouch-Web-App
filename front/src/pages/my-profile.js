@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import '../App.css'; 
 import './my-profile.css';
 import ButtonBases from '../components/Button';
@@ -12,7 +11,7 @@ class Profile extends Component {
     bio: [],
     username: [],
     edit: [false],
-    img: null,
+    img: [],
   };
 
   setTest = this.setState.bind(this);
@@ -33,6 +32,7 @@ class Profile extends Component {
       console.log(response.data.username);
       this.setState({username: response.data.username});
       this.setState({bio: response.data.bio});
+      this.setState({img: response.data.img })
       console.log(this.state);
     })
   }
@@ -74,19 +74,30 @@ class Profile extends Component {
           { this.state.edit ? <Button onClick={this.editOn} className="edit-button">EDIT PAGE</Button> : <></>}
           <div className="main">
             <div className="container-right">
+            { this.state.edit ? <p className="hero-text">
+                
+              <img src={this.state.img} height={300} style={{borderStyle: "groove"}}/>
+
+            </p> : null }
+            
+
               <h1 className="hero-title">About Me </h1>
+              
               { this.state.edit ? <p className="hero-text">
+                
                 {this.state.bio}
+
               </p> : null }
               <br></br>
               { !this.state.edit ?
               <form onSubmit={this.handleSubmit}>
+                <UploadButton item = {this.state} setItem = {this.setTest}/>
                 <label className='featured-heading'>
                     Enter your bio here: <br></br>
                     <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
                 </label>
                 <br></br>
-                <UploadButton item = {this.state} setItem = {this.setTest}/>
+                
 
 
                 <input className='featured-heading' type="submit" value="Submit" />
