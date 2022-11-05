@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 
 export default function ViewItem({card, handleClose, handleEditOpen}) {
 
-
+  const imageHeight = "500px"
   return (
     <>
         <DialogTitle>{card.name}</DialogTitle>
@@ -21,7 +21,7 @@ export default function ViewItem({card, handleClose, handleEditOpen}) {
 
             <div>
               <div style = {{textAlign: 'center'}}>
-                  <img src={card.img} height="200px" style={{borderStyle: "outset",}}/>
+                  <img src={card.img} height={imageHeight} style={{borderStyle: "outset",}}/>
               </div>
               <div>
                 <Typography sx = {{paddingTop: "10px", paddingBottom: "10px"}}>

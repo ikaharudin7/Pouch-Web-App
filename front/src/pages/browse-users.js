@@ -1,83 +1,75 @@
 import React, { Component } from 'react';
-import Link from '@mui/material/Link';
 import './index.css'
-import ButtonBases from '../components/Button';
-import ButtonBases2 from '../components/Button2';
-import { NavBtn } from '../components/Navbar/NavbarElements';
-import ButtonBases3 from '../components/Button3';
-import ButtonBases4 from '../components/Button4';
+import './collection-page.css'
+import DialogSelect from '../components/AddItem';
+import { Typography } from '@mui/material';
+import UserCollection from '../components/UserCollection';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
   
 function Browse() {
 
-    // Fetch collection you want to display from here
+    const [users, setUsers] = React.useState({});
+    const [load, setLoad] = React.useState(false);
 
-    // const [collections, setCollections] = React.useState({});
+    // Change when user post works
+    React.useEffect(() => {
+      fetch('http://localhost:8080/browse_collection', {
+        method: "GET",
+        headers: {"Access-Control-Allow-Origin": "*"}
+      })
+        .then((res) => res.json())
+        .then((users) => setUsers(users))
+        .then((load) => setLoad(true));
 
-    // React.useEffect(() => {
-    //   fetch('http://localhost:8080/view_collection', {
-    //     method: "GET",
-    //     headers: {"Access-Control-Allow-Origin": "*"}
-    //   })
-    //     .then((res) => res.json())
-    //     .then((collections) => setCollections(collections));
-    // }, []);
+    }, []);
   
 
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
-              <div className="container">
-                <div class="container-left">
-                  {/* set which collection you want to display */}
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                  <ButtonBases /> 
-                </div>
-                <div className="container-right">
-                  <h1 className="hero-title">Browse </h1>
-                  <p className="hero-text">
-                    BROWSEBROWSE
-                  </p>
-                  <p className="hero-text"> 
-                    Post your collection here and make it stand out to other collectors! 
-                  </p>
-
-                  <NavBtn className="signup-btn">
-                    <Link href = "/signup" underline="hover" color = 'black' >
-                      Get started here today!</Link>
-                  </NavBtn>
-                </div>
-              </div>
-              
               <div className="featured-body">
-                <h1 className="featured-heading"> Browse Featured Collections</h1>
-              </div>
-              <div className="panels-section">
-                 <div className="panel">
-                  <ButtonBases2 className="bottom-panels"/> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases3 /> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases4 /> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div>
-
-                 </div>
-
+                <h1 className="featured-heading"> Browse Featured Users</h1>
               </div>
 
+
+              {load === false
+                ? (
+                  <div>
+
+                        <div className="box">
+                          
+                          <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                            <CircularProgress />
+                          </Box>
+                        </div>
+
+                  </div>
+                )
+                : (
+                  <div>
+
+                        <div className="box">
+                          {Object.keys(users).length === 0 
+                            ? (
+                                <>
+                                  <div>
+                                    <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
+                                  </div>
+                                  <div style={{textAlign: "center"}}>
+                                    <DialogSelect/>
+                                  </div>
+                                </>
+                              )
+                            : <UserCollection users = {users}/>}
+                        </div>
+
+                  </div>
+                )
+              }
             </div>
-            
-            
-            <Link className="link" href = "/about" underline="hover" color = 'black' >
-              Learn more
-            </Link>
           </section>
         </div>
       );
