@@ -84,7 +84,6 @@ export default function SortBy({users, setFilteredUsers}) {
     
   }
   
-
   React.useEffect(() => {
       
     setFilteredUsers(JSON.parse(filteredUsersString))
