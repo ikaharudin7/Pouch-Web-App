@@ -30,6 +30,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
 export default function UploadButton({item, setItem}) {
   const [image, setImage] = useState(item.img);
 
+  console.log(image)
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {

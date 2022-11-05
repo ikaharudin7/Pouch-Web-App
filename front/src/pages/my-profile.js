@@ -5,13 +5,17 @@ import './my-profile.css';
 import ButtonBases from '../components/Button';
 import { Button } from '@mui/material';
 import axios from 'axios';
+import UploadButton from '../components/UploadButton';
 
 class Profile extends Component {
   state = {
     bio: [],
     username: [],
     edit: [false],
+    img: null,
   };
+
+  setTest = this.setState.bind(this);
   
   handleTest = (event) => {
     event.preventDefault();
@@ -24,7 +28,6 @@ class Profile extends Component {
 
   }
   
-
   componentDidMount() {
     axios.get("http://localhost:8080/profile", { withCredentials: true}).then((response) => {
       console.log(response.data.username);
@@ -34,7 +37,6 @@ class Profile extends Component {
     })
   }
 
-  
   handleChange = (event) => {
     this.setState({[event.target.name]: event.target.value});
     
@@ -84,6 +86,9 @@ class Profile extends Component {
                     <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
                 </label>
                 <br></br>
+                <UploadButton item = {this.state} setItem = {this.setTest}/>
+
+
                 <input className='featured-heading' type="submit" value="Submit" />
               </form>
               : null }
