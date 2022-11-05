@@ -50,10 +50,9 @@ export default function SearchBar2({cards, setFilteredCards}) {
   const filteredCards = cards.filter(
     cards => {
         return (
-        cards
-        .name
-        .toLowerCase()
-        .includes(searchField.toLowerCase())
+          (cards.name && cards.name.toLowerCase().includes(searchField.toLowerCase())) ||
+          (cards.username && cards.username.toLowerCase().includes(searchField.toLowerCase())) |
+          (cards.desc && cards.desc.toLowerCase().includes(searchField.toLowerCase()))
         );
     }
     );

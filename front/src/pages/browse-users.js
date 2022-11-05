@@ -15,7 +15,7 @@ function Browse() {
 
     // Change when user post works
     React.useEffect(() => {
-      fetch('http://localhost:8080/browse_collection', {
+      fetch('http://localhost:8080/browse-users', {
         method: "GET",
         headers: {"Access-Control-Allow-Origin": "*"}
       })
@@ -24,6 +24,7 @@ function Browse() {
         .then((load) => setLoad(true));
 
     }, []);
+    console.log(users)
   
 
       return (

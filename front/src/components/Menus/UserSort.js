@@ -56,7 +56,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function SortBy({users, setFilteredUsers}) {
+export default function UserSort({cards, setFilteredCards}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -66,29 +66,27 @@ export default function SortBy({users, setFilteredUsers}) {
     setAnchorEl(null);
   };
 
-  const filteredUsersString = JSON.stringify(users);
+  const filteredCardsString = JSON.stringify(cards);
 
 
   const handleZA = () => {
-    users.sort((a, b) => {
-      return (a.name.toUpperCase() > b.name.toUpperCase()) ? -1 : 1;
+    cards.sort((a, b) => {
+      return (a.username.toUpperCase() > b.username.toUpperCase()) ? -1 : 1;
     })
 
   }
 
   const handleAZ = () => {
-    users.sort((a, b) => {
-      return (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1;
+    cards.sort((a, b) => {
+      return (a.username.toUpperCase() > b.username.toUpperCase()) ? 1 : -1;
     })
-  
-    
   }
   
   React.useEffect(() => {
       
-    setFilteredUsers(JSON.parse(filteredUsersString))
+    setFilteredCards(JSON.parse(filteredCardsString))
     
-  }, [filteredUsersString, setFilteredUsers])
+  }, [filteredCardsString, setFilteredCards])
 
 
   return (
