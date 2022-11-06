@@ -8,8 +8,10 @@ Here are the steps to run the project.
 
 1. Open the repository on VSCode, and then open up 2 separate terminals
 
-2. On one terminal, direct to the 'front' folder with 'cd front'
+2. On one of the terminals, run npm install - this will install all necessary packages to run the website
 
-3. On the other, direct to the 'server' folder with 'cd server'
+3. On one terminal, direct to the 'front' folder with 'cd front'
 
-4. Run 'npm start' on both terminals and localhost:3030/ should pop up in a browser. 
+4. On the other, direct to the 'server' folder with 'cd server'
+
+5. Run 'npm start' on both terminals and localhost:3030/ should pop up in a browser. 
