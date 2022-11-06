@@ -39,7 +39,9 @@ function App() {
         <Route path = '/collection-page' element={<CollectionView />} />
         <Route path = '/signup' element={<SignUpForm />} />
         <Route path = '/Char' element={<Char />} />
-        <Route path = '/user-collection' element={<UserCollection/>} />
+        
+        <Route path = '/user-collection/:username' element={<UserCollection/>} />
+
         <Route path = '/list' element={<ListView />} />
       </Routes>
     </Router>

@@ -13,9 +13,9 @@ router.get('/', function (req, res) {
 
 router.get('/view_collection/:username', async(req, res) => {
     
-    var id = await db.collection('users').find({"username":req.params.username});
-    var myItem = await db.collection('test image').find({"ownerID":id._id}).toArray();
-    console.log(req.params.username);
+    var id = await db.collection('users').findOne({"username": req.params.username});
+    var myItem = await db.collection('test image').find({"ownerID":id._id.toString()}).toArray();
+    console.log(myItem);
     res.send(myItem);
 }); 
 
@@ -33,6 +33,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/view_collection', async(req, res) => {
+    console.log(req.headers.id);
     var myItem = await db.collection('test image').find({"ownerID":req.headers.id}).toArray();
     res.send(myItem);
 }); 
