@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './collection-page.css'
 import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
@@ -24,7 +24,7 @@ function CollectionFooty() {
   }, []);
 
 
-  if (load == false) {
+  if (load === false) {
     return (
       <div>
         <section className="hero">
@@ -33,7 +33,6 @@ function CollectionFooty() {
               
               <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                 <CircularProgress />
-                {/* <Typography style={{textAlign: "center"}}>Loading... </Typography> */}
               </Box>
             </div>
           </div>

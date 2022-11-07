@@ -8,31 +8,31 @@ export default function CollectionList({filteredCards}) {
     
     return (    
         <>
-          <Box sx={{ flexGrow: 1, paddingBottom: "10px" }}>
-            <Grid container columns={16} sx ={{alignItems: "center", paddingLeft: "10px"}}>
-              <Grid item xs={4}>
-                <Typography variant="body1" style={{ wordWrap: "break-word" }}>
+          <Box sx={{ flexGrow: 1}}>
+            <Grid container columns={4} sx ={{alignItems: "center", paddingLeft: "10px"}}>
+              <Grid item xs={1}>
+                <Typography variant="body1" fontWeight = "bolder" style={{ wordWrap: "break-word" , padding: "10px"}}>
                   Name
                 </Typography>
               </Grid>
 
 
-              <Grid item xs={4}>
-                <Typography variant="body1" style={{ wordWrap: "break-word" }}>
+              <Grid item xs={1}>
+                <Typography variant="body1" fontWeight = "bolder" style={{ wordWrap: "break-word" , padding: "10px"}}>
                   Description
                 </Typography>
               </Grid>
 
 
-              <Grid item xs={3.9}>
-                <Typography variant="body1" style={{ wordWrap: "break-word" }}>
+              <Grid item xs={1}>
+                <Typography variant="body1" fontWeight = "bolder" style={{ wordWrap: "break-word" , padding: "10px"}}>
                   Date
                 </Typography>
               </Grid>
 
 
-              <Grid item xs={4}>
-                <Typography variant="body1" style={{ wordWrap: "break-word" }}>
+              <Grid item xs={1}>
+                <Typography variant="body1" fontWeight = "bolder" style={{ wordWrap: "break-word" , padding: "10px"}}>
                   Image
                 </Typography>
               </Grid>  

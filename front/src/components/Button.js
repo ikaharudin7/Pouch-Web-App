@@ -3,7 +3,6 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
-import CardData from "../pages/view_image";
 
 // Currently works with the file placed in the public folder
 // Comment out later
@@ -11,21 +10,17 @@ const collection =
   {
     img: 'zekrom.png',
     name: 'Pokemon', 
-    width: '100%',
+    // width: '100%',
   }
 ;
 
 // Sets height of button and image
-const imageHeight = 400;
+
 
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
-  height: imageHeight,
-  [theme.breakpoints.down('sm')]: {
-    width: '100% !important', // Overrides inline-style
-    height: 100,
-  },
+  height: '100%',
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
     '& .MuiImageBackdrop-root': {
@@ -88,7 +83,7 @@ export default function ButtonBases() {
     );}
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap'}}>
 
         <ImageButton
           focusRipple
@@ -99,7 +94,7 @@ export default function ButtonBases() {
           href = "/collection_1" 
         >
 
-          <img src = {collection.img} height = {imageHeight}/>
+          <img src = {collection.img} alt = {collection.name} style = {{maxWidth: "100%"}}/>
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Typography

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Link from '@mui/material/Link';
 import './index.css'
 import ButtonBases from '../components/Button';
@@ -6,7 +6,7 @@ import ButtonBases2 from '../components/Button2';
 import { NavBtn } from '../components/Navbar/NavbarElements';
 import ButtonBases3 from '../components/Button3';
 import ButtonBases4 from '../components/Button4';
-
+import Grid from '@mui/material/Grid';
   
 function Home() {
 
@@ -51,34 +51,39 @@ function Home() {
                 </div>
               </div>
               
-              <div className="featured-body">
+              <div className="featured-body-start">
                 <h1 className="featured-heading"> Browse Featured Collections</h1>
               </div>
-              <div className="panels-section">
-                 <div className="panel">
-                  <ButtonBases2 className="bottom-panels"/> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases3 /> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div className="bottom-panels">
-                  <ButtonBases4 /> 
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                 </div>
-                 <div>
+              <div className="featured-body-end" style={{paddingBottom: "40px"}}>
+  
+              
+                <Grid container columns={3}>
+                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                    <ButtonBases2 /> 
+                    {/* <ButtonBases collection = {collections[0]}/>  */}
+                  </Grid>
+                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                    <ButtonBases3 /> 
+                    {/* <ButtonBases collection = {collections[0]}/>  */}
+                  </Grid>
+                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                    <ButtonBases4 /> 
+                    {/* <ButtonBases collection = {collections[0]}/>  */}
+                  </Grid>
+                </Grid>
 
-                 </div>
+       
 
               </div>
-
+              <div style={{paddingTop: "10px"}}>
+                <Link className="link" href = "/about" underline="hover" color = 'black'>
+                  Learn more
+                </Link>
+              </div>
             </div>
             
             
-            <Link className="link" href = "/about" underline="hover" color = 'black' >
-              Learn more
-            </Link>
+            
           </section>
         </div>
       );

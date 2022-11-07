@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './index.css'
 import './collection-page.css'
 import DialogSelect from '../components/AddItem';

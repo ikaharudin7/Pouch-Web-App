@@ -5,16 +5,20 @@ import ButtonBases from '../components/Button';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import UploadButton from '../components/UploadButton';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 class Profile extends Component {
   state = {
     bio: [],
     username: [],
     edit: [false],
-    img: [],
+    img: null,
   };
 
-  setTest = this.setState.bind(this);
+  setImage = this.setState.bind(this);
   
   handleTest = (event) => {
     event.preventDefault();
@@ -54,7 +58,6 @@ class Profile extends Component {
       })
       .then((res)=> console.log(res))
 
-    //this.getData(event);
     window.location.href = "http://localhost:3000/profile"
   }; 
 
@@ -71,42 +74,91 @@ class Profile extends Component {
       <div>
       <section className="hero">
         <div className="hero-body">
+
           { this.state.edit ? <Button onClick={this.editOn} className="edit-button">EDIT PAGE</Button> : <></>}
           <div className="main">
             <div className="container-right">
-            { this.state.edit ? <p className="hero-text">
-                
-              <img src={this.state.img} height={300} style={{borderStyle: "groove"}}/>
-
-            </p> : null }
             
 
               <h1 className="hero-title">About Me </h1>
-              
-              { this.state.edit ? <p className="hero-text">
-                
-                {this.state.bio}
+              { this.state.edit ? (
+                this.state.img ?
+                    
+                    
+                  <div style={{display: "grid", gridTemplateColumns: "1fr auto", gridGap: "20px"}}>
+                    
+                    <div>
+                      <Typography variant="h4" style={{ wordWrap: "break-word" }} fontWeight = "bold">
+                        {this.state.username.toUpperCase()}
+                      </Typography>
+  
+                      <Typography variant="h6" style={{ wordWrap: "break-word", marginTop: "10px", whiteSpace: "pre-wrap"}}>
+                        {this.state.bio}  
+                      </Typography>
+                    </div>
+                    <img src={this.state.img} alt = {this.state.username} height={300} style = {{borderRadius: 10}}/>
+                    
+                  </div>
+                    
+                : <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+                    <CircularProgress />
+                  </Box> 
+              ) : null}
 
-              </p> : null }
+
               <br></br>
               { !this.state.edit ?
-              <form onSubmit={this.handleSubmit}>
-                <UploadButton item = {this.state} setItem = {this.setTest}/>
-                <label className='featured-heading'>
-                    Enter your bio here: <br></br>
-                    <textarea id="bio" type="text" value={this.state.value} name="bio" onChange={this.handleChange} />
-                </label>
-                <br></br>
-                
+              
+              <form onSubmit={this.handleSubmit} id = "profile">
+              
+                <div>
 
+                  
+                  <div>
+                    <label className='featured-heading'>
+                      Upload a profile picture here:<br></br>
+                      <UploadButton item = {this.state} setItem = {this.setImage}/> 
+                    </label>
+                  </div>
+                  
+                  
+                  <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
+                    <label className='featured-heading'>
+                        Enter your bio here: <br></br>
+                        <TextField
+                          id="bio"
+                          name="bio"
+                          multiline
+                          fullWidth
+                          defaultValue={this.state.bio}
+                          onChange={this.handleChange}
+                          sx = {{marginTop: "10px", backgroundColor: "white", whiteSpace: "pre-wrap"}}
+                        />
+                    </label>
+                  
+                    <br></br>
+                      
+                    <div style={{paddingTop: "10px", float: "right"}}>
+                      <Button onClick={() => window.location.reload()}>
+                        Cancel
+                      </Button>
+                      <Button type = "submit" form = "profile">
+                        Submit
+                      </Button>
+                      
+                    </div>
 
-                <input className='featured-heading' type="submit" value="Submit" />
+                  </div>
+
+                  
+                </div>
               </form>
+              
               : null }
             </div>
           </div>
 
-            <div className="featured-body">
+            <div className="featured-body-end">
               <h1 className="featured-heading">
                 <a href="/collection-page">View My Collection Here!</a>
                       </h1>

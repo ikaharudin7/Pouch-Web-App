@@ -10,7 +10,7 @@ import dayjs from 'dayjs';
 
 export default function ViewItem({card, handleClose, handleEditOpen}) {
 
-  const imageHeight = "500px"
+
   return (
     <>
         <DialogTitle>{card.name}</DialogTitle>
@@ -21,16 +21,27 @@ export default function ViewItem({card, handleClose, handleEditOpen}) {
 
             <div>
               <div style = {{textAlign: 'center'}}>
-                  <img src={card.img} height={imageHeight} style={{borderStyle: "outset",}}/>
+                  <img src={card.img} alt = {card.name} style = {{maxHeight: "500pt", maxWidth: "100%"}} />
+                  
               </div>
               <div>
-                <Typography sx = {{paddingTop: "10px", paddingBottom: "10px"}}>
-                    Description: {card.desc}
+                <Typography variant = "subtitle2" sx = {{paddingTop: "10px"}}>
+                    Description: 
+                    
+                </Typography>
+                <Typography variant = "body1" sx = {{paddingBottom: "10px"}}>
+                    
+                    {card.desc}
                 </Typography>
               </div>
               <div>
-                <Typography>
-                    Date added: {dayjs(card.date).toDate().toLocaleString()}
+                <Typography variant = "subtitle2">
+                    Date added: 
+                    
+                </Typography>
+                <Typography variant = "body1">
+                    
+                    {dayjs(card.date).toDate().toLocaleString()}
                 </Typography>
               </div>
               

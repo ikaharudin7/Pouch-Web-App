@@ -7,9 +7,7 @@ import { CardActionArea } from '@mui/material';
 import ViewItem from './ViewItem';
 import EditItem from './EditItem';
 import Dialog from '@mui/material/Dialog';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Divider from '@mui/material/Divider';
 import dayjs from 'dayjs';
 
 const cardheight = 200;
@@ -44,31 +42,32 @@ export default function ListCard({card}) {
     <Card sx={{ width: "100%", height: cardheight, borderRadius: 2}}>
       <CardActionArea sx = {{height: cardheight}} onClick = {handleClickOpen}>
         <CardContent sx = {{top: imageheight, padding: 0}}>
-            <Grid container columns={16.1} sx ={{alignItems: "center", paddingLeft: "10px"}}>
-              <Grid item xs={4} style = {{padding: "10px"}}>
+            <Grid container columns={4} sx ={{paddingLeft: "10px"}}>
+              
+              <Grid item xs={1} style = {{padding: "10px", alignSelf: "center", overflow: "auto"}}>
                 <Typography variant="h5" style={{ wordWrap: "break-word" }}>
                   {card.name}
                 </Typography>
               </Grid>
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4} style = {{padding: "10px"}}>
+
+              <Grid item xs={1} style = {{padding: "10px", alignSelf: "center", overflow: "auto"}}>
                 <Typography variant="body1" style={{ wordWrap: "break-word" }}>
                   {card.desc}
                 </Typography>
               </Grid>
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4} style = {{padding: "10px"}}>
+
+              <Grid item xs={1} style = {{padding: "10px", alignSelf: "center", overflow: "auto"}}>
                 <Typography variant="body1" style={{ wordWrap: "break-word" }}>
                   {dayjs(card.date).toDate().toLocaleString()}
                 </Typography>
               </Grid>
-              <Divider orientation="vertical" variant="middle" flexItem />
-              <Grid item xs={4} style = {{padding: "10px"}}>
+
+              <Grid item xs={1} style = {{padding: "10px"}}>
                 <CardMedia
                   component="img"
                   image = {card.img}
                   alt={card.alt}
-                  sx = {{height: imageheight, top: 0, objectFit: 'fill', maxWidth: 200}}
+                  sx = {{height: imageheight, top: 0, objectFit: 'fill', maxWidth: 180, borderRadius: 2}}
                 />
               </Grid>
                 
@@ -94,4 +93,4 @@ export default function ListCard({card}) {
 
     </Card>
   );
-}
+} 

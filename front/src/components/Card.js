@@ -61,7 +61,7 @@ export default function MediaCard({card}) {
       disableEscapeKeyDown 
       open={open} 
       onClose={handleClose} 
-      fullWidth 
+      maxWidth = "90vw" 
     >
       {console.log(edit)}
       {edit

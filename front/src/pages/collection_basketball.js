@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './collection-page.css'
 import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
@@ -24,16 +24,14 @@ function CollectionBasketball() {
   }, []);
 
 
-  if (load == false) {
+  if (load === false) {
     return (
       <div>
         <section className="hero">
           <div className="hero-body">
-            <div className="box">
-              
+            <div className="box">           
               <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                 <CircularProgress />
-                {/* <Typography style={{textAlign: "center"}}>Loading... </Typography> */}
               </Box>
             </div>
           </div>

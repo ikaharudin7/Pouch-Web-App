@@ -44,8 +44,8 @@ app.use(sessions({
 }));
 
 // General Middleware
-app.use(bodyParser.json({limit: '2mb'}));
-app.use(bodyParser.urlencoded({limit: '2mb', extended: true }));
+app.use(bodyParser.json({limit: '3mb'}));
+app.use(bodyParser.urlencoded({limit: '3mb', extended: true }));
 app.use(
   cors({
     origin: "http://localhost:3000", // <-- location of the react app were connecting to

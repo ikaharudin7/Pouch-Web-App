@@ -25,7 +25,7 @@ function SignUpForm() {
       url: "http://localhost:8080/signup",
     }).then((res) => {
       console.log(res.data)
-      if (res.data=="User Already Exists") {
+      if (res.data ==="User Already Exists") {
         alert("User Already Exists");
         window.location.href = "http://localhost:3000/signup";
       }

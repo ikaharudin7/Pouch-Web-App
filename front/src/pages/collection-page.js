@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './collection-page.css'
 import Collection from '../components/Collection';
 import DialogSelect from '../components/AddItem';
@@ -19,31 +19,26 @@ function CollectionView() {
       .then((response) => {       
         setUserid(response.data.user._id)
         console.log(userid)
-    })    
-    }, [userid]);
-
-    React.useEffect(() => {
-      fetch('http://localhost:8080/collections/view_collection', {
-        method: "GET",
-        headers: {"Access-Control-Allow-Origin": "*", "id":userid}
       })
-        .then((res) => res.json())
-        .then((cards) => setCards(cards))
-        .then((load) => setLoad(true));
+      if (userid) {
+        fetch('http://localhost:8080/collections/view_collection', {
+            method: "GET",
+            headers: {"Access-Control-Allow-Origin": "*", "id":userid}
+          })
+            .then((res) => res.json())
+            .then((cards) => setCards(cards))
+            .then((load) => setLoad(true));
+      }
     }, [userid]);
 
-
-
-    if (load == false) {
+    if (load === false) {
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
-              <div className="box">
-                
+              <div className="box">                
                 <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                   <CircularProgress />
-                  {/* <Typography style={{textAlign: "center"}}>Loading... </Typography> */}
                 </Box>
               </div>
             </div>
@@ -54,29 +49,28 @@ function CollectionView() {
 
 
     
-      return (
-        <div>
-          <section className="hero">
-            <div className="hero-body">
-              <div className="box">
-                {/* NEED TO FORMAT THJIS */}
-                {Object.keys(cards).length === 0 
-                  ? (
-                      <>
-                        <div>
-                          <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
-                        </div>
-                        <div style={{textAlign: "center"}}>
-                          <DialogSelect/>
-                        </div>
-                      </>
-                    )
-                  : <Collection cards = {cards}/>}
-              </div>
+    return (
+      <div>
+        <section className="hero">
+          <div className="hero-body">
+            <div className="box">
+              {Object.keys(cards).length === 0 
+                ? (
+                    <>
+                      <div>
+                        <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
+                      </div>
+                      <div style={{textAlign: "center"}}>
+                        <DialogSelect/>
+                      </div>
+                    </>
+                  )
+                : <Collection cards = {cards}/>}
             </div>
-          </section>
-        </div>
-      );
+          </div>
+        </section>
+      </div>
+    );
     
 
 }

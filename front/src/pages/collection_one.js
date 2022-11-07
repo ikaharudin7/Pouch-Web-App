@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './collection-page.css'
 import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
 import Collection2 from '../components/Collection2';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import { textAlign } from '@mui/system';
+
 
   
 function CollectionOne() {
@@ -25,7 +25,8 @@ function CollectionOne() {
     }, []);
 
 
-    if (load == false) {
+
+    if (load === false) {
       return (
         <div>
           <section className="hero">
@@ -34,7 +35,6 @@ function CollectionOne() {
                 
                 <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                   <CircularProgress />
-                  {/* <Typography style={{textAlign: "center"}}>Loading... </Typography> */}
                 </Box>
               </div>
             </div>

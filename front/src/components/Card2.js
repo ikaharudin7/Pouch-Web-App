@@ -12,7 +12,7 @@ const imageheight = 180;
 
 export default function MediaCard2({card}) {
 
-  const [open, setOpen] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,7 +46,7 @@ export default function MediaCard2({card}) {
       disableEscapeKeyDown 
       open={open} 
       onClose={handleClose} 
-      fullWidth 
+      maxWidth = "90%"
     >
 
     <ViewItem2 card = {card} handleClose = {handleClose}/>

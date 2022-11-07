@@ -86,14 +86,14 @@ export default function SortBy({cards, setFilteredCards}) {
 
   const handleOld = () => {
     cards.sort((a, b) => {
-      return (dayjs(a.date).diff(dayjs(b.date)) > 0) ? 1 : -1;
+      return (dayjs(a.date).diff(dayjs(b.date)) < 0) ? 1 : -1;
     })
 
   }
 
   const handleNew = () => {
     cards.sort((a, b) => {
-      return (dayjs(a.date).diff(dayjs(b.date)) < 0) ? 1 : -1;
+      return (dayjs(a.date).diff(dayjs(b.date)) > 0) ? 1 : -1;
     })
 
     

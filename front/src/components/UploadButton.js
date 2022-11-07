@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { ButtonBase, Stack, Typography } from '@mui/material';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
@@ -7,12 +7,13 @@ import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
     position: 'relative',
     borderStyle: 'groove',
-    height: 300,
-    width: "auto",
+    height: "auto",
+    maxHeight: "500pt",
+    width: "100%",
     border: 2,
     borderRadius: 4,
-    color: 'white',
-    backgroundColor: 'grey',
+    borderColor: 'grey',
+    color: 'grey',
     '&:hover, &.Mui-focusVisible': {
       zIndex: 1,
       '& .MuiImageBackdrop-root': {
@@ -21,7 +22,6 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
       '& .MuiImageMarked-root': {
         opacity: 0,
       },
-
     },
   }));
 
@@ -72,8 +72,8 @@ export default function UploadButton({item, setItem}) {
 
       <label htmlFor="select-image">
         <ImageButton variant="contained" color="primary" component="span"  >
-            {image && (<img src={item.img} height="300px" />)}
-            <Stack sx={{alignItems: 'center'}}>
+            {image && (<img src={item.img} alt = "upload" style = {{maxWidth: "100%", maxHeight: "500pt"}} />)}
+            <Stack sx={{alignItems: 'center', height: '300pt', placeContent: "center"}}>
                 {!image && (<AddAPhotoIcon sx = {{m: 1}}/>)}
                 {!image && (<Typography sx = {{m: 1}}>Upload Image</Typography>)}
             </Stack>
