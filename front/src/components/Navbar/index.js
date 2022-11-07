@@ -23,6 +23,7 @@ const Navbar = () => {
   })    
   }, []);
 
+
     return (
         <>
            <Nav>
@@ -68,6 +69,14 @@ const Navbar = () => {
                     Logout
                 </NavBtnLink>
                 </NavBtn> 
+                }
+                { !loggedIn ? 
+                <NavBtn>
+                  <NavBtnLink 
+                      to="/signup"
+                    > Sign Up
+                  </NavBtnLink> 
+                </NavBtn> : <></>
                 }
                 
             </NavMenu>
