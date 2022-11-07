@@ -4,29 +4,9 @@ import "./login.css";
 
 function LoginForm() {
 
-  const [registerFirstName, setRegisterFirstName] = useState("");
-  const [registerLastName, setRegisterLastName] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
-  const register = () => {
-    Axios({
-      method: "POST",
-      data: {
-        firstname: registerFirstName,
-        lastname: registerLastName,
-        email: registerEmail,
-        username: registerUsername,
-        password: registerPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:8080/signup",
-    }).then((res) => console.log(res.data));
-
-  };
+  
 
   const login = () => {
     Axios({
@@ -64,32 +44,6 @@ function LoginForm() {
   return (
     <div className="App">
       <div className="login-form">
-        <div className="form-box">
-          <h1 className="login-text">Sign Up</h1>
-          <input className="login-box"
-            placeholder="Given Name"
-            onChange={(e) => setRegisterFirstName(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Last Name"
-            onChange={(e) => setRegisterLastName(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Email"
-            onChange={(e) => setRegisterEmail(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Username"
-            onChange={(e) => setRegisterUsername(e.target.value)}
-          />
-          <input className="login-box"
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setRegisterPassword(e.target.value)}
-          />
-          <button className="login-btn" onClick={register}>Submit</button>
-        </div>
-
         <div className="form-box">
           <h1 className="login-text">Login</h1>
           <input className="login-box"

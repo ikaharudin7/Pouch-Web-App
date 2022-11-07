@@ -1,67 +1,67 @@
-import React, { Component } from "react";
-import {Routes, Route, useNavigate} from "react-router-dom";
-import { NavBtn, NavBtnLink } from "../components/Navbar/NavbarElements";
-import './signup.css';
+import React, { useState }  from "react";
+import Axios from "axios";
+import "./login.css";
 
-class SignupForm extends Component {
-  state = {
+function SignUpForm() {
+
+  const [registerFirstName, setRegisterFirstName] = useState("");
+  const [registerLastName, setRegisterLastName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+
+  
+  const register = () => {
+    Axios({
+      method: "POST",
+      data: {
+        firstname: registerFirstName,
+        lastname: registerLastName,
+        email: registerEmail,
+        username: registerUsername,
+        password: registerPassword,
+      },
+      withCredentials: true,
+      url: "http://localhost:8080/signup",
+    }).then((res) => console.log(res.data));
 
   };
 
-  handleChange = (event) => {
-    this.setState({[event.target.name]: event.target.value});
-  };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const data = this.state;
-    
-    fetch('http://localhost:8080/signup', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      .then((res)=> res.json())
-      .then(()=> {
-        console.log(data);
-        console.log(JSON.stringify(data));
-        console.log("POST sent");
-      })
-      window.location.href = "http://localhost:3000/login"
-  }; 
-
-  render() {
-    return (
-        <div className="signup-form">
-          <div className="form-box solid">
-            <form id="signup" onSubmit={this.handleSubmit}>
-              <h1 className="signup-text">Sign Up</h1>
-              <label type="text" className="label-text">First Name</label>
-              <br></br>
-              <input id="firstname" type="text" name="firstname" value={this.state.value} onChange={this.handleChange} className="signup-box" />
-              <br></br>
-              <label type="text" className="label-text">Last Name</label>
-              <br></br>
-              <input id="lastname" type="text" name="lastname" value={this.state.value} onChange={this.handleChange} className="signup-box" />
-              <br></br>
-              <label type="text" className="label-text">Email</label>
-              <br></br>
-              <input id="email" type="text" name="email" value={this.state.value} onChange={this.handleChange} className="signup-box" />
-              <br></br>
-              <label type="text" className="label-text">Username</label>
-              <br></br>
-              <input id="username" type="text" name="username" value={this.state.value} onChange={this.handleChange} className="signup-box" />
-              <br></br>
-              <label type="text" className="label-text">Password</label>
-              <br></br>
-              <input id="password" type="password" name="password" value={this.state.value} onChange={this.handleChange} className="signup-box" />
-              <br></br>
-              <input type="submit" form="signup" value="SIGN UP" className="signup-btn" ></input>
-            </form>
-          </div>
+  return (
+    <div className="App">
+      <div className="login-form">
+        <div className="form-box">
+          <h1 className="login-text">Sign Up</h1>
+          <input className="login-box"
+            placeholder="Given Name"
+            onChange={(e) => setRegisterFirstName(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Last Name"
+            onChange={(e) => setRegisterLastName(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Email"
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
+          <input className="login-box"
+            placeholder="Username"
+            onChange={(e) => setRegisterUsername(e.target.value)}
+          />
+          <input className="login-box"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
+          <button className="login-btn" onClick={register}>Submit</button>
         </div>
-    );
-  }
+
+      </div>
+    </div> 
+    
+  );
+
 };
 
-export default SignupForm;
+export default SignUpForm;
