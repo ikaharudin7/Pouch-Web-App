@@ -23,7 +23,17 @@ function SignUpForm() {
       },
       withCredentials: true,
       url: "http://localhost:8080/signup",
-    }).then((res) => console.log(res.data));
+    }).then((res) => {
+      console.log(res.data)
+      if (res.data=="User Already Exists") {
+        alert("User Already Exists");
+        window.location.href = "http://localhost:3000/signup";
+      }
+      else {
+        alert("Account Created! Try and login now");
+        window.location.href = "http://localhost:3000/login";
+      }
+    });
 
   };
 
