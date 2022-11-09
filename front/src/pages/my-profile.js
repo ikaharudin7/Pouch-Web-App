@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 class Profile extends Component {
   state = {
     bio: [],
-    username: [],
+    username: null,
     edit: [false],
     img: null,
   };
@@ -82,11 +82,11 @@ class Profile extends Component {
 
               <h1 className="hero-title" style = {{marginBottom: 0}}>About Me </h1>
               { this.state.edit ? (
-                this.state.img ?
-                    
+                this.state.username ?
+                  
                   
                   <div style={{display: "grid", gridTemplateColumns: "1fr auto", gridGap: "20px"}}>
-                    
+                    {console.log(this.state.username)}
                     <div>
                       <Typography variant="h4" style={{ wordWrap: "break-word" }} fontWeight = "bold">
                         {this.state.username.toUpperCase()}
@@ -96,7 +96,7 @@ class Profile extends Component {
                         {this.state.bio}  
                       </Typography>
                     </div>
-                    <img src={this.state.img} alt = {this.state.username} height={300} style = {{borderRadius: 10}}/>
+                    {this.state.img && <img src={this.state.img} alt = {this.state.username} height={300} style = {{borderRadius: 10}}/>}
                     
                   </div>
                     
