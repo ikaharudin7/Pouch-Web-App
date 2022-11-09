@@ -1,7 +1,6 @@
 import React from 'react';
 import './collection-page.css'
 import Collection2 from '../components/Collection2';
-import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
 import Axios from "axios"
 import CircularProgress from '@mui/material/CircularProgress';

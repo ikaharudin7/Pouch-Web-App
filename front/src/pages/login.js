@@ -1,12 +1,27 @@
 import React, { useState }  from "react";
 import Axios from "axios";
 import "./login.css";
+import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 function LoginForm() {
 
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const login = () => {
     Axios({
@@ -46,15 +61,43 @@ function LoginForm() {
       <div className="login-form">
         <div className="form-box">
           <h1 className="login-text">Login</h1>
-          <input className="login-box"
-            placeholder="Username"
-            onChange={(e) => setLoginUsername(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Password"
-            onChange={(e) => setLoginPassword(e.target.value)}
-          />
-          <button className="login-btn" onClick={login}>Submit</button>
+            <div style={{width: "300px"}} >
+              <TextField
+                id="username"
+                fullWidth
+                placeholder="Username"
+                onChange={(e) => setLoginUsername(e.target.value)}
+                sx = {{marginBottom: "10px", "& .MuiInputBase-root": {backgroundColor: "white"}}}
+              />
+              <OutlinedInput
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                fullWidth
+                placeholder="Password"
+                onChange={(e) => setLoginPassword(e.target.value)}
+                sx = {{backgroundColor: "white"}}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+              />
+
+            </div>
+
+          <div style={{padding: "10px"}}>
+            <Button onClick={login} variant="contained" sx = {{backgroundColor: "transparent"}}>
+              OK
+            </Button>
+          </div>
+          
         </div>
       </div>
     </div> 

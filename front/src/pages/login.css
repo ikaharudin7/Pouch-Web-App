@@ -21,14 +21,14 @@
   background: rgb(0, 0, 0);
   padding-right: 80px;
   padding-left: 80px;
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 10px 10px 10px 1px rgba(0, 0, 0, 0.2);
+  
 }
 
 .login-text{
   width: 100%;
   color: white;
-  border-bottom: 2px solid white;
   line-height: 30px;
   width: 100%;
   font-weight: bolder;
@@ -36,8 +36,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2.5vh;
+  padding-top: 10px;
   font-family: 'Overpass', sans-serif;
+  margin-bottom: 30px;
 }
 
 .label-text{

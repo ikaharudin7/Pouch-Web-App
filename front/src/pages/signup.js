@@ -1,6 +1,14 @@
 import React, { useState }  from "react";
 import Axios from "axios";
-import "./login.css";
+import "./signup.css";
+import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import { Divider } from "@mui/material";
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import IconButton from '@mui/material/IconButton';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 function SignUpForm() {
 
@@ -9,6 +17,15 @@ function SignUpForm() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   
   const register = () => {
@@ -42,29 +59,72 @@ function SignUpForm() {
     <div className="App">
       <div className="login-form">
         <div className="form-box">
-          <h1 className="login-text">Sign Up</h1>
-          <input className="login-box"
-            placeholder="Given Name"
-            onChange={(e) => setRegisterFirstName(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Last Name"
-            onChange={(e) => setRegisterLastName(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Email"
-            onChange={(e) => setRegisterEmail(e.target.value)}
-          />
-          <input className="login-box"
-            placeholder="Username"
-            onChange={(e) => setRegisterUsername(e.target.value)}
-          />
-          <input className="login-box"
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setRegisterPassword(e.target.value)}
-          />
-          <button className="login-btn" onClick={register}>Submit</button>
+          <h1 className="signup-text">Sign Up</h1>
+          <div style={{width: "300px"}} >
+
+          
+            <TextField
+              id="Given Name"
+              fullWidth
+              placeholder="Given Name"
+              onChange={(e) => setRegisterFirstName(e.target.value)}
+              sx = {{marginBottom: "10px", "& .MuiInputBase-root": {backgroundColor: "white"}}}
+            />
+
+            <TextField
+              id="Last Name"
+              fullWidth
+              placeholder="Last Name"
+              onChange={(e) => setRegisterLastName(e.target.value)}
+              sx = {{marginBottom: "10px", "& .MuiInputBase-root": {backgroundColor: "white"}}}
+            />
+
+            <TextField
+              id="Email"
+              fullWidth
+              placeholder="Email"
+              onChange={(e) => setRegisterEmail(e.target.value)}
+              sx = {{marginBottom: "10px", "& .MuiInputBase-root": {backgroundColor: "white"}}}
+            />
+
+            <Divider style={{marginBottom: "20px", marginTop: "10px", backgroundColor: "rgb(50,50,50)"}}/>
+
+            <TextField
+              id="Username"
+              fullWidth
+              placeholder="Username"
+              onChange={(e) => setRegisterUsername(e.target.value)}
+              sx = {{marginBottom: "10px", "& .MuiInputBase-root": {backgroundColor: "white"}}}
+            />
+
+            <OutlinedInput
+              id="password"
+              type={showPassword ? 'text' : 'password'}
+              fullWidth
+              placeholder="Password"
+              onChange={(e) => setRegisterPassword(e.target.value)}
+              sx = {{backgroundColor: "white"}}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </div>
+
+          <div style={{padding: "10px"}}>
+            <Button onClick={register} variant="contained" sx = {{backgroundColor: "transparent"}}>
+              OK
+            </Button>
+          </div>
+          
         </div>
 
       </div>

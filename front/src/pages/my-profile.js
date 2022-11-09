@@ -77,14 +77,14 @@ class Profile extends Component {
 
           { this.state.edit ? <Button onClick={this.editOn} className="edit-button">EDIT PAGE</Button> : <></>}
           <div className="main">
-            <div className="container-right">
+            
             
 
-              <h1 className="hero-title">About Me </h1>
+              <h1 className="hero-title" style = {{marginBottom: 0}}>About Me </h1>
               { this.state.edit ? (
                 this.state.img ?
                     
-                    
+                  
                   <div style={{display: "grid", gridTemplateColumns: "1fr auto", gridGap: "20px"}}>
                     
                     <div>
@@ -155,7 +155,7 @@ class Profile extends Component {
               </form>
               
               : null }
-            </div>
+            
           </div>
 
             <div className="featured-body-end">

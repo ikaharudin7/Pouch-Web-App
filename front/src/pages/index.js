@@ -57,16 +57,16 @@ function Home() {
               <div className="featured-body-end" style={{paddingBottom: "40px"}}>
   
               
-                <Grid container columns={3}>
-                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                <Grid container columns={3} spacing={3}>
+                  <Grid item xs = {3} md = {1} >
                     <ButtonBases2 /> 
                     {/* <ButtonBases collection = {collections[0]}/>  */}
                   </Grid>
-                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                  <Grid item xs = {3} md = {1} >
                     <ButtonBases3 /> 
                     {/* <ButtonBases collection = {collections[0]}/>  */}
                   </Grid>
-                  <Grid item xs = {3} md = {1} style = {{padding: "10px"}}>
+                  <Grid item xs = {3} md = {1} >
                     <ButtonBases4 /> 
                     {/* <ButtonBases collection = {collections[0]}/>  */}
                   </Grid>
@@ -75,11 +75,11 @@ function Home() {
        
 
               </div>
-              <div style={{paddingTop: "10px"}}>
+              {/* <div style={{paddingTop: "10px"}}>
                 <Link className="link" href = "/about" underline="hover" color = 'black'>
                   Learn more
                 </Link>
-              </div>
+              </div> */}
             </div>
             
             
