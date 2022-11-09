@@ -4,14 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ViewItem from './ViewItem';
+import PrivateViewItem from './PrivateViewItem';
 import EditItem from './EditItem';
 import Dialog from '@mui/material/Dialog';
 
 const cardheight = 320;
 const imageheight = 180;
 
-export default function MediaCard({card}) {
+export default function PrivateCard({card}) {
 
   const [open, setOpen] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
@@ -20,8 +20,8 @@ export default function MediaCard({card}) {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
-    // if (reason !== 'backdropClick') {
+  const handleClose = () => {
+
       setOpen(false);
       setEdit(false);
       
@@ -66,7 +66,7 @@ export default function MediaCard({card}) {
       {console.log(edit)}
       {edit
         ? <EditItem card = {card} handleClose = {handleClose} handleEditClose = {handleEditClose} />
-        : <ViewItem card = {card} handleClose = {handleClose} handleEditOpen = {handleEditOpen} />
+        : <PrivateViewItem card = {card} handleClose = {handleClose} handleEditOpen = {handleEditOpen} />
       }
       
       

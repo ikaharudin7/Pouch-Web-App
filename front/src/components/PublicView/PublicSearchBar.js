@@ -34,7 +34,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
   },
@@ -42,7 +41,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export default function SearchBar2({cards, setFilteredCards}) {
+export default function PublicSearchBar({cards, setFilteredCards}) {
 
 
   const [searchField, setSearchField] = useState("");

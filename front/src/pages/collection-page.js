@@ -1,7 +1,7 @@
 import React from 'react';
 import './collection-page.css'
-import Collection from '../components/Collection';
-import DialogSelect from '../components/AddItem';
+import PrivateCollection from '../components/PrivateView/PrivateCollection';
+import AddItem from '../components/PrivateView/AddItem';
 import { Typography } from '@mui/material';
 import Axios from "axios"
 import CircularProgress from '@mui/material/CircularProgress';
@@ -61,11 +61,11 @@ function CollectionView() {
                         <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
                       </div>
                       <div style={{textAlign: "center"}}>
-                        <DialogSelect/>
+                        <AddItem/>
                       </div>
                     </>
                   )
-                : <Collection cards = {cards}/>}
+                : <PrivateCollection cards = {cards}/>}
             </div>
           </div>
         </section>

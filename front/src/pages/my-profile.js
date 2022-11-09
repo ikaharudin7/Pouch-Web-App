@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css'; 
 import './my-profile.css';
-import ButtonBases from '../components/Button';
+// import FeaturedCollection from '../components/FeaturedCollection';
 import { Button } from '@mui/material';
 import axios from 'axios';
 import UploadButton from '../components/UploadButton';
@@ -161,20 +161,22 @@ class Profile extends Component {
             <div className="featured-body-end">
               <h1 className="featured-heading">
                 <a href="/collection-page">View My Collection Here!</a>
-                      </h1>
+              </h1>
               
             </div>
+
+            {/* Code for future development where user can have multiple collections
             { false ? <div className="panels-section">
                 <div className="panel">
-                <ButtonBases className="bottom-panels"/> 
+                <FeaturedCollection className="bottom-panels"/> 
                 </div>
                 <div className="bottom-panels">
-                <ButtonBases /> 
+                <FeaturedCollection /> 
                 </div>
                 <div className="bottom-panels">
-                <ButtonBases /> 
+                <FeaturedCollection /> 
                 </div>
-            </div> : null }
+            </div> : null } */}
           </div>
       </section>
     </div>

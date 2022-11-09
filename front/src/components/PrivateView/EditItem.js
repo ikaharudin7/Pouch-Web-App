@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import UploadButton from './UploadButton';
+import UploadButton from '../UploadButton';
 import { Typography } from '@mui/material';
 
 

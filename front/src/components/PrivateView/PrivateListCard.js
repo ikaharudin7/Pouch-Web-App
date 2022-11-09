@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ViewItem from './ViewItem';
+import ViewItem from './PrivateViewItem';
 import EditItem from './EditItem';
 import Dialog from '@mui/material/Dialog';
 import Grid from '@mui/material/Grid';
@@ -13,7 +13,7 @@ import dayjs from 'dayjs';
 const cardheight = 200;
 const imageheight = 180;
 
-export default function ListCard({card}) {
+export default function PrivateListCard({card}) {
 
   const [open, setOpen] = React.useState(false);
   const [edit, setEdit] = React.useState(false);
@@ -22,7 +22,7 @@ export default function ListCard({card}) {
     setOpen(true);
   };
 
-  const handleClose = (event, reason) => {
+  const handleClose = () => {
       setOpen(false);
       setEdit(false);
       

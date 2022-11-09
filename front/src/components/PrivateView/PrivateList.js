@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid'
-import ListCard from './ListCard.js';
+import PrivateListCard from './PrivateListCard.js';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export default function CollectionList({filteredCards}) {
+export default function PrivateCollectionList({filteredCards}) {
     
     return (    
         <>
@@ -40,8 +40,8 @@ export default function CollectionList({filteredCards}) {
           </Box>
 
             {filteredCards.map((card) => (
-                <Grid item key={card.date} sx = {{paddingBottom: "15px"}} >
-                    <ListCard card = {card} />
+                <Grid item key={card._id} sx = {{paddingBottom: "15px"}} >
+                    <PrivateListCard card = {card} />
                 </Grid>
             ))}
 

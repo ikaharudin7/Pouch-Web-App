@@ -13,13 +13,7 @@ const imageheight = 180;
 
 export default function UserListCard({card}) {
 
-  
-
-
   return (
-    // Change href to user's list
-
-
     <Link href = {`/user-collection/${card.username}`} underline = 'none'>
       <Card sx={{ width: "100%", height: cardheight, borderRadius: 2, }}>
         <CardActionArea sx = {{height: cardheight}}>

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import View from './Menus/View';
-import SortBy from './Menus/SortBy';
-import CollectionGrid from './Grid';
-import SearchBar from './SearchBar';
-import CollectionList from './List';
+import View from '../Menus/View';
+import SortBy from '../Menus/SortBy';
+import PrivateCollectionGrid from './PrivateGrid';
+import PrivateSearchBar from './PrivateSearchBar';
+import PrivateCollectionList from './PrivateList';
 
-
-export default function Collection({cards}) {
+export default function PrivateCollection({cards}) {
 
   const [filteredCards, setFilteredCards] = React.useState(cards);
   const [view, setView] = React.useState(false);
@@ -17,7 +16,7 @@ export default function Collection({cards}) {
     <>
     <Box sx={{ flexGrow: 1, paddingLeft: '40px', paddingRight: '40px'}}>
       
-      <SearchBar cards = {cards} setFilteredCards = {setFilteredCards} />
+      <PrivateSearchBar cards = {cards} setFilteredCards = {setFilteredCards} />
 
       <div className = 'text-box'><Typography>showing {cards.length} cards</Typography>
               
@@ -28,8 +27,8 @@ export default function Collection({cards}) {
       </div>
 
 
-      {!view && <CollectionGrid filteredCards={filteredCards}/>}
-      {view && <CollectionList filteredCards={filteredCards}/>}
+      {!view && <PrivateCollectionGrid filteredCards={filteredCards}/>}
+      {view && <PrivateCollectionList filteredCards={filteredCards}/>}
 
     </Box>
     

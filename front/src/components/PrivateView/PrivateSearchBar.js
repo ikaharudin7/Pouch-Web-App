@@ -45,7 +45,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export default function SearchBar({cards, setFilteredCards}) {
+export default function PrivateSearchBar({cards, setFilteredCards}) {
 
 
   const [searchField, setSearchField] = useState("");

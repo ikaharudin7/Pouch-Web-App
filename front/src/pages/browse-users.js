@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css'
 import './collection-page.css'
-import DialogSelect from '../components/AddItem';
 import { Typography } from '@mui/material';
 import UserCollection from '../components/UserCollection';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -13,20 +12,20 @@ function Browse() {
     const [users, setUsers] = React.useState({});
     const [load, setLoad] = React.useState(false);
 
-    // Change when user post works
     React.useEffect(() => {
       fetch('http://localhost:8080/browse-users', {
         method: "GET",
         headers: {"Access-Control-Allow-Origin": "*"}
       })
         .then((res) => res.json())
-        .then((users) => setUsers(users))
+        .then((users) => setUsers(users.sort((a, b) => {
+            return (a.username.toUpperCase() > b.username.toUpperCase()) ? 1 : -1;
+          })))
         .then((load) => setLoad(true));
-
+      
     }, []);
-    console.log(users)
-  
 
+    
       return (
         <div>
           <section className="hero">
@@ -57,10 +56,7 @@ function Browse() {
                             ? (
                                 <>
                                   <div>
-                                    <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
-                                  </div>
-                                  <div style={{textAlign: "center"}}>
-                                    <DialogSelect/>
+                                    <Typography style={{textAlign: "center"}}>Error: No users</Typography>
                                   </div>
                                 </>
                               )

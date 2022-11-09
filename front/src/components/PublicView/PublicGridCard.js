@@ -4,13 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ViewItem2 from './ViewItem2';
+import PublicViewItem from './PublicViewItem';
 import Dialog from '@mui/material/Dialog';
 
 const cardheight = 320;
 const imageheight = 180;
 
-export default function MediaCard2({card}) {
+export default function PublicCard({card}) {
 
   const [open, setOpen] = React.useState(false);
 
@@ -49,7 +49,7 @@ export default function MediaCard2({card}) {
       maxWidth = "90%"
     >
 
-    <ViewItem2 card = {card} handleClose = {handleClose}/>
+    <PublicViewItem card = {card} handleClose = {handleClose}/>
 
     </Dialog>
     

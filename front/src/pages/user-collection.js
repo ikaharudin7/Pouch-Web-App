@@ -1,6 +1,6 @@
 import React from 'react';
 import './collection-page.css'
-import Collection2 from '../components/Collection2';
+import PublicCollection from '../components/PublicView/PublicCollection';
 import { Typography } from '@mui/material';
 import Axios from "axios"
 import CircularProgress from '@mui/material/CircularProgress';
@@ -68,7 +68,7 @@ function UserCollection() {
                         </div>
                       </>
                     )
-                  : <Collection2 cards = {cards}/>}
+                  : <PublicCollection cards = {cards}/>}
               </div>
             </div>
           </section>

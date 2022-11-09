@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import View from './Menus/View';
-import SortBy from './Menus/SortBy';
-import SearchBar2 from './SearchBar2';
-import CollectionGrid2 from './Grid2';
-import CollectionList2 from './List2';
+import View from '../Menus/View';
+import SortBy from '../Menus/SortBy';
+import PublicSearchBar from './PublicSearchBar';
+import PublicCollectionGrid from './PublicGrid';
+import PublicCollectionList from './PublicList';
 
 
-export default function Collection2({cards}) {
+export default function PublicCollection({cards}) {
 
   const [filteredCards, setFilteredCards] = React.useState(cards);
   const [view, setView] = React.useState(false);
@@ -18,7 +18,7 @@ export default function Collection2({cards}) {
     <>
     <Box sx={{ flexGrow: 1, paddingLeft: '40px', paddingRight: '40px'}}>
       
-      <SearchBar2 cards = {cards} setFilteredCards = {setFilteredCards} />
+      <PublicSearchBar cards = {cards} setFilteredCards = {setFilteredCards} />
 
       <div className = 'text-box'><Typography>showing {cards.length} cards</Typography>
               
@@ -29,8 +29,8 @@ export default function Collection2({cards}) {
       </div>
 
 
-      {!view && <CollectionGrid2 filteredCards={filteredCards}/>}
-      {view && <CollectionList2 filteredCards={filteredCards}/>}
+      {!view && <PublicCollectionGrid filteredCards={filteredCards}/>}
+      {view && <PublicCollectionList filteredCards={filteredCards}/>}
 
     </Box>
     

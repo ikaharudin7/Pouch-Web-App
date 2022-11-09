@@ -2,8 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import UserSort from './Menus/UserSort';
-import SearchBar2 from './SearchBar2';
-import CollectionList2 from './List2';
+import SearchBar2 from './PublicView/PublicSearchBar';
 import UserList from './UserList'
 
 
@@ -23,7 +22,7 @@ export default function UserCollection({users}) {
           <UserSort cards = {filteredUsers} setFilteredCards = {setFilteredUsers}/>
         </div>
       </div>
-      {/* Change list so it shows username, bio?, and profile pic */}
+      
       {<UserList filteredCards={filteredUsers}/>}
 
     </Box>

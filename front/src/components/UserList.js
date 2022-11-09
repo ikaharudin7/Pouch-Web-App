@@ -6,9 +6,8 @@ export default function UserList({filteredCards}) {
     
     return (    
         <>
-
             {filteredCards.map((card) => (
-                <Grid item key={card.date} sx = {{paddingBottom: "15px"}} >
+                <Grid item key={card._id} sx = {{paddingBottom: "15px"}} >
                     <UserListCard card = {card} />
                 </Grid>
             ))}

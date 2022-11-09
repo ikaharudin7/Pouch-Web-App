@@ -1,17 +1,13 @@
 import React from 'react';
 import Link from '@mui/material/Link';
 import './index.css'
-import ButtonBases from '../components/Button';
-import ButtonBases2 from '../components/Button2';
+import FeaturedCollection from '../components/FeaturedCollection';
 import { NavBtn } from '../components/Navbar/NavbarElements';
-import ButtonBases3 from '../components/Button3';
-import ButtonBases4 from '../components/Button4';
 import Grid from '@mui/material/Grid';
   
 function Home() {
 
     // Fetch collection you want to display from here
-
     // const [collections, setCollections] = React.useState({});
 
     // React.useEffect(() => {
@@ -22,17 +18,58 @@ function Home() {
     //     .then((res) => res.json())
     //     .then((collections) => setCollections(collections));
     // }, []);
-  
 
+    const collections = [
+      {
+        img: 'zekrom.png',
+        name: 'Pokemon', 
+        width: '100%',
+        href: '/collection_1',
+      },
+      {
+        img: 'ronaldo.png.png',
+        name: 'Soccer Legends', 
+        width: '100%',
+        href: '/collection_2',
+      },
+      {
+        img: 'bontempelli.png',
+        name: 'AFL Legends', 
+        width: '100%',
+        href: '/collection_3',
+      },
+      {
+        img: 'kobe.jpg',
+        name: 'NBA Legends', 
+        width: '100%',
+        href: '/collection_4',
+      },
+    ];
+
+    
+    // Fischer-Yates algorithm code from https://sebhastian.com/fisher-yates-shuffle-javascript/
+    function fyShuffle(arr) {
+      let i = arr.length;
+      while (--i > 0) {
+        let randIndex = Math.floor(Math.random() * (i + 1));
+        [arr[randIndex], arr[i]] = [arr[i], arr[randIndex]];
+      }
+      return arr;
+    }
+    
+    // Randomises order of collections
+    const randomCollection = fyShuffle(collections)
+    // Removes the first collection
+    const firstCollection = randomCollection.shift()
+    
+    console.log(randomCollection)
       return (
         <div>
           <section className="hero">
             <div className="hero-body">
               <div className="container">
-                <div class="container-left">
-                  {/* set which collection you want to display */}
-                  {/* <ButtonBases collection = {collections[0]}/>  */}
-                  <ButtonBases /> 
+                <div className="container-left">
+                  <FeaturedCollection collection = {firstCollection}/>
                 </div>
                 <div className="container-right">
                   <h1 className="hero-title">Got a collection you want to feature? </h1>
@@ -58,18 +95,11 @@ function Home() {
   
               
                 <Grid container columns={3} spacing={3}>
-                  <Grid item xs = {3} md = {1} >
-                    <ButtonBases2 /> 
-                    {/* <ButtonBases collection = {collections[0]}/>  */}
-                  </Grid>
-                  <Grid item xs = {3} md = {1} >
-                    <ButtonBases3 /> 
-                    {/* <ButtonBases collection = {collections[0]}/>  */}
-                  </Grid>
-                  <Grid item xs = {3} md = {1} >
-                    <ButtonBases4 /> 
-                    {/* <ButtonBases collection = {collections[0]}/>  */}
-                  </Grid>
+                  {randomCollection.map((collection) => (
+                      <Grid item xs = {3} md = {1} key = {collection.name}>
+                          <FeaturedCollection collection = {collection}/>
+                      </Grid>
+                  ))}
                 </Grid>
 
        

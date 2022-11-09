@@ -8,7 +8,7 @@ import { Typography } from '@mui/material';
 import dayjs from 'dayjs';
 
 
-export default function ViewItem({card, handleClose, handleEditOpen}) {
+export default function PrivateViewItem({card, handleClose, handleEditOpen}) {
 
 
   return (

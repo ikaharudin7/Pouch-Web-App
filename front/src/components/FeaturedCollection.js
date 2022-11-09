@@ -4,19 +4,9 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 
-// Currently works with the file placed in the public folder
-// Comment out later
-const collection = 
-  {
-    img: 'bontempelli.png',
-    name: 'AFL Legends', 
-    width: '100%',
-  }
-;
 
 // Sets height of button and image
 const imageHeight = 400;
-
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -69,29 +59,20 @@ const ImageMarked = styled('span')(({ theme }) => ({
 }));
 
 
-// Switch to
-// export default function ButtonBases({collection}) {
 
-export default function ButtonBases3() {
+export default function FeaturedCollection({collection}) {
 
-
-  if (Object.keys(collection).length === 0) {
-    return (
-      <div>
-        Loading...
-      </div>
-    );}
 
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap'}}>
 
         <ImageButton
           focusRipple
           key={collection.name}
           style={{
-            width: '100%',
+            width: "100%",
           }}
-          href = "/collection_3" 
+          href = {collection.href}
         >
 
           <img src = {collection.img} alt = {collection.name} height = {imageHeight} style = {{maxWidth: "100%"}}/>

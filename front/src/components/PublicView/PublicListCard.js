@@ -7,14 +7,14 @@ import { CardActionArea } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import Grid from '@mui/material/Grid';
 import dayjs from 'dayjs';
-import ViewItem2 from './ViewItem2';
+import PublicViewItem from './PublicViewItem';
 
 const cardheight = 200;
 const imageheight = 180;
 
-export default function ListCard2({card}) {
+export default function PublicListCard({card}) {
 
-  const [open, setOpen] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -70,7 +70,7 @@ export default function ListCard2({card}) {
         fullWidth 
       >
 
-        <ViewItem2 card = {card} handleClose = {handleClose}/>
+        <PublicViewItem card = {card} handleClose = {handleClose}/>
 
       </Dialog>
     

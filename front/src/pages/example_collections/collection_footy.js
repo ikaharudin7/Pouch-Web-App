@@ -1,8 +1,7 @@
 import React from 'react';
-import './collection-page.css'
-import DialogSelect from '../components/AddItem';
+import '../collection-page.css'
 import { Typography } from '@mui/material';
-import Collection2 from '../components/Collection2';
+import Collection2 from '../../components/PublicView/PublicCollection';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
@@ -50,14 +49,11 @@ function CollectionFooty() {
             <div className="box">
               {Object.keys(cards).length === 0 
                 ? (
-                    <>
-                      <div>
-                        <Typography style={{textAlign: "center"}}>You have not added any items to your Collection </Typography>
-                      </div>
-                      <div style={{textAlign: "center"}}>
-                        <DialogSelect/>
-                      </div>
-                    </>
+                  <>
+                    <div>
+                      <Typography style={{textAlign: "center"}}>This user has not added any items to their Collection </Typography>
+                    </div>
+                  </>
                   )
                 : <Collection2 cards = {cards}/>}
             </div>

@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
-import UploadButton from './UploadButton';
+import UploadButton from '../UploadButton';
 import dayjs from 'dayjs';
 import AddIcon from '@mui/icons-material/Add';
 import { Typography } from '@mui/material';
@@ -14,7 +14,7 @@ import axios from 'axios';
 
 global.userid = "";
 
-export default function DialogSelect() {
+export default function AddItem() {
   const [open, setOpen] = React.useState(false);
   const [item, setItem] = React.useState({img: null});
   const [userid, setUserid] = React.useState();
@@ -24,7 +24,6 @@ export default function DialogSelect() {
   };
 
   const handleClose = (event, reason) => {
-    // if (reason !== 'backdropClick') {
       setOpen(false);
   };
 
@@ -85,7 +84,7 @@ export default function DialogSelect() {
                   <UploadButton item = {item} setItem = {setItem}/>
               </div>
               <div>
-                {/* <ComboBox item = {item} setItem = {setItem}/> */}
+
                 <TextField
                   autoFocus
                   fullWidth
@@ -108,22 +107,17 @@ export default function DialogSelect() {
               
             </div>
             
-
-            {/* get so can't press ok if name is empty */}
-            
             
           </Box>
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={() => {handleClose(); setItem({img: null})}}>Cancel
-            
+          <Button onClick={() => {handleClose(); setItem({img: null})}}>
+            Cancel
           </Button>
 
           <Button onClick={() => {setItem({...item, date: dayjs().format()})}} type = "submit" form = "addItem" >
-            Ok
-            {/* <input hidden type="submit" form="addItem" value="item" className="btn" /> */}
-            
+            Ok            
           </Button>
         </DialogActions>
       </Dialog>
