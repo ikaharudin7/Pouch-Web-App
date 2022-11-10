@@ -6,8 +6,8 @@
     "node": "10.x"
   },
   "scripts": {
-    "start": "node server && cd front/ npm start",
-    "build": "cd front/ && npm install"
+    "start": "node server",
+    "build": "cd front/ && npm install && npm run build"
   },
   "cacheDirectories": [
     "node_modules",
