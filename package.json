@@ -1,6 +1,6 @@
 {
   "name": "pouchcollectorsapp",
-  "version": "3.1",
+  "version": "3.0.0",
   "description": "Collectors App",
   "engines": {
     "node": "10.x"
@@ -26,6 +26,6 @@
     "create-react-app",
     "react"
   ],
-  "license": "",
+  "license": "MIT",
   "devDependencies": {}
 }
