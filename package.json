@@ -1,5 +1,31 @@
 {
+  "name": "pouchcollectorsapp",
+  "version": "3.1",
+  "description": "Collectors App",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "start": "node server",
+    "build": "cd front/ && npm install"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ],
   "dependencies": {
-    "dotenv": "^16.0.2"
-  }
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mars/heroku-cra-node.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "create-react-app",
+    "react"
+  ],
+  "license": "",
+  "devDependencies": {}
 }
